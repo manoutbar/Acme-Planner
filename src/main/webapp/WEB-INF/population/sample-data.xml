@@ -23,6 +23,7 @@
 	
 	<bean id="task01" class="acme.entities.tasks.Task">
 		<property name="title" value="Our first task"/>
+		<property name="isPublic" value="true"/>
 		<property name="executionStart" value="2021/05/20 10:00"/>
 		<property name="executionEnd" value="2021/06/19 23:59"/>
 		<property name="workload" value="00.00"/>
@@ -32,6 +33,7 @@
 	
 	<bean id="task02" class="acme.entities.tasks.Task">
 		<property name="title" value="Long description task"/>
+		<property name="isPublic" value="true"/>
 		<property name="executionStart" value="2021/05/30 18:30"/>
 		<property name="executionEnd" value="2021/06/02 23:59"/>
 		<property name="workload" value="00.00"/>

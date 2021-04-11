@@ -397,6 +397,7 @@ Shout
 Task
 --
 + title: String {NotBlank, Length(max=80)}
++ isPublic: Boolean {NotNull}
 + executionStart: Date {NotNull, Temporal(TIMESTAMP), Future}
 + executionEnd: Date {NotNull, Temporal(TIMESTAMP), Future}
 + workload: double {Digits(integer=2, fraction=2)}

@@ -32,6 +32,9 @@ public class Task extends DomainEntity {
 	@NotBlank
 	protected String			title;
 	
+	@NotNull
+	protected Boolean			isPublic;
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Future
 	@NotNull

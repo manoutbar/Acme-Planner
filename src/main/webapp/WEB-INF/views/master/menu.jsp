@@ -23,6 +23,8 @@
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.anonymous.list-shouts" action="/anonymous/shout/list"/>
 			<acme:menu-suboption code="master.menu.anonymous.create-shout" action="/anonymous/shout/create"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.anonymous.list-tasks" action="/anonymous/task/list"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.authenticated" access="hasRole('Authenticated')">

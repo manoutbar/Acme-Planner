@@ -1,0 +1,29 @@
+# i18n_es.messages
+#
+# Copyright (C) 2012-2021 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+anonymous.task.form.title = Tarea
+anonymous.task.form.title.show = Tarea
+
+anonymous.task.form.label.title = Título:
+anonymous.task.form.label.public = Pública:
+anonymous.task.form.label.execution-start = Comienzo de la tarea:
+anonymous.task.form.label.execution-end = Fin de la tarea:
+anonymous.task.form.label.workload = Carga de trabajo:
+anonymous.task.form.label.description = Descripción:
+anonymous.task.form.label.link = Enlace: (Opcional)
+
+anonymous.task.form.button.return = Volver
+
+anonymous.task.list.title = Lista de tareas
+
+anonymous.task.list.label.execution-start = Fecha de inicio
+anonymous.task.list.label.execution-end = Fecha de finalización
+anonymous.task.list.label.public = Pública
+anonymous.task.list.label.title = Título

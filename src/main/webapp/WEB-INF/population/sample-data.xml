@@ -19,6 +19,26 @@
 
 	<import resource="classpath:/WEB-INF/population/conversion-service.xml"/>
 	
+	<!-- Tasks -->
+	
+	<bean id="task01" class="acme.entities.tasks.Task">
+		<property name="title" value="Our first task"/>
+		<property name="executionStart" value="2021/05/20 10:00"/>
+		<property name="executionEnd" value="2021/06/19 23:59"/>
+		<property name="workload" value="00.00"/>
+		<property name="description" value="The first task we are doing as DP2 team"/>
+		<property name="link"><null/></property>
+	</bean>
+	
+	<bean id="task02" class="acme.entities.tasks.Task">
+		<property name="title" value="Long description task"/>
+		<property name="executionStart" value="2021/05/30 18:30"/>
+		<property name="executionEnd" value="2021/06/02 23:59"/>
+		<property name="workload" value="00.00"/>
+		<property name="description" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mi tortor, volutpat dapibus dignissim sed, facilisis a arcu. Curabitur blandit massa lorem, a luctus urna lobortis at. Suspendisse potenti. Fusce sollicitudin convallis neque ac eleifend. Vestibulum vehicula mauris augue, quis egestas odio ornare a. Ut ac commodo elit. Mauris condimentum odio leo, vel luctus dui lobortis at."/>
+		<property name="link"><null/></property>
+	</bean>
+	
 	<!-- Shouts -->
 	
 	<bean id="shout01" class="acme.entities.shouts.Shout">

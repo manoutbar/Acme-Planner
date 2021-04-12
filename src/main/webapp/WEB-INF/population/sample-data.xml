@@ -44,7 +44,7 @@
 	<bean id="task03" class="acme.entities.tasks.Task">
 		<property name="title" value="Enabled task"/>
 		<property name="isPublic" value="true"/>
-		<property name="executionStart" value="2021/05/01 18:30"/>
+		<property name="executionStart" value="2021/01/01 18:30"/>
 		<property name="executionEnd" value="2021/08/30 23:59"/>
 		<property name="workload" value="13.40"/>
 		<property name="description" value="This is a long execution period task"/>
@@ -54,7 +54,7 @@
 	<bean id="task04" class="acme.entities.tasks.Task">
 		<property name="title" value="Private task"/>
 		<property name="isPublic" value="false"/>
-		<property name="executionStart" value="2021/05/01 18:30"/>
+		<property name="executionStart" value="2021/02/01 18:30"/>
 		<property name="executionEnd" value="2021/08/30 23:59"/>
 		<property name="workload" value="00.00"/>
 		<property name="description" value="This is a private task with isPublic = 'false'"/>

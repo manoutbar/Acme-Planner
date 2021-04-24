@@ -385,4 +385,19 @@ Shout
 + info: String {URL}</panel_attributes>
     <additional_attributes/>
   </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>21</x>
+      <y>602</y>
+      <w>266</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Spam
+--
++ wordEn: String {NotNull}
++ wordEs: String {NotNull}</panel_attributes>
+    <additional_attributes/>
+  </element>
 </diagram>

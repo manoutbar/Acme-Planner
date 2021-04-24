@@ -49,6 +49,48 @@
 	<bean id="spam06" class="acme.entities.spam.Spam">
 		<property name="wordEn" value="million dollar"/>
 		<property name="wordEs" value="millon de dolares"/>
+  </bean>
+  
+	<!-- Tasks -->
+	
+	<bean id="task01" class="acme.entities.tasks.Task">
+		<property name="title" value="Our first task"/>
+		<property name="isPublic" value="true"/>
+		<property name="executionStart" value="2021/05/20 10:00"/>
+		<property name="executionEnd" value="2021/06/19 23:59"/>
+		<property name="workload" value="00.00"/>
+		<property name="description" value="The first task we are doing as DP2 team"/>
+		<property name="link"><null/></property>
+	</bean>
+	
+	<bean id="task02" class="acme.entities.tasks.Task">
+		<property name="title" value="Long description task"/>
+		<property name="isPublic" value="true"/>
+		<property name="executionStart" value="2021/05/30 18:30"/>
+		<property name="executionEnd" value="2021/06/02 23:59"/>
+		<property name="workload" value="00.00"/>
+		<property name="description" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mi tortor, volutpat dapibus dignissim sed, facilisis a arcu. Curabitur blandit massa lorem, a luctus urna lobortis at. Suspendisse potenti. Fusce sollicitudin convallis neque ac eleifend. Vestibulum vehicula mauris augue, quis egestas odio ornare a. Ut ac commodo elit. Mauris condimentum odio leo, vel luctus dui lobortis at."/>
+		<property name="link"><null/></property>
+	</bean>
+	
+	<bean id="task03" class="acme.entities.tasks.Task">
+		<property name="title" value="Enabled task"/>
+		<property name="isPublic" value="true"/>
+		<property name="executionStart" value="2021/01/01 18:30"/>
+		<property name="executionEnd" value="2021/08/30 23:59"/>
+		<property name="workload" value="13.40"/>
+		<property name="description" value="This is a long execution period task"/>
+		<property name="link"><null/></property>
+	</bean>
+	
+	<bean id="task04" class="acme.entities.tasks.Task">
+		<property name="title" value="Private task"/>
+		<property name="isPublic" value="false"/>
+		<property name="executionStart" value="2021/02/01 18:30"/>
+		<property name="executionEnd" value="2021/08/30 23:59"/>
+		<property name="workload" value="00.00"/>
+		<property name="description" value="This is a private task with isPublic = 'false'"/>
+		<property name="link" value="http://www.example.org" />
 	</bean>
 	
 	<!-- Shouts -->

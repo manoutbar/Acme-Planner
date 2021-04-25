@@ -44,9 +44,105 @@
 			<acme:message code="administrator.dashboard.form.label.average-number-applications-employer"/>
 		</th>
 		<td>
-			<acme:print value="${avegageNumberOfApplicationsPerEmployer}"/>
+			<acme:print value="${averageNumberOfApplicationsPerEmployer}"/>
 		</td>
-	</tr>	
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.total-number-public-tasks"/>
+		</th>
+		<td>
+			<acme:print value="${totalNumberOfPublicTasks}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.total-number-private-tasks"/>
+		</th>
+		<td>
+			<acme:print value="${totalNumberOfPrivateTasks}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.total-number-finished-tasks"/>
+		</th>
+		<td>
+			<acme:print value="${totalNumberOfFinishedTasks}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.total-number-unfinished-tasks"/>
+		</th>
+		<td>
+			<acme:print value="${totalNumberOfUnfinishedTasks}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.average-number-tasks-execution-period"/>
+		</th>
+		<td>
+			<acme:print value="${averageNumberOfTasksExecutionPeriod}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.deviation-number-tasks-execution-period"/>
+		</th>
+		<td>
+			<acme:print value="${deviationNumberOfTasksExecutionPeriod}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.minimum-tasks-execution-period"/>
+		</th>
+		<td>
+			<acme:print value="${minimumTaskExecutionPeriod}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.maximum-tasks-execution-period"/>
+		</th>
+		<td>
+			<acme:print value="${maximumTaskExecutionPeriod}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.average-number-tasks-workload"/>
+		</th>
+		<td>
+			<acme:print value="${averageNumberOfTasksWorkload}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.deviation-number-tasks-workload"/>
+		</th>
+		<td>
+			<acme:print value="${deviationNumberOfTasksWorkload}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.minimum-tasks-workload"/>
+		</th>
+		<td>
+			<acme:print value="${minimumTasksWorkload}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.maximum-tasks-workload"/>
+		</th>
+		<td>
+			<acme:print value="${maximumTasksWorkload}"/>
+		</td>
+	</tr>
 </table>
 
 <h2>

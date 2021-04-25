@@ -17,3 +17,15 @@ administrator.dashboard.form.label.average-number-applications-employer = Averag
 
 administrator.dashboard.form.title.application-statuses = Application statuses
 
+administrator.dashboard.form.label.total-number-public-tasks = Total number of public tasks
+administrator.dashboard.form.label.total-number-private-tasks = Total number of private tasks
+administrator.dashboard.form.label.total-number-finished-tasks = Total number of finished tasks
+administrator.dashboard.form.label.total-number-unfinished-tasks = Total number of unfinished tasks
+administrator.dashboard.form.label.average-number-tasks-execution-period = Average number of tasks execution period (in days)
+administrator.dashboard.form.label.deviation-number-tasks-execution-period = Deviation number of tasks execution period (in days)
+administrator.dashboard.form.label.minimum-tasks-execution-period = Minimum tasks execution period (in days)
+administrator.dashboard.form.label.maximum-tasks-execution-period = Maximum tasks execution period (in days)
+administrator.dashboard.form.label.average-number-tasks-workload = Average number of tasks workload
+administrator.dashboard.form.label.deviation-number-tasks-workload = Deviation number of tasks workload
+administrator.dashboard.form.label.minimum-tasks-workload = Minimum tasks workload
+administrator.dashboard.form.label.maximum-tasks-workload = Maximum tasks workload

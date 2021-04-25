@@ -47,8 +47,14 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 
 		request.unbind(entity, model, //
 			"averageNumberOfJobsPerEmployer", "averageNumberOfApplicationsPerWorker", // 
-			"avegageNumberOfApplicationsPerEmployer", "ratioOfPendingApplications", //
-			"ratioOfRejectedApplications", "ratioOfAcceptedApplications");
+			"averageNumberOfApplicationsPerEmployer", "ratioOfPendingApplications", //
+			"ratioOfRejectedApplications", "ratioOfAcceptedApplications",
+			"totalNumberOfPublicTasks", "totalNumberOfPrivateTasks",
+			"totalNumberOfFinishedTasks", "totalNumberOfUnfinishedTasks",
+			"averageNumberOfTasksExecutionPeriod", "deviationNumberOfTasksExecutionPeriod",
+			"minimumTaskExecutionPeriod", "maximumTaskExecutionPeriod",
+			"averageNumberOfTasksWorkload", "deviationNumberOfTasksWorkload",
+			"minimumTasksWorkload", "maximumTasksWorkload");
 	}
 
 	@Override
@@ -62,6 +68,19 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		Double ratioOfPendingApplications;
 		Double ratioOfAcceptedApplications;
 		Double ratioOfRejectedApplications;
+		Double totalNumberOfTasks;
+		Double totalNumberOfPublicTasks;
+		Double totalNumberOfPrivateTasks;
+		Double totalNumberOfFinishedTasks;
+		Double totalNumberOfUnfinishedTasks;
+		Double averageNumberOfTasksExecutionPeriod;
+		Double deviationNumberOfTasksExecutionPeriod;
+		Double minimumTaskExecutionPeriod;
+		Double maximumTaskExecutionPeriod;
+		Double averageNumberOfTasksWorkloads;
+		Double deviationNumberOfTasksWorkloads;
+		Double minimumTaskWorkloads;
+		Double maximumTaskWorkloads;
 
 		averageNumberOfApplicationsPerEmployer = this.repository.averageNumberOfApplicationsPerEmployer();
 		averageNumberOfApplicationsPerWorker = this.repository.averageNumberOfApplicationsPerWorker();
@@ -69,16 +88,42 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		ratioOfPendingApplications = this.repository.ratioOfPendingApplications();
 		ratioOfAcceptedApplications = this.repository.ratioOfAcceptedApplications();
 		ratioOfRejectedApplications = this.repository.ratioOfRejectedApplications();
+		
+		totalNumberOfTasks = this.repository.countTasks();
+		totalNumberOfPrivateTasks = this.repository.totalOfPrivateTasks();
+		totalNumberOfPublicTasks = totalNumberOfTasks - totalNumberOfPrivateTasks;
+		totalNumberOfFinishedTasks = this.repository.totalOfFinishedTasks();
+		totalNumberOfUnfinishedTasks = totalNumberOfTasks - totalNumberOfFinishedTasks;
+		averageNumberOfTasksExecutionPeriod = this.repository.averageNumberOfTasksExecutionPeriod();
+		deviationNumberOfTasksExecutionPeriod = this.repository.deviationSumOfTasksExecutionPeriod(averageNumberOfTasksExecutionPeriod);
+		minimumTaskExecutionPeriod = this.repository.minimumTaskExecutionPeriod();
+		maximumTaskExecutionPeriod = this.repository.maximumTaskExecutionPeriod();
+		averageNumberOfTasksWorkloads = this.repository.averageNumberOfTasksWorkloads();
+		deviationNumberOfTasksWorkloads = this.repository.deviationNumberOfTasksWorkloads(averageNumberOfTasksWorkloads);
+		minimumTaskWorkloads = this.repository.minimumTaskWorkloads();
+		maximumTaskWorkloads = this.repository.maximumTaskWorkloads();
 
 		result = new Dashboard();
-		result.setAvegageNumberOfApplicationsPerEmployer(averageNumberOfApplicationsPerEmployer);
+		result.setAverageNumberOfApplicationsPerEmployer(averageNumberOfApplicationsPerEmployer);
 		result.setAverageNumberOfApplicationsPerWorker(averageNumberOfApplicationsPerWorker);
 		result.setAverageNumberOfJobsPerEmployer(averageNumberOfJobsPerEmployer);
 		result.setRatioOfPendingApplications(ratioOfPendingApplications);
 		result.setRatioOfAcceptedApplications(ratioOfAcceptedApplications);
 		result.setRatioOfRejectedApplications(ratioOfRejectedApplications);
+		
+		result.setTotalNumberOfFinishedTasks(totalNumberOfFinishedTasks);
+		result.setTotalNumberOfUnfinishedTasks(totalNumberOfUnfinishedTasks);
+		result.setTotalNumberOfPrivateTasks(totalNumberOfPrivateTasks);
+		result.setTotalNumberOfPublicTasks(totalNumberOfPublicTasks);
+		result.setAverageNumberOfTasksExecutionPeriod(averageNumberOfTasksExecutionPeriod);
+		result.setDeviationNumberOfTasksExecutionPeriod(deviationNumberOfTasksExecutionPeriod);
+		result.setMinimumTaskExecutionPeriod(minimumTaskExecutionPeriod);
+		result.setMaximumTaskExecutionPeriod(maximumTaskExecutionPeriod);
+		result.setAverageNumberOfTasksWorkload(averageNumberOfTasksWorkloads);
+		result.setDeviationNumberOfTasksWorkload(deviationNumberOfTasksWorkloads);
+		result.setMinimumTasksWorkload(minimumTaskWorkloads);
+		result.setMaximumTasksWorkload(maximumTaskWorkloads);
 
 		return result;
 	}
-
 }

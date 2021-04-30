@@ -3,19 +3,13 @@ package acme.entities.tasks;
 import java.util.Collection;
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.URL;
 
 import acme.framework.entities.DomainEntity;
 import acme.framework.entities.UserAccount;
@@ -25,50 +19,48 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Task extends DomainEntity {
+public class WorkPlan extends DomainEntity {
 
 	// Serialisation identifier
 	protected static final long serialVersionUID = 1L;
 	
+	
 	// Attributes ---------------------------------
 	
-	@Length(max=80)
-	@NotBlank
-	protected String						title;
 	
 	@NotNull
-	protected Boolean						isPublic;
+	protected Boolean			isPublic;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
-	protected Date							executionStart;
+	protected Date				executionStart;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
-	protected Date							executionEnd;
+	protected Date				executionEnd;
 	
-	@Digits(integer=2, fraction=2)
-	@NotNull
-	protected Double						workload;
 	
-	@Length(max=500)
-	@Column(length=500) // field greater than 255 chars
-	@NotBlank
-	protected String						description;
-	
-	@URL
-	protected String						link;
+	// Derived attributes -----------------------------------------------------
+
+
+	public Double getWorkload() {
+		if (this.tasks == null) {
+			return 0.0;
+		}
+		return this.tasks.stream()
+			.mapToDouble(Task::getWorkload)
+			.sum();
+	}
 	
 	
 	// Relationships ----------------------------------------------------------
-	
+
 	@NotNull
-	@Valid
 	@ManyToOne(optional = false)
-	protected UserAccount					owner;
+	protected UserAccount		owner;
 	
 	@NotNull
 	@Valid
-	@ManyToMany(mappedBy="tasks")
-	protected Collection<WorkPlan>	workPlans;
+	@ManyToMany
+	protected Collection<Task>	tasks;
 }

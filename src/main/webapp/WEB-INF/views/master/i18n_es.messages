@@ -42,6 +42,10 @@ master.menu.authenticated.announcement.list = Ver anuncios
 master.menu.authenticated.list-tasks = Ver tareas
 master.menu.authenticated.money-exchage = Cambio de dinero
 
+# master.menu.manager #######################################################
+
+master.menu.manager = Gestor
+
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrador

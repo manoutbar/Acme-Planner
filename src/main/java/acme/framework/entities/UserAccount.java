@@ -27,6 +27,8 @@ import javax.validation.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Length;
 
 import acme.datatypes.UserIdentity;
+import acme.entities.tasks.Task;
+import acme.entities.tasks.WorkPlan;
 import acme.framework.helpers.PasswordHelper;
 import acme.framework.helpers.StringHelper;
 import lombok.Getter;
@@ -84,7 +86,12 @@ public class UserAccount extends DomainEntity {
 	}
 
 	// Relationships ----------------------------------------------------------
-
+	
+	@OneToMany
+	protected Collection<@Valid Task> ownedTasks;
+	
+	@OneToMany
+	protected Collection<@Valid WorkPlan> ownedWorkPlans;
 
 	@NotEmpty
 	@OneToMany(mappedBy = "userAccount")

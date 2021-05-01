@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
@@ -44,7 +45,7 @@ public class WorkPlan extends DomainEntity {
 
 
 	public Double getWorkload() {
-		if (this.tasks == null) {
+		if (this.tasks == null || this.tasks.isEmpty()) {
 			return 0.0;
 		}
 		return this.tasks.stream()
@@ -54,13 +55,12 @@ public class WorkPlan extends DomainEntity {
 	
 	
 	// Relationships ----------------------------------------------------------
-
-	@NotNull
+	
+	@Valid
 	@ManyToOne(optional = false)
 	protected Manager			owner;
 	
-	@NotNull
 	@Valid
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	protected Collection<Task>	tasks;
 }

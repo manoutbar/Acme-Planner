@@ -1,11 +1,9 @@
 package acme.entities.tasks;
 
-import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -62,13 +60,8 @@ public class Task extends DomainEntity {
 	
 	// Relationships ----------------------------------------------------------
 	
-	@NotNull
 	@Valid
-	@ManyToOne(optional = false)
-	protected Manager					owner;
+	@ManyToOne(optional=false)
+	protected Manager						owner;
 	
-	@NotNull
-	@Valid
-	@ManyToMany(mappedBy="tasks")
-	protected Collection<WorkPlan>	workPlans;
 }

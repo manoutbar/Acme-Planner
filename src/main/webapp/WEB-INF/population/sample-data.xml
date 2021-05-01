@@ -25,31 +25,6 @@
 		<property name="spam" value="sex;sexo;hard core;extremo;viagra;cialis;has ganado;you’ve won;million dollar;millón de dólares;"/>
 		<property name="threshold" value="10.00"/>
 	</bean>
-	
-	<bean id="spam02" class="acme.entities.spam.Spam">
-		<property name="wordEn" value="hard core"/>
-		<property name="wordEs" value="extremo"/>
-	</bean>
-	
-	<bean id="spam03" class="acme.entities.spam.Spam">
-		<property name="wordEn" value="viagra"/>
-		<property name="wordEs" value="viagra"/>
-	</bean>
-	
-	<bean id="spam04" class="acme.entities.spam.Spam">
-		<property name="wordEn" value="cialis"/>
-		<property name="wordEs" value="cialis"/>
-	</bean>
-
-	<bean id="spam05" class="acme.entities.spam.Spam">
-		<property name="wordEn" value="you’ve won"/>
-		<property name="wordEs" value="has ganado"/>
-	</bean>
-
-	<bean id="spam06" class="acme.entities.spam.Spam">
-		<property name="wordEn" value="million dollar"/>
-		<property name="wordEs" value="millon de dolares"/>
-  	</bean>
   	
 	<!-- Task and WorkPlans manager owner -->
 	

@@ -13,11 +13,15 @@
 package acme.features.anonymous.shout;
 
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.configuration.Configuration;
 import acme.entities.shouts.Shout;
+import acme.features.configuration.ConfigurationRepository;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -31,6 +35,9 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 
 	@Autowired
 	protected AnonymousShoutRepository repository;
+	
+	@Autowired
+	protected ConfigurationRepository configurationRepository;
 
 	// AbstractCreateService<Administrator, Shout> interface --------------
 
@@ -82,6 +89,20 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+		
+		final Configuration configuration = this.configurationRepository.findMany().stream().findFirst().orElse(null);
+		
+		final Integer totalCharacter = entity.getText().length();
+		
+		final List<String> spamList= configuration.getSpamList().stream().filter(entity.getText()::contains).collect(Collectors.toList());
+		Integer spamCover = 0;
+		Double spamPercent = 0.0;
+		if(!spamList.isEmpty()) {
+			spamCover = spamList.stream().map(s -> s.length()).collect(Collectors.summingInt(Integer::intValue));
+			spamPercent = spamCover.doubleValue() * 100 / totalCharacter.doubleValue();
+		}
+		
+		assert spamPercent < configuration.getThreshold();
 
 	}
 

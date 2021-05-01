@@ -416,10 +416,10 @@ Task
       <h>84</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
-Spam
+Configuration
 --
-+ wordEn: String {NotNull}
-+ wordEs: String {NotNull}</panel_attributes>
++ spam: String {NotNull}
++ threshold: Double {NotNull}</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

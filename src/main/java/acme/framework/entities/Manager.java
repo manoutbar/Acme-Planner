@@ -1,5 +1,5 @@
 /*
- * Shout.java
+ * Anonymous.java
  *
  * Copyright (C) 2012-2021 Rafael Corchuelo.
  *
@@ -10,53 +10,38 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.entities.shouts;
+package acme.framework.entities;
 
-import java.util.Date;
+import java.util.Collection;
 
 import javax.persistence.Entity;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.persistence.OneToMany;
+import javax.validation.Valid;
 
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.URL;
-
-import acme.framework.entities.DomainEntity;
+import acme.entities.tasks.Task;
+import acme.entities.tasks.WorkPlan;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Shout extends DomainEntity {
+public class Manager extends UserRole {
 
 	// Serialisation identifier -----------------------------------------------
 
-	protected static final long	serialVersionUID	= 1L;
+	protected static final long serialVersionUID = 1L;
 
 	// Attributes -------------------------------------------------------------
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Past
-	@NotNull
-	protected Date				moment;
-
-	@NotBlank
-	@Length(min = 5, max = 25)
-	protected String			author;
-
-	@NotBlank
-	@Length(min = 1, max = 100)
-	protected String			text;
-	
-	@URL
-	protected String			info;
 
 	// Derived attributes -----------------------------------------------------
 
 	// Relationships ----------------------------------------------------------
+	
+	@OneToMany
+	protected Collection<@Valid Task> ownedTasks;
+	
+	@OneToMany
+	protected Collection<@Valid WorkPlan> ownedWorkPlans;
 
 }

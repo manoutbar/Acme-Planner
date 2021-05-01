@@ -85,7 +85,6 @@ public class UserAccount extends DomainEntity {
 
 	// Relationships ----------------------------------------------------------
 
-
 	@NotEmpty
 	@OneToMany(mappedBy = "userAccount")
 	protected Collection<@Valid UserRole> roles;

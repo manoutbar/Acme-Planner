@@ -25,6 +25,75 @@
 		<property name="spam" value="sex;sexo;hard core;extremo;viagra;cialis;has ganado;you’ve won;million dollar;millón de dólares;"/>
 		<property name="threshold" value="10.00"/>
 	</bean>
+	
+	<bean id="spam02" class="acme.entities.spam.Spam">
+		<property name="wordEn" value="hard core"/>
+		<property name="wordEs" value="extremo"/>
+	</bean>
+	
+	<bean id="spam03" class="acme.entities.spam.Spam">
+		<property name="wordEn" value="viagra"/>
+		<property name="wordEs" value="viagra"/>
+	</bean>
+	
+	<bean id="spam04" class="acme.entities.spam.Spam">
+		<property name="wordEn" value="cialis"/>
+		<property name="wordEs" value="cialis"/>
+	</bean>
+
+	<bean id="spam05" class="acme.entities.spam.Spam">
+		<property name="wordEn" value="you’ve won"/>
+		<property name="wordEs" value="has ganado"/>
+	</bean>
+
+	<bean id="spam06" class="acme.entities.spam.Spam">
+		<property name="wordEn" value="million dollar"/>
+		<property name="wordEs" value="millon de dolares"/>
+  	</bean>
+  	
+	<!-- Task and WorkPlans manager owner -->
+	
+	<bean name="tasksManagerUserAccount" class="acme.framework.entities.UserAccount">
+		<property name="username" value="taskManager" />
+		<property name="password" value="taskManager" />
+		<property name="enabled" value="true" />
+		<property name="identity">
+			<bean class="acme.datatypes.UserIdentity">
+				<property name="name" value="TaskManager" />
+				<property name="surname" value="UserAccount" />
+				<property name="email" value="taskm.uacc@acme.com" />
+				<property name="phone"><null/></property>
+			</bean>
+		</property>
+		<property name="roles">
+			<list>
+				<ref bean="taskManagerManager" />
+				<ref bean="taskManagerAuthenticated" />
+			</list>
+		</property>
+	</bean>
+
+	<bean name="taskManagerManager" class="acme.framework.entities.Manager">
+		<property name="userAccount" ref="tasksManagerUserAccount" />
+		<property name="ownedTasks">
+			<list>
+				<ref bean="task01" />
+				<ref bean="task02" />
+				<ref bean="task03" />
+				<ref bean="task04" />
+			</list>
+		</property>
+		<property name="ownedWorkPlans">
+			<list>
+				<ref bean="workplan01" />
+				<ref bean="workplan02" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean name="taskManagerAuthenticated" class="acme.framework.entities.Authenticated">
+		<property name="userAccount" ref="tasksManagerUserAccount" />
+	</bean>
   
 	<!-- Tasks -->
 	
@@ -36,6 +105,13 @@
 		<property name="workload" value="00.00"/>
 		<property name="description" value="The first task we are doing as DP2 team"/>
 		<property name="link"><null/></property>
+		<property name="owner" ref="taskManagerManager" />
+		<property name="workPlans">
+			<list>
+				<ref bean="workplan01" />
+				<ref bean="workplan02" />
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="task02" class="acme.entities.tasks.Task">
@@ -46,6 +122,12 @@
 		<property name="workload" value="00.00"/>
 		<property name="description" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mi tortor, volutpat dapibus dignissim sed, facilisis a arcu. Curabitur blandit massa lorem, a luctus urna lobortis at. Suspendisse potenti. Fusce sollicitudin convallis neque ac eleifend. Vestibulum vehicula mauris augue, quis egestas odio ornare a. Ut ac commodo elit. Mauris condimentum odio leo, vel luctus dui lobortis at."/>
 		<property name="link"><null/></property>
+		<property name="owner" ref="taskManagerManager" />
+		<property name="workPlans">
+			<list>
+				<ref bean="workplan02" />
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="task03" class="acme.entities.tasks.Task">
@@ -56,6 +138,12 @@
 		<property name="workload" value="13.40"/>
 		<property name="description" value="This is a long execution period task"/>
 		<property name="link"><null/></property>
+		<property name="owner" ref="taskManagerManager" />
+		<property name="workPlans">
+			<list>
+				<ref bean="workplan01" />
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="task04" class="acme.entities.tasks.Task">
@@ -66,7 +154,54 @@
 		<property name="workload" value="00.00"/>
 		<property name="description" value="This is a private task with isPublic = 'false'"/>
 		<property name="link" value="http://www.example.org" />
+		<property name="owner" ref="taskManagerManager" />
+		<property name="workPlans">
+			<list>
+				<ref bean="workplan02" />
+			</list>
+		</property>
 	</bean>
+	
+	<bean id="task05" class="acme.entities.tasks.Task">
+		<property name="title" value="Task without work plans"/>
+		<property name="isPublic" value="true"/>
+		<property name="executionStart" value="2021/02/01 18:30"/>
+		<property name="executionEnd" value="2021/08/30 23:59"/>
+		<property name="workload" value="00.00"/>
+		<property name="description" value="This plan has not been added to any work plan"/>
+		<property name="link" value="http://www.example.org" />
+		<property name="owner" ref="taskManagerManager" />
+		<property name="workPlans"><list></list></property>
+	</bean>
+	
+	<!-- Work plans -->
+	
+	<bean id="workplan01" class="acme.entities.tasks.WorkPlan">
+		<property name="isPublic" value="true"/>
+		<property name="executionStart" value="2021/01/01 00:00"/>
+		<property name="executionEnd" value="2021/06/20 00:00"/>
+		<property name="owner" ref="taskManagerManager" />
+		<property name="tasks">
+			<list>
+				<ref bean="task01" />
+				<ref bean="task03" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="workplan02" class="acme.entities.tasks.WorkPlan">
+		<property name="isPublic" value="false"/>
+		<property name="executionStart" value="2021/01/31 12:00"/>
+		<property name="executionEnd" value="2021/09/01 08:00"/>
+		<property name="owner" ref="taskManagerManager" />
+		<property name="tasks">
+			<list>
+				<ref bean="task02" />
+				<ref bean="task01" />
+				<ref bean="task04" />
+			</list>
+		</property>
+	</bean>	
 	
 	<!-- Shouts -->
 	

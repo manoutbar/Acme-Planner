@@ -17,10 +17,10 @@
 
 <acme:form>
 	<acme:form-textbox code="anonymous.task.form.label.title" path="title"/>
-	<acme:form-url code="anonymous.task.form.label.public" path="isPublic"/>
+	<acme:form-checkbox code="anonymous.task.form.label.public" path="isPublic"/>
 	<acme:form-moment code="anonymous.task.form.label.execution-start" path="executionStart"/>
-	<acme:form-money code="anonymous.task.form.label.execution-end" path="executionEnd"/>
-	<acme:form-money code="anonymous.task.form.label.workload" path="workload"/>
+	<acme:form-moment code="anonymous.task.form.label.execution-end" path="executionEnd"/>
+	<acme:form-double code="anonymous.task.form.label.workload" path="workload"/>
 	<acme:form-url code="anonymous.task.form.label.link" path="link"/>
 	<acme:form-textarea code="anonymous.task.form.label.description" path="description"/>
 	

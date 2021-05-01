@@ -71,6 +71,10 @@
 				<ref bean="taskManagerAuthenticated" />
 			</list>
 		</property>
+	</bean>
+
+	<bean name="taskManagerManager" class="acme.framework.entities.Manager">
+		<property name="userAccount" ref="tasksManagerUserAccount" />
 		<property name="ownedTasks">
 			<list>
 				<ref bean="task01" />
@@ -85,10 +89,6 @@
 				<ref bean="workplan02" />
 			</list>
 		</property>
-	</bean>
-
-	<bean name="taskManagerManager" class="acme.framework.entities.Manager">
-		<property name="userAccount" ref="tasksManagerUserAccount" />
 	</bean>
 	
 	<bean name="taskManagerAuthenticated" class="acme.framework.entities.Authenticated">
@@ -105,7 +105,7 @@
 		<property name="workload" value="00.00"/>
 		<property name="description" value="The first task we are doing as DP2 team"/>
 		<property name="link"><null/></property>
-		<property name="owner" ref="tasksManagerUserAccount" />
+		<property name="owner" ref="taskManagerManager" />
 		<property name="workPlans">
 			<list>
 				<ref bean="workplan01" />
@@ -122,7 +122,7 @@
 		<property name="workload" value="00.00"/>
 		<property name="description" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mi tortor, volutpat dapibus dignissim sed, facilisis a arcu. Curabitur blandit massa lorem, a luctus urna lobortis at. Suspendisse potenti. Fusce sollicitudin convallis neque ac eleifend. Vestibulum vehicula mauris augue, quis egestas odio ornare a. Ut ac commodo elit. Mauris condimentum odio leo, vel luctus dui lobortis at."/>
 		<property name="link"><null/></property>
-		<property name="owner" ref="tasksManagerUserAccount" />
+		<property name="owner" ref="taskManagerManager" />
 		<property name="workPlans">
 			<list>
 				<ref bean="workplan02" />
@@ -138,7 +138,7 @@
 		<property name="workload" value="13.40"/>
 		<property name="description" value="This is a long execution period task"/>
 		<property name="link"><null/></property>
-		<property name="owner" ref="tasksManagerUserAccount" />
+		<property name="owner" ref="taskManagerManager" />
 		<property name="workPlans">
 			<list>
 				<ref bean="workplan01" />
@@ -154,7 +154,7 @@
 		<property name="workload" value="00.00"/>
 		<property name="description" value="This is a private task with isPublic = 'false'"/>
 		<property name="link" value="http://www.example.org" />
-		<property name="owner" ref="tasksManagerUserAccount" />
+		<property name="owner" ref="taskManagerManager" />
 		<property name="workPlans">
 			<list>
 				<ref bean="workplan02" />
@@ -170,7 +170,7 @@
 		<property name="workload" value="00.00"/>
 		<property name="description" value="This plan has not been added to any work plan"/>
 		<property name="link" value="http://www.example.org" />
-		<property name="owner" ref="tasksManagerUserAccount" />
+		<property name="owner" ref="taskManagerManager" />
 		<property name="workPlans"><list></list></property>
 	</bean>
 	
@@ -180,7 +180,7 @@
 		<property name="isPublic" value="true"/>
 		<property name="executionStart" value="2021/01/01 00:00"/>
 		<property name="executionEnd" value="2021/06/20 00:00"/>
-		<property name="owner" ref="tasksManagerUserAccount" />
+		<property name="owner" ref="taskManagerManager" />
 		<property name="tasks">
 			<list>
 				<ref bean="task01" />
@@ -193,7 +193,7 @@
 		<property name="isPublic" value="false"/>
 		<property name="executionStart" value="2021/01/31 12:00"/>
 		<property name="executionEnd" value="2021/09/01 08:00"/>
-		<property name="owner" ref="tasksManagerUserAccount" />
+		<property name="owner" ref="taskManagerManager" />
 		<property name="tasks">
 			<list>
 				<ref bean="task02" />

@@ -12,7 +12,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import acme.framework.entities.DomainEntity;
-import acme.framework.entities.UserAccount;
+import acme.framework.entities.Manager;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -57,7 +57,7 @@ public class WorkPlan extends DomainEntity {
 
 	@NotNull
 	@ManyToOne(optional = false)
-	protected UserAccount		owner;
+	protected Manager			owner;
 	
 	@NotNull
 	@Valid

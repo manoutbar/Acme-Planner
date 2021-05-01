@@ -75,20 +75,6 @@
 
 	<bean name="taskManagerManager" class="acme.framework.entities.Manager">
 		<property name="userAccount" ref="tasksManagerUserAccount" />
-		<property name="ownedTasks">
-			<list>
-				<ref bean="task01" />
-				<ref bean="task02" />
-				<ref bean="task03" />
-				<ref bean="task04" />
-			</list>
-		</property>
-		<property name="ownedWorkPlans">
-			<list>
-				<ref bean="workplan01" />
-				<ref bean="workplan02" />
-			</list>
-		</property>
 	</bean>
 	
 	<bean name="taskManagerAuthenticated" class="acme.framework.entities.Authenticated">
@@ -106,12 +92,6 @@
 		<property name="description" value="The first task we are doing as DP2 team"/>
 		<property name="link"><null/></property>
 		<property name="owner" ref="taskManagerManager" />
-		<property name="workPlans">
-			<list>
-				<ref bean="workplan01" />
-				<ref bean="workplan02" />
-			</list>
-		</property>
 	</bean>
 	
 	<bean id="task02" class="acme.entities.tasks.Task">
@@ -123,11 +103,6 @@
 		<property name="description" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mi tortor, volutpat dapibus dignissim sed, facilisis a arcu. Curabitur blandit massa lorem, a luctus urna lobortis at. Suspendisse potenti. Fusce sollicitudin convallis neque ac eleifend. Vestibulum vehicula mauris augue, quis egestas odio ornare a. Ut ac commodo elit. Mauris condimentum odio leo, vel luctus dui lobortis at."/>
 		<property name="link"><null/></property>
 		<property name="owner" ref="taskManagerManager" />
-		<property name="workPlans">
-			<list>
-				<ref bean="workplan02" />
-			</list>
-		</property>
 	</bean>
 	
 	<bean id="task03" class="acme.entities.tasks.Task">
@@ -139,11 +114,6 @@
 		<property name="description" value="This is a long execution period task"/>
 		<property name="link"><null/></property>
 		<property name="owner" ref="taskManagerManager" />
-		<property name="workPlans">
-			<list>
-				<ref bean="workplan01" />
-			</list>
-		</property>
 	</bean>
 	
 	<bean id="task04" class="acme.entities.tasks.Task">
@@ -155,11 +125,6 @@
 		<property name="description" value="This is a private task with isPublic = 'false'"/>
 		<property name="link" value="http://www.example.org" />
 		<property name="owner" ref="taskManagerManager" />
-		<property name="workPlans">
-			<list>
-				<ref bean="workplan02" />
-			</list>
-		</property>
 	</bean>
 	
 	<bean id="task05" class="acme.entities.tasks.Task">
@@ -171,7 +136,6 @@
 		<property name="description" value="This plan has not been added to any work plan"/>
 		<property name="link" value="http://www.example.org" />
 		<property name="owner" ref="taskManagerManager" />
-		<property name="workPlans"><list></list></property>
 	</bean>
 	
 	<!-- Work plans -->

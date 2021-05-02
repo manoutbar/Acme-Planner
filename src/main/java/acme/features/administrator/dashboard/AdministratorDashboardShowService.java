@@ -61,7 +61,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 			"maximumWorkPlansExecutionPeriod", "averageNumberOfWorkPlansWorkloads",
 			"deviationNumberOfWorkPlansWorkloads", "minimumWorkPlanWorkload",
 			"maximumWorkPlanWorkload", "totalNumberOfPublicWorkPlans",
-			"totalNumberOfNonFinishedWorkPlans"
+			"totalNumberOfNonFinishedWorkPlans", "totalNumberOfPublishedWorkPlans"
 			);
 	}
 

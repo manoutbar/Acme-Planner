@@ -1,0 +1,31 @@
+# i18n_es.messages
+#
+# Copyright (C) 2012-2021 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+anonymous.work-plan.form.title = Plan de trabajo
+anonymous.work-plan.form.title.show = Plan de trabajo
+
+anonymous.work-plan.form.label.public = Público
+anonymous.work-plan.form.label.execution-start = Comienzo del plan de trabajo:
+anonymous.work-plan.form.label.execution-end = Fin del plan de trabajo:
+anonymous.work-plan.form.label.workload = Carga de trabajo:
+
+anonymous.work-plan.form.button.return = Volver
+
+anonymous.work-plan.list.title = Lista de planes de trabajo
+
+anonymous.work-plan.list.label.execution-start = Comienzo del plan de trabajo
+anonymous.work-plan.list.label.execution-end = Fin del plan de trabajo
+anonymous.work-plan.list.label.workload = Carga de trabajo
+
+anonymous.work-plan.form.label.tasks.title = Tareas del plan de trabajo
+anonymous.work-plan.form.label.tasks.task.title = Título
+anonymous.work-plan.form.label.tasks.task.executionStart = Fecha de inicio
+anonymous.work-plan.form.label.tasks.task.executionEnd = Fecha de finalización
+anonymous.work-plan.form.label.tasks.task.workload = Carga de trabajo

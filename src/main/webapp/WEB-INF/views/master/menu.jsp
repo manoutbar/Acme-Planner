@@ -25,15 +25,21 @@
 			<acme:menu-suboption code="master.menu.anonymous.create-shout" action="/anonymous/shout/create"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.anonymous.list-tasks" action="/anonymous/task/list"/>
+			<acme:menu-suboption code="master.menu.anonymous.list-work-plans" action="/anonymous/work-plan/list"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.authenticated" access="hasRole('Authenticated')">
 			<acme:menu-suboption code="master.menu.authenticated.announcement.list" action="/authenticated/announcement/list"/>
+			<acme:menu-suboption code="master.menu.authenticated.list-tasks" action="/authenticated/task/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.authenticated.money-exchage" action="/authenticated/money-exchange/perform"/>
 		</acme:menu-option>
 		
-		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
+		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
+			<!-- to do -->
+		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">			
 			<acme:menu-suboption code="master.menu.administrator.configuration.list-all" action="/administrator/configuration/list-all"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.announcement.list-all" action="/administrator/announcement/list-all"/>

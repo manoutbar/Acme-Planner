@@ -34,12 +34,18 @@ master.menu.anonymous.all-jobs = List all jobs
 master.menu.anonymous.list-shouts = List shouts
 master.menu.anonymous.create-shout = Shout!
 master.menu.anonymous.list-tasks = List tasks
+master.menu.anonymous.list-work-plans = List work plans
 
 # master.menu.authenticated #######################################################
 
 master.menu.authenticated = Authenticated
 master.menu.authenticated.announcement.list = List announcements
+master.menu.authenticated.list-tasks = List tasks
 master.menu.authenticated.money-exchage = Money exchange
+
+# master.menu.manager #######################################################
+
+master.menu.manager = Manager
 
 # master.menu.administrator ###################################################
 

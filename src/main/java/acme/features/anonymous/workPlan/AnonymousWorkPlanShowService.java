@@ -10,37 +10,39 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.anonymous.task;
+package acme.features.anonymous.workPlan;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import acme.entities.tasks.Task;
+import acme.entities.tasks.WorkPlan;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Anonymous;
 import acme.framework.services.AbstractShowService;
 
 @Service
-public class AnonymousTaskShowService implements AbstractShowService<Anonymous, Task> {
+public class AnonymousWorkPlanShowService implements AbstractShowService<Anonymous, WorkPlan> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected AnonymousTaskRepository repository;
-
+	protected AnonymousWorkPlanRepository repository;
 
 	@Override
-	public boolean authorise(final Request<Task> request) {
+	@Transactional(readOnly = true)
+	public boolean authorise(final Request<WorkPlan> request) {
 		assert request != null;
 
 		boolean result;
 		int id;
-		Task task;
+		WorkPlan workPlan;
 
 		id = request.getModel().getInteger("id");
-		task = this.repository.findOneTaskById(id);
-		result = task != null && task.getIsPublic();
+		workPlan = this.repository.findOneWorkPlanById(id);
+		
+		result = workPlan != null && workPlan.getIsPublic();
 
 		return result;
 	}
@@ -48,24 +50,25 @@ public class AnonymousTaskShowService implements AbstractShowService<Anonymous, 
 	// AbstractShowService<Anonymous, Task> interface --------------------------
 
 	@Override
-	public void unbind(final Request<Task> request, final Task entity, final Model model) {
+	public void unbind(final Request<WorkPlan> request, final WorkPlan entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "title", "isPublic", "executionStart", "executionEnd");
-		request.unbind(entity, model, "workload", "link", "description");
+		request.unbind(entity, model, "isPublic", "executionStart", "executionEnd");
+		request.unbind(entity, model, "workload", "tasks");
 	}
 
 	@Override
-	public Task findOne(final Request<Task> request) {
+	@Transactional(readOnly = true)
+	public WorkPlan findOne(final Request<WorkPlan> request) {
 		assert request != null;
 
-		Task result;
+		WorkPlan result;
 		int id;
 
 		id = request.getModel().getInteger("id");
-		result = this.repository.findOneTaskById(id);
+		result = this.repository.findOneWorkPlanById(id);
 
 		return result;
 	}

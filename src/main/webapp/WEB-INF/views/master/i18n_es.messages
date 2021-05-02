@@ -34,12 +34,18 @@ master.menu.anonymous.all-jobs = Ver todos los trabajos
 master.menu.anonymous.list-shouts = Ver gritos
 master.menu.anonymous.create-shout = ¡Dar un grito!
 master.menu.anonymous.list-tasks = Ver tareas
+master.menu.anonymous.list-work-plans = Ver planes de trabajo
 
 # master.menu.authenticated #######################################################
 
 master.menu.authenticated = Autentificado
 master.menu.authenticated.announcement.list = Ver anuncios
+master.menu.authenticated.list-tasks = Ver tareas
 master.menu.authenticated.money-exchage = Cambio de dinero
+
+# master.menu.manager #######################################################
+
+master.menu.manager = Gestor
 
 # master.menu.administrator ###################################################
 

@@ -1,5 +1,5 @@
 /*
- * AnonymousShoutListService.java
+ * AuthenticatedAnnouncementListService.java
  *
  * Copyright (C) 2012-2021 Rafael Corchuelo.
  *
@@ -10,61 +10,53 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.anonymous.shout;
+package acme.features.authenticated.task;
 
-import java.util.Calendar;
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.shouts.Shout;
+import acme.entities.tasks.Task;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
-import acme.framework.entities.Anonymous;
+import acme.framework.entities.Authenticated;
 import acme.framework.services.AbstractListService;
 
 @Service
-public class AnonymousShoutListService implements AbstractListService<Anonymous, Shout> {
+public class AuthenticatedTaskListService implements AbstractListService<Authenticated, Task> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected AnonymousShoutRepository repository;
+	protected AuthenticatedTaskRepository repository;
 
+	// AbstractListService<Administrator, Task> interface --------------
 
-	// AbstractListService<Administrator, Shout> interface --------------
 
 	@Override
-	public boolean authorise(final Request<Shout> request) {
+	public boolean authorise(final Request<Task> request) {
 		assert request != null;
 
 		return true;
 	}
 
 	@Override
-	public void unbind(final Request<Shout> request, final Shout entity, final Model model) {
+	public void unbind(final Request<Task> request, final Task entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "author", "text", "moment","info");
+		request.unbind(entity, model, "executionStart", "executionEnd", "title");
 	}
 
 	@Override
-	public Collection<Shout> findMany(final Request<Shout> request) {
+	public Collection<Task> findMany(final Request<Task> request) {
 		assert request != null;
 
-		Collection<Shout> result;
-		Calendar calendar;
-		Date deadline;
-		
-		calendar = Calendar.getInstance();
-		calendar.add(Calendar.MONTH, -1);
-		deadline = calendar.getTime();
-		
-		result = this.repository.findRecentShouts(deadline);
+		Collection<Task> result;
+
+		result = this.repository.findFinishedTasks();
 
 		return result;
 	}

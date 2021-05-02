@@ -1,5 +1,5 @@
 /*
- * AnonymousShoutRepository.java
+ * AuthenticatedUserAccountRepository.java
  *
  * Copyright (C) 2012-2021 Rafael Corchuelo.
  *
@@ -10,24 +10,23 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.anonymous.shout;
+package acme.features.authenticated.task;
 
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import acme.entities.shouts.Shout;
+import acme.entities.tasks.Task;
 import acme.framework.repositories.AbstractRepository;
 
 @Repository
-public interface AnonymousShoutRepository extends AbstractRepository {
+public interface AuthenticatedTaskRepository extends AbstractRepository {
 
-	@Query("select s from Shout s")
-	Collection<Shout> findMany();
+	@Query("select t from Task t where t.id = ?1")
+	Task findOneTaskById(int id);
 	
-	@Query("select s from Shout s where s.moment >= ?1 order by s.moment")
-	Collection<Shout> findRecentShouts(Date deadline);
+	@Query("select t from Task t where t.executionEnd < current_timestamp() and t.isPublic = true order by t.executionStart, t.executionEnd")
+	Collection<Task> findFinishedTasks();
 
 }

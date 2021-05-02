@@ -12,14 +12,8 @@
 
 package acme.framework.entities;
 
-import java.util.Collection;
-
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.validation.Valid;
 
-import acme.entities.tasks.Task;
-import acme.entities.tasks.WorkPlan;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -37,11 +31,5 @@ public class Manager extends UserRole {
 	// Derived attributes -----------------------------------------------------
 
 	// Relationships ----------------------------------------------------------
-	
-	@OneToMany
-	protected Collection<@Valid Task> ownedTasks;
-	
-	@OneToMany
-	protected Collection<@Valid WorkPlan> ownedWorkPlans;
 
 }

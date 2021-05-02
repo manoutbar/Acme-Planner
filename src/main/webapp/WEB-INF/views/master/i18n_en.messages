@@ -34,6 +34,7 @@ master.menu.anonymous.all-jobs = List all jobs
 master.menu.anonymous.list-shouts = List shouts
 master.menu.anonymous.create-shout = Shout!
 master.menu.anonymous.list-tasks = List tasks
+master.menu.anonymous.list-work-plans = List work plans
 
 # master.menu.authenticated #######################################################
 
@@ -45,9 +46,12 @@ master.menu.authenticated.money-exchage = Money exchange
 # master.menu.manager #######################################################
 
 master.menu.manager = Manager
+master.menu.manager.my-work-plans = List my works plans
+master.menu.manager.work-plan.create = Create work plan
 
 # master.menu.administrator ###################################################
 
+master.menu.administrator.configuration.list-all = List all configuration
 master.menu.administrator = Administrator
 master.menu.administrator.announcement.list-all = List all announcements
 master.menu.administrator.announcement.list-recent = List recent announcements

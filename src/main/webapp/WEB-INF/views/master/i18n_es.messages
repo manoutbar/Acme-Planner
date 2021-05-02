@@ -46,6 +46,8 @@ master.menu.authenticated.money-exchage = Cambio de dinero
 # master.menu.manager #######################################################
 
 master.menu.manager = Gestor
+master.menu.manager.my-work-plans = Ver mis planes de trabajo
+master.menu.manager.work-plan.create = Crear plan de trabajo
 
 # master.menu.administrator ###################################################
 

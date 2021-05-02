@@ -46,6 +46,8 @@ master.menu.authenticated.money-exchage = Money exchange
 # master.menu.manager #######################################################
 
 master.menu.manager = Manager
+master.menu.manager.my-work-plans = List my works plans
+master.menu.manager.work-plan.create = Create work plan
 
 # master.menu.administrator ###################################################
 

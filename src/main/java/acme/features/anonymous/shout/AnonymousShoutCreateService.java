@@ -13,15 +13,11 @@
 package acme.features.anonymous.shout;
 
 import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.configuration.Configuration;
 import acme.entities.shouts.Shout;
-import acme.features.configuration.ConfigurationRepository;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -36,6 +32,9 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 
 	@Autowired
 	protected AnonymousShoutRepository repository;
+	
+	/*@Autowired
+	protected ConfigurationRepository configurationRepository;*/
 	
 	@Autowired
 	protected Utils utils;
@@ -95,7 +94,6 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 		if (!spam.isEmpty()) {
 			errors.add("text", spam);
 		}
-
 	}
 
 	@Override

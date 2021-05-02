@@ -36,7 +36,8 @@
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
-			<!-- to do -->
+			<acme:menu-suboption code="master.menu.manager.my-work-plans" action="/manager/work-plan/list-mine"/>
+			<acme:menu-suboption code="master.menu.manager.work-plan.create" action="/manager/work-plan/create"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">			

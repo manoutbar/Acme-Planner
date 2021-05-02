@@ -94,8 +94,6 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 		if (!spam.isEmpty()) {
 			errors.add("text", spam);
 		}
-		
-
 	}
 
 	@Override

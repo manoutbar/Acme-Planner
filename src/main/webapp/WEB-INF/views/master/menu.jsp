@@ -40,7 +40,7 @@
 			<acme:menu-suboption code="master.menu.manager.work-plan.create" action="/manager/work-plan/create"/>
 		</acme:menu-option>
 		
-		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
+		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">			
 			<acme:menu-suboption code="master.menu.administrator.configuration.list-all" action="/administrator/configuration/list-all"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.announcement.list-all" action="/administrator/announcement/list-all"/>

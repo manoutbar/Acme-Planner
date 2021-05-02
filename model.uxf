@@ -317,7 +317,7 @@ Configuration
       <x>730</x>
       <y>315</y>
       <w>190</w>
-      <h>75</h>
+      <h>80</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 WorkPlan
@@ -327,6 +327,7 @@ WorkPlan
 + executionStart: Date {NotNull, Temporal(TIMESTAMP)}
 + executionEnd: Date {NotNull, Temporal(TIMESTAMP)}
 + owner: Manager {NotNull}
++ finalMode: Boolean {NotNull}
 + / workload: double {Digits(integer=2, fraction=2)}</panel_attributes>
     <additional_attributes/>
   </element>

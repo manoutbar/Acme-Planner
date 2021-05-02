@@ -36,10 +36,13 @@
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
-			<!-- to do -->
+			<acme:menu-suboption code="master.menu.manager.my-work-plans" action="/manager/work-plan/list-mine"/>
+			<acme:menu-suboption code="master.menu.manager.work-plan.create" action="/manager/work-plan/create"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">			
+			<acme:menu-suboption code="master.menu.administrator.configuration.list-all" action="/administrator/configuration/list-all"/>
+			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.announcement.list-all" action="/administrator/announcement/list-all"/>
 			<acme:menu-suboption code="master.menu.administrator.announcement.list-recent" action="/administrator/announcement/list-recent"/>
 			<acme:menu-suboption code="master.menu.administrator.announcement.create" action="/administrator/announcement/create"/>

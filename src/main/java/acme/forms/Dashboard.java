@@ -46,6 +46,7 @@ public class Dashboard implements Serializable {
 	Double						minimumTasksWorkload;
 	Double						maximumTasksWorkload;
 	Double						totalNumberOfWorkPlans;
+	Double						totalNumberOfPublishedWorkPlans;
 	Double						totalNumberOfPublicWorkPlans;
 	Double						totalNumberOfPrivateWorkPlans;
 	Double						totalNumberOfFinishedWorkPlans;

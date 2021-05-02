@@ -278,7 +278,7 @@
 					{
 						data : [
 							<jstl:out value="${totalNumberOfWorkPlans}"/>, 
-							<jstl:out value="${totalNumberOfPublicWorkPlans}"/>, 
+							<jstl:out value="${totalNumberOfPublishedWorkPlans}"/>, 
 						]
 					}
 				]

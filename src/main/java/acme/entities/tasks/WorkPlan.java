@@ -40,6 +40,8 @@ public class WorkPlan extends DomainEntity {
 	@NotNull
 	protected Date				executionEnd;
 	
+	protected boolean			finalMode;
+	
 	
 	// Derived attributes -----------------------------------------------------
 
@@ -58,7 +60,7 @@ public class WorkPlan extends DomainEntity {
 	
 	@Valid
 	@ManyToOne(optional = false)
-	protected Manager			owner;
+	protected Manager owner;
 	
 	@Valid
 	@ManyToMany(fetch = FetchType.EAGER)

@@ -308,7 +308,7 @@ Task
 Configuration
 --
 + spam: String {NotNull}
-+ threshold: Double {NotNull}</panel_attributes>
++ threshold: Double {NotNull, Range(0, 100)}</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

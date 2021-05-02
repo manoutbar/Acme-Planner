@@ -41,7 +41,8 @@ public class AnonymousWorkPlanShowService implements AbstractShowService<Anonymo
 
 		id = request.getModel().getInteger("id");
 		workPlan = this.repository.findOneWorkPlanById(id);
-		result = workPlan.getIsPublic();
+		
+		result = workPlan != null && workPlan.getIsPublic();
 
 		return result;
 	}

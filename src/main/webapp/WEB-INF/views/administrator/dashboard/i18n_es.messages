@@ -29,3 +29,16 @@ administrator.dashboard.form.label.average-number-tasks-workload = Número medio
 administrator.dashboard.form.label.deviation-number-tasks-workload = Desviación de carga de trabajo de tareas
 administrator.dashboard.form.label.minimum-tasks-workload = Máxima carga de trabajo de tareas
 administrator.dashboard.form.label.maximum-tasks-workload = Mínima carga de trabajo de tareas
+
+administrator.dashboard.form.label.total-public-work-plans = Número de planes de trabajo públicos
+administrator.dashboard.form.label.total-private-work-plans = Número de planes de trabajo privados
+administrator.dashboard.form.label.total-finished-work-plans = Número de planes de trabajo finalizados
+administrator.dashboard.form.label.total-non-finished-work-plans = Número de planes de trabajo no finalizados
+administrator.dashboard.form.label.average-work-plans-execution-period = Periodi de ejecución medio de planes de trabajo (en días)
+administrator.dashboard.form.label.deviation-work-plans-execution-period = Desviación del periodo de ejecución de planes de trabajo (en días)
+administrator.dashboard.form.label.minimum-work-plans-execution-period = Periodo de ejecución mínimo de planes de trabajo
+administrator.dashboard.form.label.maximum-work-plans-execution-period = Periodo de ejecución máximo de planes de trabajo
+administrator.dashboard.form.label.average-work-plans-workload = Carga de trabajo media de planes de trabajo
+administrator.dashboard.form.label.deviation-work-plans-workload = Desviacón de la carga de trabajo de los planes de trabajo
+administrator.dashboard.form.label.minimum-work-plans-workload = Carga de trabajo mínimo de los planes de trabajo
+administrator.dashboard.form.label.maximum-work-plans-workload = Carga de trabajo máxima de los planes de trabajo

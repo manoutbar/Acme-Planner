@@ -54,7 +54,15 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 			"averageNumberOfTasksExecutionPeriod", "deviationNumberOfTasksExecutionPeriod",
 			"minimumTaskExecutionPeriod", "maximumTaskExecutionPeriod",
 			"averageNumberOfTasksWorkload", "deviationNumberOfTasksWorkload",
-			"minimumTasksWorkload", "maximumTasksWorkload");
+			"minimumTasksWorkload", "maximumTasksWorkload",
+			"totalNumberOfWorkPlans", "totalNumberOfPrivateWorkPlans",
+			"totalNumberOfFinishedWorkPlans", "averageNumberOfWorkPlansExecutionPeriod",
+			"deviationSumOfWorkPlansExecutionPeriod", "minimumWorkPlansExecutionPeriod",
+			"maximumWorkPlansExecutionPeriod", "averageNumberOfWorkPlansWorkloads",
+			"deviationNumberOfWorkPlansWorkloads", "minimumWorkPlanWorkload",
+			"maximumWorkPlanWorkload", "totalNumberOfPublicWorkPlans",
+			"totalNumberOfNonFinishedWorkPlans"
+			);
 	}
 
 	@Override
@@ -81,6 +89,19 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		Double deviationNumberOfTasksWorkloads;
 		Double minimumTaskWorkloads;
 		Double maximumTaskWorkloads;
+		Double totalNumberOfWorkPlans;
+		Double totalNumberOfPublicWorkPlans;
+		Double totalNumberOfPrivateWorkPlans;
+		Double totalNumberOfFinishedWorkPlans;
+		Double totalNumberOfNonFinishedWorkPlans;
+		Double averageNumberOfWorkPlansExecutionPeriod;
+		Double deviationSumOfWorkPlansExecutionPeriod;
+		Double minimumWorkPlansExecutionPeriod;
+		Double maximumWorkPlansExecutionPeriod;
+		Double averageNumberOfWorkPlansWorkloads;
+		Double deviationNumberOfWorkPlansWorkloads;
+		Double minimumWorkPlanWorkload;
+		Double maximumWorkPlanWorkload;
 
 		averageNumberOfApplicationsPerEmployer = this.repository.averageNumberOfApplicationsPerEmployer();
 		averageNumberOfApplicationsPerWorker = this.repository.averageNumberOfApplicationsPerWorker();
@@ -95,13 +116,28 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		totalNumberOfFinishedTasks = this.repository.totalOfFinishedTasks();
 		totalNumberOfUnfinishedTasks = totalNumberOfTasks - totalNumberOfFinishedTasks;
 		averageNumberOfTasksExecutionPeriod = this.repository.averageNumberOfTasksExecutionPeriod();
-		deviationNumberOfTasksExecutionPeriod = this.repository.deviationSumOfTasksExecutionPeriod(averageNumberOfTasksExecutionPeriod);
+		deviationNumberOfTasksExecutionPeriod = this.repository.deviationSumOfTasksExecutionPeriod();
 		minimumTaskExecutionPeriod = this.repository.minimumTaskExecutionPeriod();
 		maximumTaskExecutionPeriod = this.repository.maximumTaskExecutionPeriod();
 		averageNumberOfTasksWorkloads = this.repository.averageNumberOfTasksWorkloads();
-		deviationNumberOfTasksWorkloads = this.repository.deviationNumberOfTasksWorkloads(averageNumberOfTasksWorkloads);
+		deviationNumberOfTasksWorkloads = this.repository.deviationNumberOfTasksWorkloads();
 		minimumTaskWorkloads = this.repository.minimumTaskWorkloads();
 		maximumTaskWorkloads = this.repository.maximumTaskWorkloads();
+		
+		// workplans
+		totalNumberOfWorkPlans = this.repository.countWorkPlans();
+		totalNumberOfPrivateWorkPlans = this.repository.totalOfPrivateWorkPlans();
+		totalNumberOfPublicWorkPlans = totalNumberOfWorkPlans - totalNumberOfPrivateWorkPlans;
+		totalNumberOfFinishedWorkPlans = this.repository.totalOfFinishedWorkPlans();
+		totalNumberOfNonFinishedWorkPlans = totalNumberOfWorkPlans - totalNumberOfFinishedWorkPlans;
+		averageNumberOfWorkPlansExecutionPeriod = this.repository.averageNumberOfWorkPlansExecutionPeriod();
+		deviationSumOfWorkPlansExecutionPeriod = this.repository.deviationSumOfWorkPlansExecutionPeriod();
+		minimumWorkPlansExecutionPeriod = this.repository.minimumWorkPlansExecutionPeriod();
+		maximumWorkPlansExecutionPeriod = this.repository.maximumWorkPlansExecutionPeriod();
+		averageNumberOfWorkPlansWorkloads = this.repository.averageNumberOfWorkPlansWorkloads();
+		deviationNumberOfWorkPlansWorkloads = this.repository.deviationNumberOfWorkPlansWorkloads();
+		minimumWorkPlanWorkload = this.repository.minimumWorkPlanWorkload();
+		maximumWorkPlanWorkload = this.repository.maximumWorkPlanWorkload();
 
 		result = new Dashboard();
 		result.setAverageNumberOfApplicationsPerEmployer(averageNumberOfApplicationsPerEmployer);
@@ -123,6 +159,20 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		result.setDeviationNumberOfTasksWorkload(deviationNumberOfTasksWorkloads);
 		result.setMinimumTasksWorkload(minimumTaskWorkloads);
 		result.setMaximumTasksWorkload(maximumTaskWorkloads);
+		
+		result.setTotalNumberOfWorkPlans(totalNumberOfWorkPlans);
+		result.setTotalNumberOfPublicWorkPlans(totalNumberOfPublicWorkPlans);
+		result.setTotalNumberOfPrivateWorkPlans(totalNumberOfPrivateWorkPlans);
+		result.setTotalNumberOfFinishedWorkPlans(totalNumberOfFinishedWorkPlans);
+		result.setTotalNumberOfNonFinishedWorkPlans(totalNumberOfNonFinishedWorkPlans);
+		result.setAverageNumberOfWorkPlansExecutionPeriod(averageNumberOfWorkPlansExecutionPeriod);
+		result.setDeviationSumOfWorkPlansExecutionPeriod(deviationSumOfWorkPlansExecutionPeriod);
+		result.setMinimumWorkPlansExecutionPeriod(minimumWorkPlansExecutionPeriod);
+		result.setMaximumWorkPlansExecutionPeriod(maximumWorkPlansExecutionPeriod);
+		result.setAverageNumberOfWorkPlansWorkloads(averageNumberOfWorkPlansWorkloads);
+		result.setDeviationNumberOfWorkPlansWorkloads(deviationNumberOfWorkPlansWorkloads);
+		result.setMinimumWorkPlanWorkload(minimumWorkPlanWorkload);
+		result.setMaximumWorkPlanWorkload(maximumWorkPlanWorkload);
 
 		return result;
 	}

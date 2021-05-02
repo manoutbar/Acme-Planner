@@ -50,13 +50,8 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 	@Query("select 1.0 * avg(datediff(t.executionEnd, t.executionStart)) from Task t")
 	Double averageNumberOfTasksExecutionPeriod();
 
-	@Query("select SQRT(SUM("
-				+ "(1.0 * datediff(t.executionEnd, t.executionStart) - :avg)"
-				+ " * "
-				+ "(1.0 * datediff(t.executionEnd, t.executionStart) - :avg)"
-			+ "))"
-		+ "/ SQRT(COUNT(t)) from Task t where t.executionEnd is not null and t.executionStart is not null")
-	Double deviationSumOfTasksExecutionPeriod(double avg);
+	@Query("select 1.0 * std(datediff(t.executionEnd, t.executionStart)) from Task t")
+	Double deviationSumOfTasksExecutionPeriod();
 
 	@Query("select 1.0 * min(datediff(t.executionEnd, t.executionStart)) from Task t")
 	Double minimumTaskExecutionPeriod();
@@ -66,19 +61,47 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 
 	@Query("select 1.0 * avg(t.workload) from Task t")
 	Double averageNumberOfTasksWorkloads();
-	
-	@Query("select SQRT(SUM("
-			+ "(1.0 * t.workload - :avg)"
-			+ " * "
-			+ "(1.0 * t.workload - :avg)"
-		+ "))"
-	+ "/ SQRT(COUNT(t)) from Task t")
-	Double deviationNumberOfTasksWorkloads(double avg);
+
+	@Query("select 1.0 * std(t.workload) from Task t")
+	Double deviationNumberOfTasksWorkloads();
 
 	@Query("select 1.0 * min(t.workload) from Task t")
 	Double minimumTaskWorkloads();
 
 	@Query("select 1.0 * max(t.workload) from Task t")
 	Double maximumTaskWorkloads();
+		
+	@Query("select 1.0 * count(wp) from WorkPlan wp")
+	Double countWorkPlans();
+	
+	@Query("select 1.0 * count(wp) from WorkPlan wp where wp.isPublic = false")
+	Double totalOfPrivateWorkPlans();
 
+	@Query("select 1.0 * count(wp) from WorkPlan wp where wp.executionEnd < CURRENT_TIMESTAMP")
+	Double totalOfFinishedWorkPlans();
+
+	@Query("select 1.0 * avg(datediff(wp.executionEnd, wp.executionStart)) from WorkPlan wp")
+	Double averageNumberOfWorkPlansExecutionPeriod();
+
+	@Query("select 1.0 * std(datediff(wp.executionEnd, wp.executionStart)) from WorkPlan wp")
+	Double deviationSumOfWorkPlansExecutionPeriod();
+
+	@Query("select 1.0 * min(datediff(wp.executionEnd, wp.executionStart)) from WorkPlan wp")
+	Double minimumWorkPlansExecutionPeriod();
+	
+	@Query("select 1.0 * max(datediff(wp.executionEnd, wp.executionStart)) from WorkPlan wp")
+	Double maximumWorkPlansExecutionPeriod();
+	
+	@Query("select 1.0 * avg(select sum(t.workload) from WorkPlan wp2 left join wp2.tasks t where wp2.id = wp.id) from WorkPlan wp")
+	Double averageNumberOfWorkPlansWorkloads();
+	
+	@Query("select 1.0 * std((select sum(t.workload) from WorkPlan wp2 left join wp2.tasks t where wp2.id = wp.id)) from WorkPlan wp")
+	Double deviationNumberOfWorkPlansWorkloads();
+
+	@Query("select 1.0 * min(select sum(t.workload) from WorkPlan wp2 left join wp2.tasks t where wp2.id = wp.id) from WorkPlan wp")
+	Double minimumWorkPlanWorkload();
+
+	@Query("select 1.0 * max(select sum(t.workload) from WorkPlan wp2 left join wp2.tasks t where wp2.id = wp.id) from WorkPlan wp")
+	Double maximumWorkPlanWorkload();
+	
 }

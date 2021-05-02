@@ -42,7 +42,7 @@ public class AuthenticatedTaskShowService implements AbstractShowService<Authent
 
 		id = request.getModel().getInteger("id");
 		task = this.repository.findOneTaskById(id);
-		result = task.getIsPublic();
+		result = task != null && task.getIsPublic();
 
 		return result;
 	}

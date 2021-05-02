@@ -49,6 +49,7 @@ master.menu.manager = Gestor
 
 # master.menu.administrator ###################################################
 
+master.menu.administrator.configuration.list-all = Ver todas las configuraciones
 master.menu.administrator = Administrador
 master.menu.administrator.announcement.list-all = Ver todos los anuncios
 master.menu.administrator.announcement.list-recent = Ver anuncios recientes

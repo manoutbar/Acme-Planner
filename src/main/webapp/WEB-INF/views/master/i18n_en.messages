@@ -49,6 +49,7 @@ master.menu.manager = Manager
 
 # master.menu.administrator ###################################################
 
+master.menu.administrator.configuration.list-all = List all configuration
 master.menu.administrator = Administrator
 master.menu.administrator.announcement.list-all = List all announcements
 master.menu.administrator.announcement.list-recent = List recent announcements

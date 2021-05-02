@@ -40,6 +40,8 @@
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">			
+			<acme:menu-suboption code="master.menu.administrator.configuration.list-all" action="/administrator/configuration/list-all"/>
+			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.announcement.list-all" action="/administrator/announcement/list-all"/>
 			<acme:menu-suboption code="master.menu.administrator.announcement.list-recent" action="/administrator/announcement/list-recent"/>
 			<acme:menu-suboption code="master.menu.administrator.announcement.create" action="/administrator/announcement/create"/>

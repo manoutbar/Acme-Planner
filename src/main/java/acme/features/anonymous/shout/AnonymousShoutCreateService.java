@@ -27,6 +27,7 @@ import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Anonymous;
 import acme.framework.services.AbstractCreateService;
+import acme.util.Utils;
 
 @Service
 public class AnonymousShoutCreateService implements AbstractCreateService<Anonymous, Shout> {
@@ -37,7 +38,7 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 	protected AnonymousShoutRepository repository;
 	
 	@Autowired
-	protected ConfigurationRepository configurationRepository;
+	protected Utils utils;
 
 	// AbstractCreateService<Administrator, Shout> interface --------------
 
@@ -90,19 +91,10 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 		assert entity != null;
 		assert errors != null;
 		
-		final Configuration configuration = this.configurationRepository.findMany().stream().findFirst().orElse(null);
-		
-		final Integer totalCharacter = entity.getText().length();
-		
-		final List<String> spamList= configuration.getSpamList().stream().filter(entity.getText()::contains).collect(Collectors.toList());
-		Integer spamCover = 0;
-		Double spamPercent = 0.0;
-		if(!spamList.isEmpty()) {
-			spamCover = spamList.stream().map(s -> s.length()).collect(Collectors.summingInt(Integer::intValue));
-			spamPercent = spamCover.doubleValue() * 100 / totalCharacter.doubleValue();
+		final String spam = this.utils.spamControl(entity.getText(), "supera el límite de palabras marcadas como spam");
+		if (!spam.isEmpty()) {
+			errors.add("text", spam);
 		}
-		
-		assert spamPercent < configuration.getThreshold();
 
 	}
 

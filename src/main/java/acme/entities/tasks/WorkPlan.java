@@ -3,14 +3,18 @@ package acme.entities.tasks;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
 
 import acme.framework.entities.DomainEntity;
 import acme.framework.entities.Manager;
@@ -28,6 +32,14 @@ public class WorkPlan extends DomainEntity {
 	
 	// Attributes ---------------------------------
 	
+	@Length(max=80)
+	@NotBlank
+	protected String 			title;
+	
+	@Length(max=500)
+	@Column(length=500) // field greater than 255 chars
+	@NotBlank
+	protected String			description;
 	
 	@NotNull
 	protected Boolean			isPublic;
@@ -47,10 +59,11 @@ public class WorkPlan extends DomainEntity {
 
 
 	public Double getWorkload() {
-		if (this.tasks == null || this.tasks.isEmpty()) {
+		if (this.workPlanTask == null || this.workPlanTask.isEmpty()) {
 			return 0.0;
 		}
-		return this.tasks.stream()
+		return this.workPlanTask.stream()
+			.map(WorkPlanTask::getTask)
 			.mapToDouble(Task::getWorkload)
 			.sum();
 	}
@@ -62,7 +75,11 @@ public class WorkPlan extends DomainEntity {
 	@ManyToOne(optional = false)
 	protected Manager owner;
 	
-	@Valid
+	/*@Valid
 	@ManyToMany(fetch = FetchType.EAGER)
-	protected Collection<Task>	tasks;
+	protected Collection<Task>	tasks;*/
+	
+	@Valid
+	@OneToMany(fetch = FetchType.EAGER)
+	protected Collection<WorkPlanTask> workPlanTask;
 }

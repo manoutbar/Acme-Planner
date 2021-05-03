@@ -4,9 +4,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.batch.BatchProperties.Job;
 import org.springframework.stereotype.Service;
 
-import acme.entities.jobs.Job;
 import acme.entities.tasks.WorkPlan;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;

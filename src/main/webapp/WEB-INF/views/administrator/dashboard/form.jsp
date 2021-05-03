@@ -22,31 +22,7 @@
 <table class="table table-sm">
 	<caption>
 		<acme:message code="administrator.dashboard.form.title.general-indicators"/>
-	</caption>	
-	<tr>
-		<th scope="row">
-			<acme:message code="administrator.dashboard.form.label.average-number-jobs-employer"/>
-		</th>
-		<td>
-			<acme:print value="${averageNumberOfJobsPerEmployer}"/>
-		</td>
-	</tr>
-	<tr>
-		<th scope="row">
-			<acme:message code="administrator.dashboard.form.label.average-number-applications-worker"/>
-		</th>
-		<td>
-			<acme:print value="${averageNumberOfApplicationsPerWorker}"/>
-		</td>
-	</tr>
-	<tr>
-		<th scope="row">
-			<acme:message code="administrator.dashboard.form.label.average-number-applications-employer"/>
-		</th>
-		<td>
-			<acme:print value="${averageNumberOfApplicationsPerEmployer}"/>
-		</td>
-	</tr>
+	</caption>
 	<tr>
 		<th scope="row">
 			<acme:message code="administrator.dashboard.form.label.total-number-public-tasks"/>
@@ -246,30 +222,12 @@
 </h2>
 
 <div>
-	<canvas id="canvas"></canvas>
-</div>
-
-<div>
 	<canvas id="workplans-canvas"></canvas>
 </div>
 
 <script type="text/javascript">
 	$(document).ready(function() {
 		var data = {
-			applications: {
-				labels : [
-						"PENDING", "ACCEPTED", "REJECTED"
-				],
-				datasets : [
-					{
-						data : [
-							<jstl:out value="${ratioOfPendingApplications}"/>, 
-							<jstl:out value="${ratioOfAcceptedApplications}"/>, 
-							<jstl:out value="${ratioOfRejectedApplications}"/>
-						]
-					}
-				]
-			},
 			workPlans: {
 				labels : [
 					"TOTAL", "PUBLISHED"
@@ -297,22 +255,6 @@
 				options : options
 			});
 		}
-		
-		createChart("canvas", data.applications, {
-			scales : {
-				yAxes : [
-					{
-						ticks : {
-							suggestedMin : 0.0,
-							suggestedMax : 1.0
-						}
-					}
-				]
-			},
-			legend : {
-				display : false
-			}
-		});
 		
 		createChart("workplans-canvas", data.workPlans, {
 			scales : {

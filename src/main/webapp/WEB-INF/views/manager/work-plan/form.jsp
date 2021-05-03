@@ -16,9 +16,37 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <acme:form>
+	<acme:form-textbox code="anonymous.work-plan.form.label.title" path="title"/>
+	<acme:form-textbox code="anonymous.work-plan.form.label.description" path="description"/>
 	<acme:form-moment code="manager.work-plan.form.label.executionStart" path="executionStart"/>
 	<acme:form-moment code="manager.work-plan.form.label.executionEnd" path="executionEnd"/>
-	<acme:form-checkbox code="manager.work-plan.form.label.isPublic" path="isPublic"/>	
+	<acme:form-checkbox code="manager.work-plan.form.label.isPublic" path="isPublic"/>
+	<acme:form-double code="anonymous.work-plan.form.label.workload" path="workload"/>
+	
+	<jstl:if test="${not empty workPlanTask}">
+		<h3><acme:message code="anonymous.work-plan.form.label.tasks.title"/></h3>
+		<table class="table">
+			<thead>
+			<tr>
+				<th><acme:message code="manager.work-plan.form.label.tasks.task.title" /></th>
+				<th><acme:message code="manager.work-plan.form.label.tasks.task.executionStart" /></th>
+				<th><acme:message code="manager.work-plan.form.label.tasks.task.executionEnd" /></th>
+				<th><acme:message code="manager.work-plan.form.label.tasks.task.workload" /></th>
+			</tr>
+			</thead>
+			
+			<tbody>
+				<jstl:forEach var="workPlanTask" items="${workPlanTask}">
+				<tr>
+					<td><acme:print value="${workPlanTask.task.title}" /></td>
+					<td><acme:print value="${workPlanTask.task.executionStart}" /></td>
+					<td><acme:print value="${workPlanTask.task.executionEnd}" /></td>
+					<td><acme:print value="${workPlanTask.task.workload}" /></td>
+				</tr>
+				</jstl:forEach>
+			</tbody>
+		</table>
+	</jstl:if>
 			
 	<acme:form-submit test="${command == 'show' && finalMode == 'false'}" code="manager.work-plan.form.button.update" action="/manager/work-plan/update"/>
 	<acme:form-submit test="${command == 'show' && finalMode == 'false'}" code="manager.work-plan.form.button.delete" action="/manager/work-plan/delete"/>

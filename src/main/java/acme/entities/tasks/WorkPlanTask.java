@@ -18,10 +18,10 @@ public class WorkPlanTask extends DomainEntity {
 	private static final long serialVersionUID = 1L;
 	
 	
-	@ManyToOne(optional = false)
+	@ManyToOne
 	protected WorkPlan workPlan;
 	
-	@ManyToOne(optional = false)
+	@ManyToOne
 	protected Task task;
 
 }

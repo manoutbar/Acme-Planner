@@ -8,31 +8,23 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-manager.work-plan.list.label.executionStart = Start
-manager.work-plan.list.label.executionEnd = End
+
+manager.work-plan.list.label.executionStart = Work plan execution start
+manager.work-plan.list.label.executionEnd = Work plan execution end
 manager.work-plan.list.label.isPublic = Public
 
-employer.job.list.title = Job Offers
-employer.job.list.label.reference = Reference
-employer.job.list.label.deadline = Deadline
-employer.job.list.label.title = Title
+manager.work-plan.form.label.title = Title:
+manager.work-plan.form.label.description = Description:
+manager.work-plan.form.label.public = Public:
+manager.work-plan.form.label.execution-start = Work plan execution start:
+manager.work-plan.form.label.execution-end = Work plan execution end:
+manager.work-plan.form.label.workload = Workload:
 
-employer.job.form.title.show = Job offer
-employer.job.form.title.create = Create job offer 
-employer.job.form.title.update = Update job offer
-employer.job.form.title.delete = Delete job offer
-
-employer.job.form.title.list-all = All of the job offers
-employer.job.form.title.list-mine = My job offers
-employer.job.form.title.publish = Publish a job offer
 
 manager.work-plan.form.label.executionStart = Start: 
 manager.work-plan.form.label.executionEnd = End:
 manager.work-plan.form.label.isPublic = Public:
-employer.job.form.label.salary = Salary:
-employer.job.form.label.score = Score:
-employer.job.form.label.moreInfo = More info: (Optional)
-employer.job.form.label.description = Description:
+
 		
 manager.work-plan.form.button.update = Update
 manager.work-plan.form.button.delete = Delete
@@ -40,6 +32,15 @@ manager.work-plan.form.button.publish = Publish
 manager.work-plan.form.button.create = Create
 manager.work-plan.form.button.return = Return
 
-employer.job.form.error.duplicated = This reference is taken
-employer.job.form.error.too-close = Deadline must be at least one week ahead
-employer.job.form.error.spam = Your job seems to contain spam
+manager.work-plan.form.label.tasks.title = Work plan tasks
+manager.work-plan.form.label.tasks.task.title = Title
+manager.work-plan.form.label.tasks.task.executionStart = Execution start
+manager.work-plan.form.label.tasks.task.executionEnd = Execution end
+manager.work-plan.form.label.tasks.task.workload = Workload
+
+manager.work-plan.form.label.ex= Workload
+manager.work-plan.form.label.tasks.task.workload = Workload
+manager.work-plan.form.label.tasks.task.workload = Workload
+
+
+

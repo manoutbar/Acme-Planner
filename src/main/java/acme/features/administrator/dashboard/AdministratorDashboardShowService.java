@@ -61,7 +61,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 			"maximumWorkPlansExecutionPeriod", "averageNumberOfWorkPlansWorkloads",
 			"deviationNumberOfWorkPlansWorkloads", "minimumWorkPlanWorkload",
 			"maximumWorkPlanWorkload", "totalNumberOfPublicWorkPlans",
-			"totalNumberOfNonFinishedWorkPlans"
+			"totalNumberOfNonFinishedWorkPlans", "totalNumberOfPublishedWorkPlans"
 			);
 	}
 
@@ -90,6 +90,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		Double minimumTaskWorkloads;
 		Double maximumTaskWorkloads;
 		Double totalNumberOfWorkPlans;
+		final Double totalNumberOfPublishedWorkPlans;
 		Double totalNumberOfPublicWorkPlans;
 		Double totalNumberOfPrivateWorkPlans;
 		Double totalNumberOfFinishedWorkPlans;
@@ -126,6 +127,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		
 		// workplans
 		totalNumberOfWorkPlans = this.repository.countWorkPlans();
+		totalNumberOfPublishedWorkPlans = this.repository.countPublishedWorkPlans();
 		totalNumberOfPrivateWorkPlans = this.repository.totalOfPrivateWorkPlans();
 		totalNumberOfPublicWorkPlans = totalNumberOfWorkPlans - totalNumberOfPrivateWorkPlans;
 		totalNumberOfFinishedWorkPlans = this.repository.totalOfFinishedWorkPlans();
@@ -161,6 +163,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		result.setMaximumTasksWorkload(maximumTaskWorkloads);
 		
 		result.setTotalNumberOfWorkPlans(totalNumberOfWorkPlans);
+		result.setTotalNumberOfPublishedWorkPlans(totalNumberOfPublishedWorkPlans);
 		result.setTotalNumberOfPublicWorkPlans(totalNumberOfPublicWorkPlans);
 		result.setTotalNumberOfPrivateWorkPlans(totalNumberOfPrivateWorkPlans);
 		result.setTotalNumberOfFinishedWorkPlans(totalNumberOfFinishedWorkPlans);

@@ -149,6 +149,7 @@
 		<property name="executionStart" value="2021/01/01 00:00"/>
 		<property name="executionEnd" value="2021/06/20 00:00"/>
 		<property name="owner" ref="taskManagerManager" />
+		<property name="finalMode" value="true" />
 		<property name="workPlanTask">
 			<list>
 				<ref bean="workPlanTask01" />
@@ -164,6 +165,7 @@
 		<property name="executionStart" value="2021/01/31 12:00"/>
 		<property name="executionEnd" value="2021/09/01 08:00"/>
 		<property name="owner" ref="taskManagerManager" />
+		<property name="finalMode" value="true" />
 		<property name="workPlanTask">
 			<list>
 				<ref bean="workPlanTask03" />

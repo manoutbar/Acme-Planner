@@ -73,6 +73,9 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 		
 	@Query("select 1.0 * count(wp) from WorkPlan wp")
 	Double countWorkPlans();
+		
+	@Query("select 1.0 * count(wp) from WorkPlan wp where wp.finalMode = true")
+	Double countPublishedWorkPlans();
 	
 	@Query("select 1.0 * count(wp) from WorkPlan wp where wp.isPublic = false")
 	Double totalOfPrivateWorkPlans();

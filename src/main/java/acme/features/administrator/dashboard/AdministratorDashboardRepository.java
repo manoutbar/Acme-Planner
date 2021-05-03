@@ -92,16 +92,16 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 	@Query("select 1.0 * max(datediff(wp.executionEnd, wp.executionStart)) from WorkPlan wp")
 	Double maximumWorkPlansExecutionPeriod();
 	
-	@Query("select 1.0 * avg(select sum(t.workload) from WorkPlan wp2 left join wp2.tasks t where wp2.id = wp.id) from WorkPlan wp")
+	@Query("select 1.0 * avg(select sum(t.workload) from WorkPlan wp2 left join wp2.workPlanTask wpt left join wpt.task t where wp2.id = wp.id) from WorkPlan wp")
 	Double averageNumberOfWorkPlansWorkloads();
 	
-	@Query("select 1.0 * std((select sum(t.workload) from WorkPlan wp2 left join wp2.tasks t where wp2.id = wp.id)) from WorkPlan wp")
+	@Query("select 1.0 * std((select sum(t.workload) from WorkPlan wp2 left join wp2.workPlanTask wpt left join wpt.task t where wp2.id = wp.id)) from WorkPlan wp")
 	Double deviationNumberOfWorkPlansWorkloads();
 
-	@Query("select 1.0 * min(select sum(t.workload) from WorkPlan wp2 left join wp2.tasks t where wp2.id = wp.id) from WorkPlan wp")
+	@Query("select 1.0 * min(select sum(t.workload) from WorkPlan wp2 left join wp2.workPlanTask wpt left join wpt.task t where wp2.id = wp.id) from WorkPlan wp")
 	Double minimumWorkPlanWorkload();
 
-	@Query("select 1.0 * max(select sum(t.workload) from WorkPlan wp2 left join wp2.tasks t where wp2.id = wp.id) from WorkPlan wp")
+	@Query("select 1.0 * max(select sum(t.workload) from WorkPlan wp2 left join wp2.workPlanTask wpt left join wpt.task t where wp2.id = wp.id) from WorkPlan wp")
 	Double maximumWorkPlanWorkload();
 	
 }

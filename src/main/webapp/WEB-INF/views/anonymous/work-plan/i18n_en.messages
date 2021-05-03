@@ -11,6 +11,8 @@
 anonymous.work-plan.form.title = Work plan
 anonymous.work-plan.form.title.show = Work plan
 
+anonymous.work-plan.form.label.title = Title:
+anonymous.work-plan.form.label.description = Description:
 anonymous.work-plan.form.label.public = Public:
 anonymous.work-plan.form.label.execution-start = Work plan execution start:
 anonymous.work-plan.form.label.execution-end = Work plan execution end:

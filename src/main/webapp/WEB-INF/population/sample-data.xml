@@ -55,6 +55,33 @@
 	<bean name="taskManagerAuthenticated" class="acme.framework.entities.Authenticated">
 		<property name="userAccount" ref="tasksManagerUserAccount" />
 	</bean>
+	
+	<!-- WorkPlanTask -->
+	
+	<bean id="workPlanTask01" class="acme.entities.tasks.WorkPlanTask">
+		<property name="workPlan" ref="workPlan01"/>
+		<property name="task" ref="task01"/>
+	</bean>
+	
+	<bean id="workPlanTask02" class="acme.entities.tasks.WorkPlanTask">
+		<property name="workPlan" ref="workPlan01"/>
+		<property name="task" ref="task02"/>
+	</bean>
+	
+	<bean id="workPlanTask03" class="acme.entities.tasks.WorkPlanTask">
+		<property name="workPlan" ref="workPlan02"/>
+		<property name="task" ref="task02"/>
+	</bean>
+	
+	<bean id="workPlanTask04" class="acme.entities.tasks.WorkPlanTask">
+		<property name="workPlan" ref="workPlan02"/>
+		<property name="task" ref="task01"/>
+	</bean>
+	
+	<bean id="workPlanTask05" class="acme.entities.tasks.WorkPlanTask">
+		<property name="workPlan" ref="workPlan02"/>
+		<property name="task" ref="task04"/>
+	</bean>
   
 	<!-- Tasks -->
 	
@@ -115,29 +142,33 @@
 	
 	<!-- Work plans -->
 	
-	<bean id="workplan01" class="acme.entities.tasks.WorkPlan">
+	<bean id="workPlan01" class="acme.entities.tasks.WorkPlan">
+		<property name="title" value="Plan de trabajo 1"/>
+		<property name="description" value="descripción de prueba 1"/>
 		<property name="isPublic" value="true"/>
 		<property name="executionStart" value="2021/01/01 00:00"/>
 		<property name="executionEnd" value="2021/06/20 00:00"/>
 		<property name="owner" ref="taskManagerManager" />
-		<property name="tasks">
+		<property name="workPlanTask">
 			<list>
-				<ref bean="task01" />
-				<ref bean="task03" />
+				<ref bean="workPlanTask01" />
+				<ref bean="workPlanTask02" />
 			</list>
 		</property>
 	</bean>
 	
-	<bean id="workplan02" class="acme.entities.tasks.WorkPlan">
+	<bean id="workPlan02" class="acme.entities.tasks.WorkPlan">
+		<property name="title" value="Plan de trabajo 2"/>
+		<property name="description" value="descripción de prueba 2"/>
 		<property name="isPublic" value="false"/>
 		<property name="executionStart" value="2021/01/31 12:00"/>
 		<property name="executionEnd" value="2021/09/01 08:00"/>
 		<property name="owner" ref="taskManagerManager" />
-		<property name="tasks">
+		<property name="workPlanTask">
 			<list>
-				<ref bean="task02" />
-				<ref bean="task01" />
-				<ref bean="task04" />
+				<ref bean="workPlanTask03" />
+				<ref bean="workPlanTask04" />
+				<ref bean="workPlanTask05" />
 			</list>
 		</property>
 	</bean>	

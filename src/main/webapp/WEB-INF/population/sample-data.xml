@@ -117,6 +117,11 @@
 		<property name="workPlan" ref="workPlan03"/>
 		<property name="task" ref="task06"/>
 	</bean>
+	
+	<bean id="workPlanTask13" class="acme.entities.tasks.WorkPlanTask">
+		<property name="workPlan" ref="workPlan04"/>
+		<property name="task" ref="task07"/>
+	</bean>
   
 	<!-- Tasks -->
 	
@@ -186,6 +191,28 @@
 		<property name="owner" ref="taskManagerManager" />
 	</bean>
 	
+	<bean id="task07" class="acme.entities.tasks.Task">
+		<property name="title" value="Public and finished task"/>
+		<property name="isPublic" value="true"/>
+		<property name="executionStart" value="2021/04/14 11:30"/>
+		<property name="executionEnd" value="2021/05/01 12:45"/>
+		<property name="workload" value="44.50"/>
+		<property name="description" value="The task description with some text"/>
+		<property name="link" value="http://www.example.org" />
+		<property name="owner" ref="taskManagerManager" />
+	</bean>
+	
+	<bean id="task08" class="acme.entities.tasks.Task">
+		<property name="title" value="Public and finished task 2"/>
+		<property name="isPublic" value="true"/>
+		<property name="executionStart" value="2021/04/10 11:30"/>
+		<property name="executionEnd" value="2021/04/11 12:45"/>
+		<property name="workload" value="10.50"/>
+		<property name="description" value="The task description with some text"/>
+		<property name="link" value="http://www.example.org" />
+		<property name="owner" ref="taskManagerManager" />
+	</bean>
+	
 	<!-- Work plans -->
 	
 	<bean id="workPlan01" class="acme.entities.tasks.WorkPlan">
@@ -245,13 +272,15 @@
 	<bean id="workPlan04" class="acme.entities.tasks.WorkPlan">
 		<property name="title" value="Plan de trabajo número 4"/>
 		<property name="description" value="descripción de prueba del work plan número 4"/>
-		<property name="isPublic" value="false"/>
+		<property name="isPublic" value="true"/>
 		<property name="executionStart" value="2021/01/01 00:00"/>
 		<property name="executionEnd" value="2021/10/01 20:00"/>
 		<property name="owner" ref="taskManagerManager" />
 		<property name="finalMode" value="true" />
 		<property name="workPlanTask">
-			<list />
+			<list>
+				<ref bean="workPlanTask13" />
+			</list>
 		</property>
 	</bean>	
 	

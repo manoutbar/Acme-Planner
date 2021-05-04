@@ -46,7 +46,7 @@ master.menu.authenticated.money-exchage = Money exchange
 master.menu.manager = Manager
 master.menu.manager.my-work-plans = List my works plans
 master.menu.manager.work-plan.create = Create work plan
-master.menu.manager.list-tasks = List tasks
+master.menu.manager.list-tasks = List owned tasks
 master.menu.manager.create-tasks = Create tasks
 
 # master.menu.administrator ###################################################
@@ -113,4 +113,8 @@ master.panic.label.request = Request:
 master.panic.label.status = Status:
 master.panic.label.exceptions = Exceptions:
 master.panic.text.consult-log = Please, consult the log to see them full stack trace.
+
+# master.spam ##################################################################
+
+master.form.error.marked-as-spam = The field has been marked as spam
 

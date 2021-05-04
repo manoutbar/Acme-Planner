@@ -46,7 +46,7 @@ master.menu.authenticated.money-exchage = Cambio de dinero
 master.menu.manager = Gestor
 master.menu.manager.my-work-plans = Ver mis planes de trabajo
 master.menu.manager.work-plan.create = Crear plan de trabajo
-master.menu.manager.list-tasks = Ver tareas
+master.menu.manager.list-tasks = Ver mis tareas
 master.menu.manager.create-tasks = Crear tareas
 
 # master.menu.administrator ###################################################
@@ -134,3 +134,6 @@ master.panic.label.status = Estado:
 master.panic.label.exceptions = Excepciones:
 master.panic.text.consult-log = Por favor, consulte el log para ver más detalles.
 
+# master.spam ##################################################################
+
+master.form.error.marked-as-spam = El campo ha sido marcado como spam

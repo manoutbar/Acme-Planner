@@ -1,5 +1,8 @@
 package acme.features.manager.task;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +13,7 @@ import acme.framework.components.Request;
 import acme.framework.entities.Manager;
 import acme.framework.entities.Principal;
 import acme.framework.services.AbstractUpdateService;
+import acme.util.Utils;
 
 @Service
 public class ManagerTaskUpdateService implements AbstractUpdateService<Manager, Task> {
@@ -19,6 +23,9 @@ public class ManagerTaskUpdateService implements AbstractUpdateService<Manager, 
 	@Autowired
 	protected ManagerTaskRepository repository;
 
+	@Autowired
+	protected Utils utils;
+	
 	// AbstractListService<Employer, Job> -------------------------------------
 
 
@@ -27,14 +34,14 @@ public class ManagerTaskUpdateService implements AbstractUpdateService<Manager, 
 		assert request != null;
 
 		boolean result;
-		int jobId;
-		Task workPlan;
+		int taskId;
+		Task task;
 		final Manager owner;
 		Principal principal;
 
-		jobId = request.getModel().getInteger("id");
-		workPlan = this.repository.findOneTaskById(jobId);
-		owner = workPlan.getOwner();
+		taskId = request.getModel().getInteger("id");
+		task = this.repository.findOneTaskById(taskId);
+		owner = task.getOwner();
 		principal = request.getPrincipal();
 		result = owner.getUserAccount().getId() == principal.getAccountId();
 
@@ -46,23 +53,31 @@ public class ManagerTaskUpdateService implements AbstractUpdateService<Manager, 
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-
-		/*if (!errors.hasErrors("deadline")) {
-			Calendar calendar;
-			Date minimumDeadline;
-			
-			calendar = new GregorianCalendar();
-			calendar.add(Calendar.WEEK_OF_MONTH, 1);
-			minimumDeadline = calendar.getTime();
-			errors.state(request, entity.getDeadline().after(minimumDeadline), "deadline", "employer.job.form.error.too-close");
+		
+		
+		if (!errors.hasErrors("title")) {
+			final String spam = this.utils.spamControl(entity.getTitle());
+			errors.state(request, spam.isEmpty(), "title", "master.form.error.marked-as-spam");
 		}
-
-		if (!errors.hasErrors("reference")) {
-			Job existing;
+		
+		if (!errors.hasErrors("description")) {
+			final String spam = this.utils.spamControl(entity.getDescription());
+			errors.state(request, spam.isEmpty(), "description", "master.form.error.marked-as-spam");
+		}
+		
+		if (!errors.hasErrors("executionStart") || !errors.hasErrors("executionEnd")) {
+			final Task task = this.repository.findOneTaskById(request.getModel().getInteger("id"));
 			
-			existing = this.repository.findOneJobByReference(entity.getReference());
-			errors.state(request, existing == null || existing.getId() == entity.getId(), "reference", "employer.job.form.error.duplicated");
-		}	*/	
+			// we will only check dates if fields has been updated
+			if (!task.getExecutionStart().equals(new Timestamp(entity.getExecutionStart().getTime())) && !errors.hasErrors("executionStart")) {
+				final Date minimumExecutionStart = new Date();
+				errors.state(request, entity.getExecutionStart().before(minimumExecutionStart), "executionStart", "manager.task.form.error.execution-start-past");
+			}
+			
+			if (!task.getExecutionEnd().equals(new Timestamp(entity.getExecutionEnd().getTime())) && !errors.hasErrors("executionEnd")) {
+				errors.state(request, entity.getExecutionEnd().before(entity.getExecutionStart()), "executionEnd", "manager.task.form.error.execution-end-before-start");
+			}
+		}
 	}
 
 	@Override

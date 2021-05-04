@@ -1,8 +1,9 @@
 package acme.util;
 
+import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Component;
@@ -17,24 +18,31 @@ public class Utils {
 	@Autowired
 	private ConfigurationRepository configurationRepository;
 	
+	private static final List<String> IGNORED_CHARACTERS = Arrays.asList(" ", "\n", "\r", ".", ",", ";", "-", "_", "!", "¡", "¿", "?");
+	
 	public String spamControl(final String text) {
-		return this.spamControl(text, "supera el límite de palabras marcadas como spam.");
+		return this.spamControl(text, "master.form.error.marked-as-spam");
 	}
 
 	public String spamControl(final String text, final String error) {
-		String result = "";
 		final Configuration configuration = this.configurationRepository.findMany().stream().findFirst().orElse(null);
 		
-		final Integer totalCharacter = text.length();
+		final Integer totalCharacter = text.length() - this.countNumberOfOccurrences(Utils.IGNORED_CHARACTERS, text);
 		
-		final List<String> spamList= configuration.getSpamList().stream().filter(text::contains).collect(Collectors.toList());
-		Integer spamCover = 0;
-		Double spamPercent = 0.0;
-		spamCover = spamList.stream().map(s -> s.length()).collect(Collectors.summingInt(Integer::intValue));
-		spamPercent = spamCover.doubleValue() * 100 / totalCharacter.doubleValue();
+		final Integer spamCover = this.countNumberOfOccurrences(configuration.getSpamList(), text);
+			//spamList.stream().map(s -> s.length()).collect(Collectors.summingInt(Integer::intValue));
+		final Double spamPercent = spamCover.doubleValue() * 100 / totalCharacter.doubleValue();
+		
 		if(spamPercent > configuration.getThreshold()) {
-			result = error;
+			return error;
 		}
-		return result;
+		
+		return "";
+	}
+	
+	private Integer countNumberOfOccurrences(final List<String> words, final String text) {
+		return words.stream()
+			.mapToInt(word -> word.length() * StringUtils.countMatches(text, word))
+			.sum();
 	}
 }

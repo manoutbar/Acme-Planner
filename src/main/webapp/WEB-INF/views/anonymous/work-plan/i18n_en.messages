@@ -22,6 +22,7 @@ anonymous.work-plan.form.button.return = Return
 
 anonymous.work-plan.list.title = Work plans list
 
+anonymous.work-plan.list.label.title = Title
 anonymous.work-plan.list.label.execution-start = Work plan execution start
 anonymous.work-plan.list.label.execution-end = Work plan execution end
 anonymous.work-plan.list.label.workload = Workload

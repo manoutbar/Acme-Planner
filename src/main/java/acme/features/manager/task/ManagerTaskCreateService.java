@@ -1,5 +1,7 @@
 package acme.features.manager.task;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,41 +41,24 @@ public class ManagerTaskCreateService implements AbstractCreateService<Manager, 
 		assert entity != null;
 		assert errors != null;
 		
-		/*if (!errors.hasErrors("title")) {
-			final String spam = this.utils.spamControl(entity.getTitle(), "MARKED_AS_SPAM");
-			errors.state(request, spam.equals("MARKED_AS_SPAM"), "title", "master.form.error.marked-as-spam");
+		if (!errors.hasErrors("title")) {
+			final String spam = this.utils.spamControl(entity.getTitle());
+			errors.state(request, spam.isEmpty(), "title", "master.form.error.marked-as-spam");
 		}
 		
 		if (!errors.hasErrors("description")) {
-			final String spam = this.utils.spamControl(entity.getTitle(), "MARKED_AS_SPAM");
-			errors.state(request, spam.equals("MARKED_AS_SPAM"), "description", "master.form.error.marked-as-spam");
+			final String spam = this.utils.spamControl(entity.getDescription());
+			errors.state(request, spam.isEmpty(), "description", "master.form.error.marked-as-spam");
 		}
 		
 		if (!errors.hasErrors("executionStart")) {
 			final Date minimumExecutionStart = new Date();
-			errors.state(request, entity.getExecutionStart().before(minimumExecutionStart), "executionStart", "manager.task.form.error.execution-start-past");
+			errors.state(request, entity.getExecutionStart().after(minimumExecutionStart), "executionStart", "manager.task.form.error.execution-start-past");
 		}
 		
 		if (!errors.hasErrors("executionEnd")) {
-			errors.state(request, entity.getExecutionEnd().before(entity.getExecutionStart()), "executionEnd", "manager.task.form.error.execution-end-before-start");
-		}*/
-		
-		/*if (!errors.hasErrors("deadline")) {
-			Calendar calendar;
-			Date minimumDeadline;
-						
-			calendar = new GregorianCalendar();
-			calendar.add(Calendar.DAY_OF_MONTH, 7);
-			minimumDeadline = calendar.getTime();
-			errors.state(request, entity.getDeadline().after(minimumDeadline), "deadline", "employer.job.form.error.too-close");
+			errors.state(request, entity.getExecutionEnd().after(entity.getExecutionStart()), "executionEnd", "manager.task.form.error.execution-end-before-start");
 		}
-		
-		if (!errors.hasErrors("reference")) {
-			Job existing;
-			
-			existing = this.repository.findOneJobByReference(entity.getReference());
-			errors.state(request, existing == null, "reference", "employer.job.form.error.duplicated");
-		}*/
 	}
 
 	@Override

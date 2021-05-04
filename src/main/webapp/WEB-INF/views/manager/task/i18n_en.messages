@@ -35,5 +35,5 @@ manager.task.form.button.delete = Delete
 manager.task.form.button.return = Return
 
 manager.task.form.error.execution-start-past = Start date doesn't be before today
-manager.task.form.error.execution-end-before-start = End date doesn't be before start date
+manager.task.form.error.execution-end-before-start = End date must be after start date
 

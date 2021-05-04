@@ -68,14 +68,17 @@ public class ManagerTaskUpdateService implements AbstractUpdateService<Manager, 
 		if (!errors.hasErrors("executionStart") || !errors.hasErrors("executionEnd")) {
 			final Task task = this.repository.findOneTaskById(request.getModel().getInteger("id"));
 			
+			final boolean startDateChanged = !task.getExecutionStart().equals(new Timestamp(entity.getExecutionStart().getTime()));
+			final boolean endDateChanged = !task.getExecutionEnd().equals(new Timestamp(entity.getExecutionEnd().getTime()));
+			
 			// we will only check dates if fields has been updated
-			if (!task.getExecutionStart().equals(new Timestamp(entity.getExecutionStart().getTime())) && !errors.hasErrors("executionStart")) {
+			if (startDateChanged && !errors.hasErrors("executionStart")) {
 				final Date minimumExecutionStart = new Date();
-				errors.state(request, entity.getExecutionStart().before(minimumExecutionStart), "executionStart", "manager.work-plan.form.error.execution-start-past");
+				errors.state(request, entity.getExecutionStart().after(minimumExecutionStart), "executionStart", "manager.task.form.error.execution-start-past");
 			}
 			
-			if (!task.getExecutionEnd().equals(new Timestamp(entity.getExecutionEnd().getTime())) && !errors.hasErrors("executionEnd")) {
-				errors.state(request, entity.getExecutionEnd().before(entity.getExecutionStart()), "executionEnd", "manager.work-plan.form.error.execution-end-before-start");
+			if ((startDateChanged || endDateChanged) && !errors.hasErrors("executionEnd")) {
+				errors.state(request, entity.getExecutionEnd().after(entity.getExecutionStart()), "executionEnd", "manager.task.form.error.execution-end-before-start");
 			}
 		}
 	}

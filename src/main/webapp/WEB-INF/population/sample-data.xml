@@ -234,7 +234,7 @@
 	<bean id="workPlan02" class="acme.entities.tasks.WorkPlan">
 		<property name="title" value="Plan de trabajo 2"/>
 		<property name="description" value="descripción de prueba 2"/>
-		<property name="isPublic" value="false"/>
+		<property name="isPublic" value="true"/>
 		<property name="executionStart" value="2021/01/31 12:00"/>
 		<property name="executionEnd" value="2021/09/01 08:00"/>
 		<property name="owner" ref="taskManagerManager" />
@@ -281,6 +281,19 @@
 			<list>
 				<ref bean="workPlanTask13" />
 			</list>
+		</property>
+	</bean>	
+	
+	<bean id="workPlan05" class="acme.entities.tasks.WorkPlan">
+		<property name="title" value="Plan de trabajo en modo borrador"/>
+		<property name="description" value="descripción de prueba del work plan número 5"/>
+		<property name="isPublic" value="true"/>
+		<property name="executionStart" value="2021/01/01 00:00"/>
+		<property name="executionEnd" value="2021/10/01 20:00"/>
+		<property name="owner" ref="taskManagerManager" />
+		<property name="finalMode" value="false" />
+		<property name="workPlanTask">
+			<list></list>
 		</property>
 	</bean>	
 	

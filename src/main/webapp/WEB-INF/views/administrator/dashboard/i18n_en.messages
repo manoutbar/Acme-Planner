@@ -15,7 +15,7 @@ administrator.dashboard.form.label.average-number-jobs-employer =  Average numbe
 administrator.dashboard.form.label.average-number-applications-worker =  Average number of applications per worker
 administrator.dashboard.form.label.average-number-applications-employer = Average number of applications per employer
 
-administrator.dashboard.form.title.application-statuses = Application statuses
+administrator.dashboard.form.title.workplan-statuses = Work plans statuses
 
 administrator.dashboard.form.label.total-number-public-tasks = Total number of public tasks
 administrator.dashboard.form.label.total-number-private-tasks = Total number of private tasks
@@ -42,3 +42,7 @@ administrator.dashboard.form.label.average-work-plans-workload = Average number 
 administrator.dashboard.form.label.deviation-work-plans-workload = Deviation number of work plans workload
 administrator.dashboard.form.label.minimum-work-plans-workload = Minimum work plans workload
 administrator.dashboard.form.label.maximum-work-plans-workload = Maximum work plans workload
+
+administrator.dashboard.form.label.chart.total=Total number of work plans
+administrator.dashboard.form.label.chart.published=Total number of published work plans
+administrator.dashboard.form.label.chart.non-published=Total number of non-published work plans

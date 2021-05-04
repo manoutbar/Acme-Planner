@@ -90,9 +90,9 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 		assert entity != null;
 		assert errors != null;
 		
-		final String spam = this.utils.spamControl(entity.getText(), "supera el límite de palabras marcadas como spam");
-		if (!spam.isEmpty()) {
-			errors.add("text", spam);
+		if (!errors.hasErrors("text")) {
+			final String spam = this.utils.spamControl(entity.getText());
+			errors.state(request, spam.isEmpty(), "text", "master.form.error.marked-as-spam");
 		}
 	}
 

@@ -1,10 +1,6 @@
 package acme.features.manager.workPlan;
 
-import java.util.Calendar;
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.batch.BatchProperties.Job;
 import org.springframework.stereotype.Service;
 
 import acme.entities.tasks.WorkPlan;
@@ -50,22 +46,6 @@ public class ManagerWorkPlanPublishService implements AbstractUpdateService<Mana
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-
-		final Calendar calendar;
-		final Date minimumDeadline;
-		final Job existing;
-
-		/*if (!errors.hasErrors("deadline")) {
-			calendar = new GregorianCalendar();
-			calendar.add(Calendar.WEEK_OF_MONTH, 1);
-			minimumDeadline = calendar.getTime();
-			errors.state(request, entity.getDeadline().after(minimumDeadline), "deadline", "employer.job.form.error.too-close");
-		}
-
-		if (!errors.hasErrors("reference")) {
-			existing = this.repository.findOneJobByReference(entity.getReference());
-			errors.state(request, existing == null || existing.getId() == entity.getId(), "reference", "employer.job.form.error.duplicated");
-		}*/
 	}
 
 	@Override
@@ -103,8 +83,11 @@ public class ManagerWorkPlanPublishService implements AbstractUpdateService<Mana
 	public void update(final Request<WorkPlan> request, final WorkPlan entity) {
 		assert request != null;
 		assert entity != null;
-
-		entity.setFinalMode(true);
-		this.repository.save(entity);
+		
+		final WorkPlan workplan = this.repository.findOneWorkPlanById(entity.getId());
+		
+		workplan.setFinalMode(true);
+		
+		this.repository.save(workplan);
 	}
 }

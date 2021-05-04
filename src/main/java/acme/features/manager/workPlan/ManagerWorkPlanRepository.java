@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.entities.tasks.WorkPlan;
+import acme.entities.tasks.WorkPlanTask;
 import acme.framework.entities.Manager;
 import acme.framework.repositories.AbstractRepository;
 
@@ -20,5 +21,8 @@ public interface ManagerWorkPlanRepository extends AbstractRepository {
 	
 	@Query("select m from Manager m where m.id = ?1")
 	Manager findOneManagerById(int id);
+	
+	@Query("select wpt from WorkPlanTask wpt where wpt.workPlan.id = ?1")
+	Collection<WorkPlanTask> findWorkPlanTaksById(int id);
 
 }

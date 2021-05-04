@@ -9,9 +9,11 @@
 # they accept any liabilities with respect to them.
 
 
+manager.work-plan.list.label.title = Title
 manager.work-plan.list.label.executionStart = Work plan execution start
 manager.work-plan.list.label.executionEnd = Work plan execution end
 manager.work-plan.list.label.isPublic = Public
+manager.work-plan.list.label.finalMode = Published
 
 manager.work-plan.form.label.title = Title:
 manager.work-plan.form.label.description = Description:
@@ -19,6 +21,7 @@ manager.work-plan.form.label.public = Public:
 manager.work-plan.form.label.execution-start = Work plan execution start:
 manager.work-plan.form.label.execution-end = Work plan execution end:
 manager.work-plan.form.label.workload = Workload:
+manager.work-plan.form.label.published = Published
 
 
 manager.work-plan.form.label.executionStart = Start: 

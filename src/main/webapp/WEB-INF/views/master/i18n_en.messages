@@ -10,15 +10,13 @@
 
 # master.banner.welcome #######################################################
 
-master.banner.background = #C997D5
+master.banner.background = #000
 
 # master.welcome ##############################################################
 
 master.welcome.title = Welcome!
 master.welcome.text = \
-	Welcome to Acme Jobs, your work mate! It does not matter whether you are \
-	an employer or a worker: our system will bring you the opportunities you \
-	are seeking for.  We wish you great professional achievements!
+	Welcome to Acme Planner! Our second DP2 subject project
 
 # master.menu #################################################################
 
@@ -62,28 +60,10 @@ master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shutdown = Shut down
 
-# master.menu.employer ########################################################
-
-master.menu.employer = Employer
-master.menu.employer.create-job = Create a job
-master.menu.employer.all-jobs = List all jobs
-master.menu.employer.my-jobs = List my jobs
-master.menu.employer.my-applications = List my applications
-
-# master.menu.worker ##########################################################
-
-master.menu.worker = Worker
-master.menu.worker.all-jobs = List all jobs
-master.menu.worker.my-applications = List my applications
-
-# master.menu.user-account ####################################################
-
 master.menu.user-account = Account
 master.menu.user-account.general-data = General data
-master.menu.user-account.employer = Employer data
-master.menu.user-account.become-employer = Become an employer
-master.menu.user-account.worker = Worker data
-master.menu.user-account.become-worker = Become a worker
+master.menu.user-account.manager = Manager data
+master.menu.user-account.become-manager= Become a manager
 
 # master.footer ###############################################################
 
@@ -104,7 +84,7 @@ master.company.text = \
 	Acme, Inc. refers to a holding that is composed of many fictitious companies \
 	that are used in the Design and Testing subject of the Software Engineering \
 	Curriculum of the University of Sevilla.
-master.company.name = Acme Jobs, Inc.
+master.company.name = Acme Planner, Inc.
 master.company.address = ETSI Informática, Avda. Reina Mercedes, s/n, Sevilla 41012, Spain
 master.company.phone = +34 123 456
 master.company.email = contact@acme.com

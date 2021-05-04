@@ -26,7 +26,7 @@ public interface AnonymousTaskRepository extends AbstractRepository {
 	@Query("select t from Task t where t.id = ?1")
 	Task findOneTaskById(int id);
 
-	@Query("select t from Task t where t.executionEnd > current_timestamp() and t.isPublic = true order by t.executionStart, t.executionEnd")
+	@Query("select t from Task t where t.executionEnd > CURRENT_TIMESTAMP and t.isPublic = true order by t.executionStart, t.executionEnd")
 	Collection<Task> findManyPublicNonFinishedTasks();
 
 }

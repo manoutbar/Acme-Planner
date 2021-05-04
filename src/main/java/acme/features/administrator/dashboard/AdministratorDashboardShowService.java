@@ -45,10 +45,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, //
-			"averageNumberOfJobsPerEmployer", "averageNumberOfApplicationsPerWorker", // 
-			"averageNumberOfApplicationsPerEmployer", "ratioOfPendingApplications", //
-			"ratioOfRejectedApplications", "ratioOfAcceptedApplications",
+		request.unbind(entity, model,
 			"totalNumberOfPublicTasks", "totalNumberOfPrivateTasks",
 			"totalNumberOfFinishedTasks", "totalNumberOfUnfinishedTasks",
 			"averageNumberOfTasksExecutionPeriod", "deviationNumberOfTasksExecutionPeriod",
@@ -70,12 +67,6 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		assert request != null;
 
 		Dashboard result;
-		Double averageNumberOfApplicationsPerEmployer;
-		Double averageNumberOfApplicationsPerWorker;
-		Double averageNumberOfJobsPerEmployer;
-		Double ratioOfPendingApplications;
-		Double ratioOfAcceptedApplications;
-		Double ratioOfRejectedApplications;
 		Double totalNumberOfTasks;
 		Double totalNumberOfPublicTasks;
 		Double totalNumberOfPrivateTasks;
@@ -103,13 +94,6 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		Double deviationNumberOfWorkPlansWorkloads;
 		Double minimumWorkPlanWorkload;
 		Double maximumWorkPlanWorkload;
-
-		averageNumberOfApplicationsPerEmployer = this.repository.averageNumberOfApplicationsPerEmployer();
-		averageNumberOfApplicationsPerWorker = this.repository.averageNumberOfApplicationsPerWorker();
-		averageNumberOfJobsPerEmployer = this.repository.averageNumberOfJobsPerEmployer();
-		ratioOfPendingApplications = this.repository.ratioOfPendingApplications();
-		ratioOfAcceptedApplications = this.repository.ratioOfAcceptedApplications();
-		ratioOfRejectedApplications = this.repository.ratioOfRejectedApplications();
 		
 		totalNumberOfTasks = this.repository.countTasks();
 		totalNumberOfPrivateTasks = this.repository.totalOfPrivateTasks();
@@ -141,14 +125,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		minimumWorkPlanWorkload = this.repository.minimumWorkPlanWorkload();
 		maximumWorkPlanWorkload = this.repository.maximumWorkPlanWorkload();
 
-		result = new Dashboard();
-		result.setAverageNumberOfApplicationsPerEmployer(averageNumberOfApplicationsPerEmployer);
-		result.setAverageNumberOfApplicationsPerWorker(averageNumberOfApplicationsPerWorker);
-		result.setAverageNumberOfJobsPerEmployer(averageNumberOfJobsPerEmployer);
-		result.setRatioOfPendingApplications(ratioOfPendingApplications);
-		result.setRatioOfAcceptedApplications(ratioOfAcceptedApplications);
-		result.setRatioOfRejectedApplications(ratioOfRejectedApplications);
-		
+		result = new Dashboard();		
 		result.setTotalNumberOfFinishedTasks(totalNumberOfFinishedTasks);
 		result.setTotalNumberOfUnfinishedTasks(totalNumberOfUnfinishedTasks);
 		result.setTotalNumberOfPrivateTasks(totalNumberOfPrivateTasks);

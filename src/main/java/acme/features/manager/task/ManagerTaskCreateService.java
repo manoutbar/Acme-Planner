@@ -59,6 +59,10 @@ public class ManagerTaskCreateService implements AbstractCreateService<Manager, 
 		if (!errors.hasErrors("executionEnd")) {
 			errors.state(request, entity.getExecutionEnd().after(entity.getExecutionStart()), "executionEnd", "manager.task.form.error.execution-end-before-start");
 		}
+		
+		if (!errors.hasErrors("workload")) {
+			errors.state(request, entity.getWorkload() >= 0.0, "workload", "manager.task.form.error.workload-positive");
+		}
 	}
 
 	@Override

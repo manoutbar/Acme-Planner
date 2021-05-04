@@ -36,4 +36,5 @@ manager.work-plan.form.label.tasks.task.executionStart = Fecha de inicio
 manager.work-plan.form.label.tasks.task.executionEnd = Fecha de finalización
 manager.work-plan.form.label.tasks.task.workload = Carga de trabajo
 
-
+manager.work-plan.form.error.execution-start-past = La fecha de inicio no puede ser anterior a la actual
+manager.work-plan.form.error.execution-end-before-start = La fecha de fin no puede ser anterior a la de inicio

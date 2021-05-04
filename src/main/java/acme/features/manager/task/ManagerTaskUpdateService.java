@@ -65,6 +65,10 @@ public class ManagerTaskUpdateService implements AbstractUpdateService<Manager, 
 			errors.state(request, spam.isEmpty(), "description", "master.form.error.marked-as-spam");
 		}
 		
+		if (!errors.hasErrors("workload")) {
+			errors.state(request, entity.getWorkload() >= 0.0, "workload", "manager.task.form.error.workload-positive");
+		}
+		
 		if (!errors.hasErrors("executionStart") || !errors.hasErrors("executionEnd")) {
 			final Task task = this.repository.findOneTaskById(request.getModel().getInteger("id"));
 			

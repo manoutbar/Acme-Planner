@@ -8,9 +8,11 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-manager.work-plan.list.label.executionStart = Comienzo del plan de trabajo
+manager.work-plan.list.label.title = Título
+manager.work-plan.list.label.executionStart = Comienzo del plan de trabajorabajo
 manager.work-plan.list.label.executionEnd = Fin del plan de trabajo
-manager.work-plan.list.label.isPublic = Publico
+manager.work-plan.list.label.isPublic = Público
+manager.work-plan.list.label.finalMode = Publicado
 
 manager.work-plan.form.label.title = Título:
 manager.work-plan.form.label.description = Descripción:
@@ -18,6 +20,7 @@ manager.work-plan.form.label.public = Público:
 manager.work-plan.form.label.execution-start = Comienzo del plan de trabajo:
 manager.work-plan.form.label.execution-end = Fin del plan de trabajo:
 manager.work-plan.form.label.workload = Carga de trabajo:
+manager.work-plan.form.label.finalMode = Publicado:
 
 manager.work-plan.form.label.executionStart = Inicio: 
 manager.work-plan..form.label.executionEnd = Final:

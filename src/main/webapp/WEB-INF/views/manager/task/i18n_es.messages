@@ -11,28 +11,9 @@
 manager.work-plan.list.label.executionStart = Inicio
 manager.work-plan.list.label.executionEnd = Final
 manager.work-plan.list.label.isPublic = Publico
-
-employer.job.list.title = Ofertas de trabajo
-employer.job.list.label.reference = Referencia
-employer.job.list.label.deadline = Fecha límite
-employer.job.list.label.title = Título
-
-employer.job.form.title.show = Oferta de empleo
-employer.job.form.title.create = Crear oferta 
-employer.job.form.title.update = Actualizar oferta
-employer.job.form.title.delete = Borrar oferta
-
-employer.job.form.title.list-all = Todas las ofertas
-employer.job.form.title.list-mine = Mis ofertas
-employer.job.form.title.publish = Publicar oferta
-
 manager.work-plan.form.label.executionStart = Inicio: 
 manager.work-plan..form.label.executionEnd = Final:
 manager.work-plan.form.label.isPublic = Publico:
-employer.job.form.label.salary = Salario:
-employer.job.form.label.score = Score:
-employer.job.form.label.moreInfo = Más información: (Opcional)
-employer.job.form.label.description = Descripción:
 		
 manager.work-plan.form.button.update = Actualizar
 manager.work-plan.form.button.delete = Borrar
@@ -52,6 +33,6 @@ manager.task.form.button.update = Actualizar
 manager.task.form.button.delete = Borrar
 manager.task.form.button.return = Volver
 
-employer.job.form.error.duplicated = Esta referencia no está libre
-employer.job.form.error.too-close = La fecha límite debe ser en una semana como mínimo
-employer.job.form.error.spam = Su trabajo parece contener spam
+manager.task.form.error.execution-start-past = La fecha de inicio no puede ser anterior a la actual
+manager.task.form.error.execution-end-before-start = La fecha de fin no puede ser anterior a la de inicio
+

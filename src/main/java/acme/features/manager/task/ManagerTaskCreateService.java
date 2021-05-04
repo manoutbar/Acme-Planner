@@ -39,10 +39,24 @@ public class ManagerTaskCreateService implements AbstractCreateService<Manager, 
 		assert entity != null;
 		assert errors != null;
 		
-		final String spam = this.utils.spamControl(entity.getDescription(), "Supera el límite de palabras marcadas como spam");
-		if (!spam.isEmpty()) {
-			errors.add("text", spam);
+		/*if (!errors.hasErrors("title")) {
+			final String spam = this.utils.spamControl(entity.getTitle(), "MARKED_AS_SPAM");
+			errors.state(request, spam.equals("MARKED_AS_SPAM"), "title", "master.form.error.marked-as-spam");
 		}
+		
+		if (!errors.hasErrors("description")) {
+			final String spam = this.utils.spamControl(entity.getTitle(), "MARKED_AS_SPAM");
+			errors.state(request, spam.equals("MARKED_AS_SPAM"), "description", "master.form.error.marked-as-spam");
+		}
+		
+		if (!errors.hasErrors("executionStart")) {
+			final Date minimumExecutionStart = new Date();
+			errors.state(request, entity.getExecutionStart().before(minimumExecutionStart), "executionStart", "manager.task.form.error.execution-start-past");
+		}
+		
+		if (!errors.hasErrors("executionEnd")) {
+			errors.state(request, entity.getExecutionEnd().before(entity.getExecutionStart()), "executionEnd", "manager.task.form.error.execution-end-before-start");
+		}*/
 		
 		/*if (!errors.hasErrors("deadline")) {
 			Calendar calendar;

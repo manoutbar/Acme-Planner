@@ -26,7 +26,7 @@ public interface AnonymousWorkPlanRepository extends AbstractRepository {
 	@Query("select wp from WorkPlan wp where wp.id = ?1")
 	WorkPlan findOneWorkPlanById(int id);
 
-	@Query("select wp from WorkPlan wp where wp.executionEnd > current_timestamp() and wp.isPublic = true and wp.finalMode = true order by wp.executionStart, wp.executionEnd")
+	@Query("select wp from WorkPlan wp where wp.executionEnd > CURRENT_TIMESTAMP and wp.isPublic = true and wp.finalMode = true order by wp.executionStart, wp.executionEnd")
 	Collection<WorkPlan> findManyPublicNonFinishedWorkPlans();
 
 }

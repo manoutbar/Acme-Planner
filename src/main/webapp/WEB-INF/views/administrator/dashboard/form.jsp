@@ -218,25 +218,33 @@
 </table>
 
 <h2>
-	<acme:message code="administrator.dashboard.form.title.application-statuses"/>
+	<acme:message code="administrator.dashboard.form.title.workplan-statuses"/>
 </h2>
 
 <div>
 	<canvas id="workplans-canvas"></canvas>
 </div>
+<p>
+	TOTAL: <acme:message code="administrator.dashboard.form.label.chart.total" />	
+</p><p>
+	PUBLISHED: <acme:message code="administrator.dashboard.form.label.chart.published" />	
+</p><p>
+	NON_PUBLISHED: <acme:message code="administrator.dashboard.form.label.chart.non-published" />	
+</p>
 
 <script type="text/javascript">
 	$(document).ready(function() {
 		var data = {
 			workPlans: {
 				labels : [
-					"TOTAL", "PUBLISHED"
+					"TOTAL", "PUBLISHED", "NOT_PUBLISHED"
 				],
 				datasets : [
 					{
 						data : [
 							<jstl:out value="${totalNumberOfWorkPlans}"/>, 
 							<jstl:out value="${totalNumberOfPublishedWorkPlans}"/>, 
+							<jstl:out value="${totalNumberOfWorkPlans - totalNumberOfPublishedWorkPlans}"/>, 
 						]
 					}
 				]

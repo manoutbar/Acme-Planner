@@ -75,11 +75,7 @@ public class WorkPlan extends DomainEntity {
 	@ManyToOne(optional = false)
 	protected Manager owner;
 	
-	/*@Valid
-	@ManyToMany(fetch = FetchType.EAGER)
-	protected Collection<Task>	tasks;*/
-	
 	@Valid
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "workPlan")
 	protected Collection<WorkPlanTask> workPlanTask;
 }

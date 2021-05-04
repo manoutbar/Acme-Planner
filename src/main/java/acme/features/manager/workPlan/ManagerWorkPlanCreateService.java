@@ -45,7 +45,7 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 		}
 		
 		if (!errors.hasErrors("description")) {
-			final String spam = this.utils.spamControl(entity.getTitle(), "MARKED_AS_SPAM");
+			final String spam = this.utils.spamControl(entity.getDescription(), "MARKED_AS_SPAM");
 			errors.state(request, spam.isEmpty(), "description", "master.form.error.marked-as-spam");
 		}
 		

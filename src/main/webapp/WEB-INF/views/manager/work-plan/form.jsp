@@ -21,7 +21,6 @@
 	<acme:form-moment code="manager.work-plan.form.label.executionStart" path="executionStart"/>
 	<acme:form-moment code="manager.work-plan.form.label.executionEnd" path="executionEnd"/>
 	<acme:form-checkbox code="manager.work-plan.form.label.isPublic" path="isPublic"/>
-	<acme:form-double code="anonymous.work-plan.form.label.workload" path="workload"/>
 	
 	<jstl:if test="${not empty workPlanTask && command == 'show'}">
 		<h3><acme:message code="anonymous.work-plan.form.label.tasks.title"/></h3>

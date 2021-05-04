@@ -1,5 +1,8 @@
 package acme.features.manager.workPlan;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +13,7 @@ import acme.framework.components.Request;
 import acme.framework.entities.Manager;
 import acme.framework.entities.Principal;
 import acme.framework.services.AbstractUpdateService;
+import acme.util.Utils;
 
 @Service
 public class ManagerWorkPlanUpdateService implements AbstractUpdateService<Manager, WorkPlan> {
@@ -18,6 +22,9 @@ public class ManagerWorkPlanUpdateService implements AbstractUpdateService<Manag
 
 	@Autowired
 	protected ManagerWorkPlanRepository repository;
+	
+	@Autowired
+	protected Utils utils;
 
 	// AbstractListService<Employer, Job> -------------------------------------
 
@@ -47,22 +54,32 @@ public class ManagerWorkPlanUpdateService implements AbstractUpdateService<Manag
 		assert entity != null;
 		assert errors != null;
 
-		/*if (!errors.hasErrors("deadline")) {
-			Calendar calendar;
-			Date minimumDeadline;
-			
-			calendar = new GregorianCalendar();
-			calendar.add(Calendar.WEEK_OF_MONTH, 1);
-			minimumDeadline = calendar.getTime();
-			errors.state(request, entity.getDeadline().after(minimumDeadline), "deadline", "employer.job.form.error.too-close");
-		}
 
-		if (!errors.hasErrors("reference")) {
-			Job existing;
+		
+		if (!errors.hasErrors("title")) {
+			final String spam = this.utils.spamControl(entity.getTitle());
+			errors.state(request, spam.isEmpty(), "title", "master.form.error.marked-as-spam");
+		}
+		
+		if (!errors.hasErrors("description")) {
+			final String spam = this.utils.spamControl(entity.getDescription());
+			errors.state(request, spam.isEmpty(), "description", "master.form.error.marked-as-spam");
+		}
+		
+		if (!errors.hasErrors("executionStart") || !errors.hasErrors("executionEnd")) {
+			final WorkPlan workPlan = this.repository.findOneWorkPlanById(request.getModel().getInteger("id"));
+			final boolean startDateChanged = !workPlan.getExecutionStart().equals(new Timestamp(entity.getExecutionStart().getTime()));
+			final boolean endDateChanged = !workPlan.getExecutionEnd().equals(new Timestamp(entity.getExecutionEnd().getTime())); 
+			// we will only check dates if fields has been updated
+			if (startDateChanged && !errors.hasErrors("executionStart")) {
+				final Date minimumExecutionStart = new Date();
+				errors.state(request, entity.getExecutionStart().after(minimumExecutionStart), "executionStart", "manager.task.form.error.execution-start-past");
+			}
 			
-			existing = this.repository.findOneJobByReference(entity.getReference());
-			errors.state(request, existing == null || existing.getId() == entity.getId(), "reference", "employer.job.form.error.duplicated");
-		}	*/	
+			if ((startDateChanged  || endDateChanged ) && !errors.hasErrors("executionEnd")) {
+				errors.state(request, entity.getExecutionEnd().after(entity.getExecutionStart()), "executionEnd", "manager.task.form.error.execution-end-before-start");
+			}
+		}
 	}
 
 	@Override

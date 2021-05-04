@@ -1,5 +1,7 @@
 package acme.features.manager.workPlan;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +11,7 @@ import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Manager;
 import acme.framework.services.AbstractCreateService;
+import acme.util.Utils;
 
 @Service
 public class ManagerWorkPlanCreateService implements AbstractCreateService<Manager, WorkPlan> {
@@ -19,7 +22,8 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 	protected ManagerWorkPlanRepository repository;
 	
 
-	// AbstractCreateService<Employer, Job> interface -------------------------
+	@Autowired
+	protected Utils utils;
 
 
 	@Override
@@ -35,22 +39,24 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 		assert entity != null;
 		assert errors != null;
 		
-		/*if (!errors.hasErrors("deadline")) {
-			Calendar calendar;
-			Date minimumDeadline;
-						
-			calendar = new GregorianCalendar();
-			calendar.add(Calendar.DAY_OF_MONTH, 7);
-			minimumDeadline = calendar.getTime();
-			errors.state(request, entity.getDeadline().after(minimumDeadline), "deadline", "employer.job.form.error.too-close");
+		if (!errors.hasErrors("title")) {
+			final String spam = this.utils.spamControl(entity.getTitle(), "MARKED_AS_SPAM");
+			errors.state(request, spam.isEmpty(), "title", "master.form.error.marked-as-spam");
 		}
 		
-		if (!errors.hasErrors("reference")) {
-			Job existing;
-			
-			existing = this.repository.findOneJobByReference(entity.getReference());
-			errors.state(request, existing == null, "reference", "employer.job.form.error.duplicated");
-		}*/
+		if (!errors.hasErrors("description")) {
+			final String spam = this.utils.spamControl(entity.getTitle(), "MARKED_AS_SPAM");
+			errors.state(request, spam.isEmpty(), "description", "master.form.error.marked-as-spam");
+		}
+		
+		if (!errors.hasErrors("executionStart")) {
+			final Date minimumExecutionStart = new Date();
+			errors.state(request, entity.getExecutionStart().after(minimumExecutionStart), "executionStart", "manager.work-plan.form.error.execution-start-past");
+		}
+		
+		if (!errors.hasErrors("executionEnd")) {
+			errors.state(request, entity.getExecutionEnd().after(entity.getExecutionStart()), "executionEnd", "manager.work-plan.form.error.execution-end-before-start");
+		}
 	}
 
 	@Override

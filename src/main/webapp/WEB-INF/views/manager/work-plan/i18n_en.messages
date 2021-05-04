@@ -42,5 +42,8 @@ manager.work-plan.form.label.ex= Workload
 manager.work-plan.form.label.tasks.task.workload = Workload
 manager.work-plan.form.label.tasks.task.workload = Workload
 
+manager.work-plan.form.error.execution-start-past = Start date doesn't be before today
+manager.work-plan.form.error.execution-end-before-start = End date doesn't be before start date
+
 
 

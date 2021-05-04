@@ -1,9 +1,13 @@
 package acme.features.manager.task;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import acme.entities.tasks.Task;
+import acme.entities.tasks.WorkPlanTask;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -24,14 +28,14 @@ public class ManagerTaskDeleteService implements AbstractDeleteService<Manager, 
 		assert request != null;
 
 		boolean result;
-		int jobId;
-		final Task workplan;
+		int taskId;
+		final Task task;
 		Manager owner;
 		Principal principal;
 
-		jobId = request.getModel().getInteger("id");
-		workplan = this.repository.findOneTaskById(jobId);
-		owner = workplan.getOwner();
+		taskId = request.getModel().getInteger("id");
+		task = this.repository.findOneTaskById(taskId);
+		owner = task.getOwner();
 		principal = request.getPrincipal();
 		result = owner.getUserAccount().getId() == principal.getAccountId();
 
@@ -77,10 +81,15 @@ public class ManagerTaskDeleteService implements AbstractDeleteService<Manager, 
 	}
 
 	@Override
+	@Transactional
 	public void delete(final Request<Task> request, final Task entity) {
 		assert request != null;
 		assert entity != null;
 
-		this.repository.delete(entity);
+		// we need to remove before the work plan tasks
+		final Collection<WorkPlanTask> wpt = this.repository.findWorkPlanTaskByTaskId(entity.getId());
+		
+		this.repository.deleteAll(wpt);
+		this.repository.delete(entity);		
 	}
 }

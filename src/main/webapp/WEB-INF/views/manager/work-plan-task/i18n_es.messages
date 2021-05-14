@@ -1,0 +1,43 @@
+# i18n_es.messages
+#
+# Copyright (C) 2012-2021 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+manager.work-plan.list.label.title = Título
+manager.work-plan.list.label.executionStart = Comienzo del plan de trabajorabajo
+manager.work-plan.list.label.executionEnd = Fin del plan de trabajo
+manager.work-plan.list.label.isPublic = Público
+manager.work-plan.list.label.finalMode = Publicado
+
+manager.work-plan.form.label.title = Título:
+manager.work-plan.form.label.description = Descripción:
+manager.work-plan.form.label.public = Público:
+manager.work-plan.form.label.execution-start = Comienzo del plan de trabajo:
+manager.work-plan.form.label.execution-end = Fin del plan de trabajo:
+manager.work-plan.form.label.workload = Carga de trabajo:
+manager.work-plan.form.label.finalMode = Publicado:
+
+manager.work-plan.form.label.executionStart = Inicio: 
+manager.work-plan..form.label.executionEnd = Final:
+manager.work-plan.form.label.isPublic = Publico:
+
+		
+manager.work-plan.form.button.update = Actualizar
+manager.work-plan.form.button.delete = Borrar
+manager.work-plan.form.button.publish = Publicar
+manager.work-plan.form.button.create = Crear
+manager.work-plan.form.button.return = Volver
+
+manager.work-plan.form.label.tasks.title = Tareas del plan de trabajo
+manager.work-plan.form.label.tasks.task.title = Título
+manager.work-plan.form.label.tasks.task.executionStart = Fecha de inicio
+manager.work-plan.form.label.tasks.task.executionEnd = Fecha de finalización
+manager.work-plan.form.label.tasks.task.workload = Carga de trabajo
+
+manager.work-plan.form.error.execution-start-past = La fecha de inicio no puede ser anterior a la actual
+manager.work-plan.form.error.execution-end-before-start = La fecha de fin no puede ser anterior a la de inicio

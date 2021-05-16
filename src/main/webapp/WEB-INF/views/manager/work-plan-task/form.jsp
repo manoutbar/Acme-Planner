@@ -18,10 +18,10 @@
 <acme:form>
 	<acme:form-select code="manager.work-plan-task.form.label.task" path="task">
 		<jstl:forEach var="task" items="${tasks}">
-			<acme:form-option code="${task.title}" value="${task}"/>
+			<acme:form-option code="${task.title}" value="${task.id}"/>
 		</jstl:forEach>
 	</acme:form-select>
-			
+	<acme:form-integer code="manager.task.form.label.workload" path="workPlanId"/>
 	<acme:form-submit test="${command == 'create'}" code="manager.work-plan-task.form.button.create" action="/manager/work-plan-task/create"/>
 	<acme:form-submit test="${command == 'delete'}" code="manager.work-plan-task.form.button.delete" action="/manager/work-plan-task/delete"/>		
 	<acme:form-return code="manager.work-plan-task.form.button.return"/>	

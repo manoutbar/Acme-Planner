@@ -28,5 +28,8 @@ public interface ManagerWorkPlanTaskRepository extends AbstractRepository {
 
 	@Query("select t from Task t where t.isPublic = true")
 	Collection<Task> findManyPublicTasks();
+	
+	@Query("select t from Task t where t.id = ?1")
+	Task findTaskById(int taskId);
 
 }

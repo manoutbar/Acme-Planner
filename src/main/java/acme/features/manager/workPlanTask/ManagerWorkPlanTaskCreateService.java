@@ -27,7 +27,6 @@ public class ManagerWorkPlanTaskCreateService implements AbstractCreateService<M
 	@Autowired
 	protected Utils utils;
 
-
 	@Override
 	public boolean authorise(final Request<WorkPlanTask> request) {
 		assert request != null;
@@ -74,16 +73,21 @@ public class ManagerWorkPlanTaskCreateService implements AbstractCreateService<M
 
 		final WorkPlanTask result;
 		final WorkPlan workPlan;
+		final Integer workPlanId = request.getModel().getInteger("workPlanId");
+		
 		Collection<Task> tasks;
 		
 		workPlan = this.repository.findOneWorkPlanByIdAndOwnerId(
-			request.getModel().getInteger("workPlanId"),
+			workPlanId,
 			request.getPrincipal().getActiveRoleId()
 		);
 		
 		result = new WorkPlanTask();
 		result.setWorkPlan(workPlan);
 		
+		if(request.getModel().hasAttribute("task")) {
+			result.setTask(this.repository.findTaskById(request.getModel().getInteger("task")));		
+		}
 		if (workPlan.getIsPublic().booleanValue()) {
 			tasks = this.repository.findManyPublicTasks(); 
 		} else {
@@ -91,6 +95,7 @@ public class ManagerWorkPlanTaskCreateService implements AbstractCreateService<M
 		}
 		 
 		request.getServletRequest().setAttribute("tasks", tasks);
+		request.getServletRequest().setAttribute("workPlanId", workPlanId);
 		
 		return result;
 	}

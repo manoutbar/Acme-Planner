@@ -1,0 +1,52 @@
+# i18n_en.messages
+#
+# Copyright (C) 2012-2021 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+
+manager.work-plan.list.label.title = Title
+manager.work-plan.list.label.executionStart = Work plan execution start
+manager.work-plan.list.label.executionEnd = Work plan execution end
+manager.work-plan.list.label.isPublic = Public
+manager.work-plan.list.label.finalMode = Published
+
+manager.work-plan.form.label.title = Title:
+manager.work-plan.form.label.description = Description:
+manager.work-plan.form.label.public = Public:
+manager.work-plan.form.label.execution-start = Work plan execution start:
+manager.work-plan.form.label.execution-end = Work plan execution end:
+manager.work-plan.form.label.workload = Workload:
+manager.work-plan.form.label.published = Published
+
+
+manager.work-plan.form.label.executionStart = Start: 
+manager.work-plan.form.label.executionEnd = End:
+manager.work-plan.form.label.isPublic = Public:
+
+		
+manager.work-plan.form.button.update = Update
+manager.work-plan.form.button.delete = Delete
+manager.work-plan.form.button.publish = Publish
+manager.work-plan.form.button.create = Create
+manager.work-plan.form.button.return = Return
+
+manager.work-plan.form.label.tasks.title = Work plan tasks
+manager.work-plan.form.label.tasks.task.title = Title
+manager.work-plan.form.label.tasks.task.executionStart = Execution start
+manager.work-plan.form.label.tasks.task.executionEnd = Execution end
+manager.work-plan.form.label.tasks.task.workload = Workload
+
+manager.work-plan.form.label.ex= Workload
+manager.work-plan.form.label.tasks.task.workload = Workload
+manager.work-plan.form.label.tasks.task.workload = Workload
+
+manager.work-plan.form.error.execution-start-past = Start date doesn't be before today
+manager.work-plan.form.error.execution-end-before-start = End date doesn't be before start date
+
+
+

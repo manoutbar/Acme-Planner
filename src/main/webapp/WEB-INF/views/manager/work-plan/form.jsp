@@ -22,7 +22,7 @@
 	<acme:form-moment code="manager.work-plan.form.label.executionEnd" path="executionEnd"/>
 	<acme:form-checkbox code="manager.work-plan.form.label.isPublic" path="isPublic"/>
 	
-	<jstl:if test="${not empty workPlanTask && command == 'show'}">
+	<!--<jstl:if test="${not empty workPlanTask && command == 'show'}">
 		<h3><acme:message code="anonymous.work-plan.form.label.tasks.title"/></h3>
 		<table class="table">
 			<thead>
@@ -45,15 +45,16 @@
 				</jstl:forEach>
 			</tbody>
 		</table>
-	</jstl:if>
+	</jstl:if> -->
 			
 	<acme:form-submit test="${command == 'show' && finalMode == 'false'}" code="manager.work-plan.form.button.update" action="/manager/work-plan/update"/>
 	<acme:form-submit test="${command == 'show' && finalMode == 'false'}" code="manager.work-plan.form.button.delete" action="/manager/work-plan/delete"/>
 	<acme:form-submit test="${command == 'show' && finalMode == 'false'}" code="manager.work-plan.form.button.publish" action="/manager/work-plan/publish"/>
+	<acme:form-submit test="${command == 'show' && finalMode == 'false'}" method="get" code="manager.work-plan.form.button.manageTasks" action="/manager/work-plan/${id}/tasks/list"/>
 	<acme:form-submit test="${command == 'create'}" code="manager.work-plan.form.button.create" action="/manager/work-plan/create"/>
 	<acme:form-submit test="${command == 'update'}" code="manager.work-plan.form.button.update" action="/manager/work-plan/update"/>
 	<acme:form-submit test="${command == 'publish'}" code="manager.work-plan.form.button.publish" action="/manager/work-plan/publish"/>
-	<acme:form-submit test="${command == 'delete'}" code="manager.work-plan.form.button.delete" action="/manager/work-plan/delete"/>		
+	<acme:form-submit test="${command == 'delete'}" code="manager.work-plan.form.button.delete" action="/manager/work-plan/delete"/>
 	<acme:form-return code="manager.work-plan.form.button.return"/>	
 </acme:form>
 

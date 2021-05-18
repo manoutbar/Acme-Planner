@@ -22,4 +22,4 @@
 	<acme:list-column code="manager.work-plan-task.list.label.isPublic" path="task.isPublic" width="10%"/>
 </acme:list>
 
-<acme:link code="manager.work-plan-task.list.action.add" action="/manager/work-plan-task/create?workPlanId=${workPlanId}" />
+<acme:link code="manager.work-plan-task.list.action.add" action="/manager/work-plan/${workPlanId}/tasks/create" />

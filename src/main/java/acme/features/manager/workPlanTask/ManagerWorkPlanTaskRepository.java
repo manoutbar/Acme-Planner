@@ -23,13 +23,16 @@ public interface ManagerWorkPlanTaskRepository extends AbstractRepository {
 	@Query("select m from Manager m where m.id = ?1")
 	Manager findOneManagerById(int id);
 	
-	@Query("select t from Task t")
-	Collection<Task> findManyTasks();
+	@Query("select t from Task t where t.id not in (select wpt.task.id from WorkPlanTask wpt where wpt.workPlan.id = ?1)")
+	Collection<Task> findManyTasks(int id);
 
-	@Query("select t from Task t where t.isPublic = true")
-	Collection<Task> findManyPublicTasks();
+	@Query("select t from Task t where t.isPublic = true and t.id not in (select wpt.task.id from WorkPlanTask wpt where wpt.workPlan.id = ?1)")
+	Collection<Task> findManyPublicTasks(int id);
 	
 	@Query("select t from Task t where t.id = ?1")
 	Task findTaskById(int taskId);
+
+	@Query("select wpt from WorkPlanTask wpt left join wpt.task t left join wpt.workPlan w left join w.owner where w.id = ?1 and wpt.id = ?2")
+	WorkPlanTask findOneWorkPlanTaskByWorkPlanAndId(int workPlanId, int id);
 
 }

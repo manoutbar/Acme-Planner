@@ -1,30 +1,28 @@
 package acme.features.manager.workPlanTask;
 
-import java.util.Collection;
+import java.util.Arrays;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.HandlerMapping;
 
-import acme.entities.tasks.WorkPlan;
 import acme.entities.tasks.WorkPlanTask;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Manager;
 import acme.framework.entities.Principal;
-import acme.framework.services.AbstractListService;
+import acme.framework.services.AbstractShowService;
 
 @Service
-public class ManagerWorkPlanTaskListService implements AbstractListService<Manager, WorkPlanTask> {
+public class ManagerWorkPlanTaskShowService implements AbstractShowService<Manager, WorkPlanTask> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
 	protected ManagerWorkPlanTaskRepository repository;
 
-	// AbstractListService<Employer, Job> interface ---------------------------
-
+	
 	private Integer getWorkPlanId(final Request<?> request) {
 		@SuppressWarnings("unchecked")
 		final Map<String, String> pathVariables = (Map<String, String>) request.getServletRequest().getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
@@ -38,21 +36,30 @@ public class ManagerWorkPlanTaskListService implements AbstractListService<Manag
 		}
 		return null;
 	}
-	
+
 	@Override
 	public boolean authorise(final Request<WorkPlanTask> request) {
 		assert request != null;
-		
+
+		boolean result;
+		int workPlanId;
+		int workPlanTaskId;
+		WorkPlanTask workPlanTask;
+		Manager owner;
 		Principal principal;
-		Integer workPlanId;
-		WorkPlan workPlan;
-		
-		principal = request.getPrincipal();
+
 		workPlanId = this.getWorkPlanId(request);
+		workPlanTaskId = request.getModel().getInteger("id");
 		
-		workPlan = this.repository.findOneWorkPlanByIdAndOwnerId(workPlanId, principal.getActiveRoleId());
+		workPlanTask = this.repository.findOneWorkPlanTaskByWorkPlanAndId(workPlanId, workPlanTaskId);
 		
-		return workPlan != null;
+		owner = workPlanTask.getWorkPlan().getOwner();
+		principal = request.getPrincipal();
+		result = owner.getUserAccount().getId() == principal.getAccountId();
+		
+		result = result && !workPlanTask.getWorkPlan().isFinalMode();
+
+		return result;
 	}
 
 	@Override
@@ -61,23 +68,25 @@ public class ManagerWorkPlanTaskListService implements AbstractListService<Manag
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "task.title", "task.executionStart", "task.executionEnd");
+		request.unbind(entity, model, "task", "workPlan");
 	}
 
 	@Override
-	public Collection<WorkPlanTask> findMany(final Request<WorkPlanTask> request) {
+	public WorkPlanTask findOne(final Request<WorkPlanTask> request) {
 		assert request != null;
 
-		Collection<WorkPlanTask> result;
-		Integer workPlanId;
+		WorkPlanTask result;
+		int workPlanId;
+		int workPlanTaskId;
 
 		workPlanId = this.getWorkPlanId(request);
+		workPlanTaskId = request.getModel().getInteger("id");
 		
-		result = this.repository.findManyByWorkPlanId(workPlanId);
+		result = this.repository.findOneWorkPlanTaskByWorkPlanAndId(workPlanId, workPlanTaskId);
 		
-		request.getServletRequest().setAttribute("workPlanId", workPlanId);
-		
+		request.getServletRequest().setAttribute("tasks", Arrays.asList(result.getTask()));
+
 		return result;
 	}
-	
+
 }

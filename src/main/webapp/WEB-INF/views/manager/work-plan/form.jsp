@@ -21,34 +21,9 @@
 	<acme:form-moment code="manager.work-plan.form.label.executionStart" path="executionStart"/>
 	<acme:form-moment code="manager.work-plan.form.label.executionEnd" path="executionEnd"/>
 	<acme:form-checkbox code="manager.work-plan.form.label.isPublic" path="isPublic"/>
-	
-	<!--<jstl:if test="${not empty workPlanTask && command == 'show'}">
-		<h3><acme:message code="anonymous.work-plan.form.label.tasks.title"/></h3>
-		<table class="table">
-			<caption></caption>
-			<thead>
-			<tr>
-				<th id="1"><acme:message code="manager.work-plan.form.label.tasks.task.title" /></th>
-				<th id="2"><acme:message code="manager.work-plan.form.label.tasks.task.executionStart" /></th>
-				<th id="3"><acme:message code="manager.work-plan.form.label.tasks.task.executionEnd" /></th>
-				<th id="4"><acme:message code="manager.work-plan.form.label.tasks.task.workload" /></th>
-			</tr>
-			</thead>
 			
-			<tbody>
-				<jstl:forEach var="workPlanTask" items="${workPlanTask}">
-				<tr>
-					<td><acme:print value="${workPlanTask.task.title}" /></td>
-					<td><acme:print value="${workPlanTask.task.executionStart}" /></td>
-					<td><acme:print value="${workPlanTask.task.executionEnd}" /></td>
-					<td><acme:print value="${workPlanTask.task.workload}" /></td>
-				</tr>
-				</jstl:forEach>
-			</tbody>
-		</table>
-	</jstl:if> -->
-			
-	<acme:form-submit test="${command == 'show' && finalMode == 'false'}" code="manager.work-plan.form.button.update" action="/manager/work-plan/update"/>
+	<acme:form-submit test="${command == 'show' && finalMode == 'false'}" code="manager.work-plan.form.button.update" action="/manager/work-plan/update?"/>
+	<acme:form-submit test="${command == 'show' && finalMode == 'false'}" method="get" code="manager.work-plan.form.button.suggest" action="/manager/work-plan/show?id=${id}&suggestExecutionPeriod=true"/>
 	<acme:form-submit test="${command == 'show' && finalMode == 'false'}" code="manager.work-plan.form.button.delete" action="/manager/work-plan/delete"/>
 	<acme:form-submit test="${command == 'show' && finalMode == 'false'}" code="manager.work-plan.form.button.publish" action="/manager/work-plan/publish"/>
 	<acme:form-submit test="${command == 'show' && finalMode == 'false'}" method="get" code="manager.work-plan.form.button.manageTasks" action="/manager/work-plan/${id}/tasks/list"/>

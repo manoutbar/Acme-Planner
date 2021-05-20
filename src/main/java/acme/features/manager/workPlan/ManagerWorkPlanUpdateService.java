@@ -117,7 +117,7 @@ public class ManagerWorkPlanUpdateService implements AbstractUpdateService<Manag
 	public void update(final Request<WorkPlan> request, final WorkPlan entity) {
 		assert request != null;
 		assert entity != null;
-
-		this.repository.save(entity);
+		
+		this.repository.save(entity);			
 	}
 }

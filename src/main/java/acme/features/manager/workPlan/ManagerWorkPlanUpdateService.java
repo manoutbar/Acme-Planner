@@ -1,7 +1,6 @@
 package acme.features.manager.workPlan;
 
 import java.sql.Timestamp;
-import java.time.ZoneId;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -109,26 +108,7 @@ public class ManagerWorkPlanUpdateService implements AbstractUpdateService<Manag
 		int id;
 
 		id = request.getModel().getInteger("id");
-		final boolean suggestExecutionPeriod = request.getModel().getBoolean("suggestExecutionPeriod");
 		result = this.repository.findOneWorkPlanById(id);
-		if(suggestExecutionPeriod) {
-			Date suggestExecutionStart = result.getWorkPlanTask().stream()
-				.map(wpt -> wpt.getTask().getExecutionStart())
-				.sorted()
-				.findFirst()
-				.orElse(null);
-			Date suggestExecutionEnd = result.getWorkPlanTask().stream()
-				.map(wpt -> wpt.getTask().getExecutionEnd())
-				.sorted()
-				.skip(result.getWorkPlanTask().size()-1)
-				.findFirst()
-				.orElse(null);
-			
-			suggestExecutionStart = Date.from(suggestExecutionStart.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime().minusDays(1).withHour(8).atZone(ZoneId.systemDefault()).toInstant());
-			suggestExecutionEnd = Date.from(suggestExecutionStart.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime().plusDays(1).withHour(17).atZone(ZoneId.systemDefault()).toInstant());
-			result.setExecutionStart(suggestExecutionStart);
-			result.setExecutionEnd(suggestExecutionEnd);
-		}
 
 		return result;
 	}
@@ -137,9 +117,7 @@ public class ManagerWorkPlanUpdateService implements AbstractUpdateService<Manag
 	public void update(final Request<WorkPlan> request, final WorkPlan entity) {
 		assert request != null;
 		assert entity != null;
-		final boolean suggestExecutionPeriod = request.getModel().getBoolean("suggestExecutionPeriod");
-		if (!suggestExecutionPeriod) {
-			this.repository.save(entity);			
-		}
+		
+		this.repository.save(entity);			
 	}
 }

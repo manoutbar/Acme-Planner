@@ -1,5 +1,8 @@
 package acme.features.manager.workPlan;
 
+import java.time.ZoneId;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,6 +46,31 @@ public class ManagerWorkPlanShowService implements AbstractShowService<Manager, 
 		assert request != null;
 		assert entity != null;
 		assert model != null;
+		
+		boolean suggestExecutionPeriod = false;
+		if (request.getModel().hasAttribute("suggestExecutionPeriod")) {
+			suggestExecutionPeriod = request.getModel().getBoolean("suggestExecutionPeriod");
+		}
+		if (suggestExecutionPeriod) {
+			Date suggestExecutionStart = entity.getWorkPlanTask().stream()
+				.map(wpt -> wpt.getTask().getExecutionStart())
+				.sorted()
+				.findFirst()
+				.orElse(null);
+			Date suggestExecutionEnd = entity.getWorkPlanTask().stream()
+				.map(wpt -> wpt.getTask().getExecutionEnd())
+				.sorted()
+				// .skip(result.getWorkPlanTask().isEmpty() ? 0 : result.getWorkPlanTask().size()-1)
+				.findFirst()
+				.orElse(null);
+			
+			if (suggestExecutionStart != null && suggestExecutionEnd != null) {
+				suggestExecutionStart = Date.from(suggestExecutionStart.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime().minusDays(1).withHour(8).atZone(ZoneId.systemDefault()).toInstant());
+				suggestExecutionEnd = Date.from(suggestExecutionEnd.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime().plusDays(1).withHour(17).atZone(ZoneId.systemDefault()).toInstant());
+				entity.setExecutionStart(suggestExecutionStart);
+				entity.setExecutionEnd(suggestExecutionEnd);
+			}
+		}
 
 		request.unbind(entity, model, "isPublic", "executionStart", "executionEnd", "finalMode", "workload", "workPlanTask", "title", "description");
 	}

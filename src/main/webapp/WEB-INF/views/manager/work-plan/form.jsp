@@ -25,12 +25,13 @@
 	<jstl:if test="${not empty workPlanTask && command == 'show'}">
 		<h3><acme:message code="anonymous.work-plan.form.label.tasks.title"/></h3>
 		<table class="table">
+			<caption></caption>
 			<thead>
 			<tr>
-				<th><acme:message code="manager.work-plan.form.label.tasks.task.title" /></th>
-				<th><acme:message code="manager.work-plan.form.label.tasks.task.executionStart" /></th>
-				<th><acme:message code="manager.work-plan.form.label.tasks.task.executionEnd" /></th>
-				<th><acme:message code="manager.work-plan.form.label.tasks.task.workload" /></th>
+				<th id="1"><acme:message code="manager.work-plan.form.label.tasks.task.title" /></th>
+				<th id="2"><acme:message code="manager.work-plan.form.label.tasks.task.executionStart" /></th>
+				<th id="3"><acme:message code="manager.work-plan.form.label.tasks.task.executionEnd" /></th>
+				<th id="4"><acme:message code="manager.work-plan.form.label.tasks.task.workload" /></th>
 			</tr>
 			</thead>
 			

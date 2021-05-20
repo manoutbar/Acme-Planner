@@ -48,6 +48,7 @@
 	</jstl:if> -->
 			
 	<acme:form-submit test="${command == 'show' && finalMode == 'false'}" code="manager.work-plan.form.button.update" action="/manager/work-plan/update"/>
+	<acme:form-submit test="${command == 'show' && finalMode == 'false'}" code="manager.work-plan.form.button.suggest" action="/manager/work-plan/update?suggestExecutionPeriod=true"/>
 	<acme:form-submit test="${command == 'show' && finalMode == 'false'}" code="manager.work-plan.form.button.delete" action="/manager/work-plan/delete"/>
 	<acme:form-submit test="${command == 'show' && finalMode == 'false'}" code="manager.work-plan.form.button.publish" action="/manager/work-plan/publish"/>
 	<acme:form-submit test="${command == 'show' && finalMode == 'false'}" method="get" code="manager.work-plan.form.button.manageTasks" action="/manager/work-plan/${id}/tasks/list"/>

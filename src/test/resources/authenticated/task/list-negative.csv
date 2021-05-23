@@ -1,0 +1,3 @@
+recordIndex,executionStart,executionEnd,title,isPublic,workload,link,description
+0,,2021/04/11 12:45,Public and finished task 2,true,10.50,http://www.example.org,The task description with some text
+1,2021/04/14 11:30,2021/05/01 12:45,Public and finished task,true,44.50,http://www.example.org,The task description with some text

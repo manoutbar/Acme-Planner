@@ -78,6 +78,9 @@ public class ManagerTaskDeleteService implements AbstractDeleteService<Manager, 
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+
+		final Collection<WorkPlanTask> wpt = this.repository.findWorkPlanTaskByTaskId(entity.getId());
+		errors.state(request, wpt.isEmpty(), "task", "manager.work-plan-task.form.error.task-in-work-plan");
 	}
 
 	@Override
@@ -85,11 +88,7 @@ public class ManagerTaskDeleteService implements AbstractDeleteService<Manager, 
 	public void delete(final Request<Task> request, final Task entity) {
 		assert request != null;
 		assert entity != null;
-
-		// we need to remove before the work plan tasks
-		final Collection<WorkPlanTask> wpt = this.repository.findWorkPlanTaskByTaskId(entity.getId());
 		
-		this.repository.deleteAll(wpt);
 		this.repository.delete(entity);		
 	}
 }

@@ -1,0 +1,6 @@
+recordIndex,title,isPublic,executionStart,executionEnd,workload,link,description
+0,Enabled task,true,2021/01/01 18:30,2021/08/30 23:59,13.40,,This is a long execution period task
+1,Task without work plans,true,2021/02/01 18:30,2021/08/30 23:59,0.00,http://www.example.org,This plan has not been added to any work plan
+2,Task number six,true,2021/04/14 11:30,2021/07/03 12:45,4.50,http://www.example.org,The task description with some text
+3,Our first task,true,2021/05/20 10:00,2021/06/19 23:59,0.00,,The first task we are doing as DP2 team
+4,Long description task,true,2021/05/30 18:30,2021/06/02 23:59,0.00,,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mi tortor, volutpat dapibus dignissim sed, facilisis a arcu. Curabitur blandit massa lorem, a luctus urna lobortis at. Suspendisse potenti. Fusce sollicitudin convallis neque ac eleifend. Vestibulum vehicula mauris augue, quis egestas odio ornare a. Ut ac commodo elit. Mauris condimentum odio leo, vel luctus dui lobortis at.",consectetur adipiscing elit. Praesent mi tortor,volutpat dapibus dignissim sed,facilisis a arcu. Curabitur blandit massa lorem,a luctus urna lobortis at. Suspendisse potenti. Fusce sollicitudin convallis neque ac eleifend. Vestibulum vehicula mauris augue,quis egestas odio ornare a. Ut ac commodo elit. Mauris condimentum odio leo,vel luctus dui lobortis at."

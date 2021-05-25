@@ -252,13 +252,10 @@ Anonymous
     <coordinates>
       <x>984</x>
       <y>480</y>
-      <w>120</w>
+      <w>36</w>
       <h>252</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
-m1=1
-m2=0..n
-made by ^</panel_attributes>
+    <panel_attributes/>
     <additional_attributes>10.0;10.0;10.0;190.0</additional_attributes>
   </element>
   <element>
@@ -319,13 +316,10 @@ managed by ^</panel_attributes>
     <coordinates>
       <x>1776</x>
       <y>420</y>
-      <w>1152</w>
+      <w>1128</w>
       <h>312</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
-m1=1
-m2=0..n
-&lt; maintained by</panel_attributes>
+    <panel_attributes/>
     <additional_attributes>10.0;20.0;920.0;20.0;920.0;240.0</additional_attributes>
   </element>
   <element>

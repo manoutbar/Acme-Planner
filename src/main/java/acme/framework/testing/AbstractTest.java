@@ -310,7 +310,7 @@ public abstract class AbstractTest {
 
 	protected void navigate(final String path, final String query) {
 		assert this.isSimplePath(path);
-		assert this.isSimpleQuery(query);
+		//assert this.isSimpleQuery(query);
 
 		this.navigate(() -> {
 			String url;
@@ -368,9 +368,7 @@ public abstract class AbstractTest {
 	protected void clickAndWait(final WebElement element) {
 		assert element != null;
 
-		this.navigate(() -> {
-			this.clickAndGo(element);
-		});
+		this.navigate(() -> this.clickAndGo(element));
 		this.longSleep();
 	}
 

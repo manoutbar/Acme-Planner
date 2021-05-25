@@ -26,4 +26,13 @@ public class AdministratorConfigurationShowTest extends AcmePlannerTest {
 		super.signOut();
 	}
 	
+	@ParameterizedTest
+	@CsvFileSource(resources = "/administrator/configuration/show-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
+	@Order(10)
+	public void showNegative(final String url, final String query) {
+		super.navigate(url, query);
+		
+		super.checkErrorsExist();
+	}
+	
 }

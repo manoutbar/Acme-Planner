@@ -1,6 +1,7 @@
 package acme.testing.anonymous.shout;
 
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -22,6 +23,23 @@ public class AnonymousShoutListTest extends AcmePlannerTest {
 		if (info != null && !StringHelper.isBlank(info)) {
 			super.checkColumnHasValue(recordIndex, 3, info);
 		}
+	}
+	
+	@Test
+	@Order(20)
+	public void testAllNegative() {
+		// check restricted anonymous access
+		super.signIn("manager", "manager");
+		super.navigate("/anonymous/shout/list", "");
+		super.checkErrorsExist();
+
+		super.signOut();
+
+		super.signIn("administrator", "administrator");
+		super.navigate("/anonymous/shout/list", "");
+		super.checkErrorsExist();
+
+		super.signOut();
 	}
 	
 }

@@ -4,6 +4,7 @@ import java.time.ZoneId;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.ConversionFailedException;
 import org.springframework.stereotype.Service;
 
 import acme.entities.tasks.WorkPlan;
@@ -32,7 +33,15 @@ public class ManagerWorkPlanShowService implements AbstractShowService<Manager, 
 		Manager owner;
 		Principal principal;
 
-		workPlanId = request.getModel().getInteger("id");
+		if (!request.getModel().hasAttribute("id")) {
+			return false;
+		}
+
+		try {
+			workPlanId = request.getModel().getInteger("id");
+		} catch (final ConversionFailedException e) {
+			return false;
+		}
 		workPlan = this.repository.findOneWorkPlanById(workPlanId);
 		owner = workPlan.getOwner();
 		principal = request.getPrincipal();

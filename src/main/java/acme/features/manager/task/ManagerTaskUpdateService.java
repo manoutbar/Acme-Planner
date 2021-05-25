@@ -2,6 +2,7 @@ package acme.features.manager.task;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,10 +66,6 @@ public class ManagerTaskUpdateService implements AbstractUpdateService<Manager, 
 			errors.state(request, spam.isEmpty(), "description", "master.form.error.marked-as-spam");
 		}
 		
-		if (!errors.hasErrors("workload")) {
-			errors.state(request, entity.getWorkload() >= 0.0, "workload", "manager.task.form.error.workload-positive");
-		}
-		
 		if (!errors.hasErrors("executionStart") || !errors.hasErrors("executionEnd")) {
 			final Task task = this.repository.findOneTaskById(request.getModel().getInteger("id"));
 			
@@ -83,6 +80,21 @@ public class ManagerTaskUpdateService implements AbstractUpdateService<Manager, 
 			
 			if ((startDateChanged || endDateChanged) && !errors.hasErrors("executionEnd")) {
 				errors.state(request, entity.getExecutionEnd().after(entity.getExecutionStart()), "executionEnd", "manager.task.form.error.execution-end-before-start");
+			}
+		}
+		
+		if (!errors.hasErrors("workload")) {
+			errors.state(request, entity.getWorkload() >= 0.0, "workload", "manager.task.form.error.workload-positive");
+			
+			final double decimalPart = entity.getWorkload() - entity.getWorkload().intValue();
+			errors.state(request, decimalPart < 0.6, "workload", "manager.task.form.error.workload-invalid-decimal-part");
+
+			if (!errors.hasErrors("executionStart") && !errors.hasErrors("executionEnd")) {
+				final Long diffInMillis = Math.abs(entity.getExecutionEnd().getTime() - entity.getExecutionStart().getTime());
+				final Long executionPeriodInMinutes = TimeUnit.MINUTES.convert(diffInMillis, TimeUnit.MILLISECONDS);				
+				final Long workloadInMinutes = (long) (entity.getWorkload().intValue() * 60 + (entity.getWorkload() - entity.getWorkload().intValue()) * 100);
+				
+				errors.state(request, executionPeriodInMinutes >= workloadInMinutes, "workload", "manager.task.form.error.workload-greater-than-execution-period");
 			}
 		}
 	}

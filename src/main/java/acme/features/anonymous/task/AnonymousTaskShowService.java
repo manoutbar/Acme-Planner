@@ -13,6 +13,7 @@
 package acme.features.anonymous.task;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.ConversionFailedException;
 import org.springframework.stereotype.Service;
 
 import acme.entities.tasks.Task;
@@ -37,8 +38,16 @@ public class AnonymousTaskShowService implements AbstractShowService<Anonymous, 
 		boolean result;
 		int id;
 		Task task;
-
-		id = request.getModel().getInteger("id");
+		
+		if (!request.getModel().hasAttribute("id")) {
+			return false;
+		}
+		
+		try {
+			id = request.getModel().getInteger("id");
+		} catch (final ConversionFailedException e) {
+			return false;
+		}
 		task = this.repository.findOneTaskById(id);
 		result = task != null && task.getIsPublic();
 

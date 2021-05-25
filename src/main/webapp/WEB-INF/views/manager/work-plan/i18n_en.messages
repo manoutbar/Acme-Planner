@@ -23,12 +23,12 @@ manager.work-plan.form.label.execution-end = Work plan execution end:
 manager.work-plan.form.label.workload = Workload:
 manager.work-plan.form.label.published = Published
 
-
 manager.work-plan.form.label.executionStart = Start: 
 manager.work-plan.form.label.executionEnd = End:
 manager.work-plan.form.label.isPublic = Public:
 
-		
+manager.work-plan.form.button.suggest = Suggest execution period
+manager.work-plan.form.button.manageTasks = Manage tasks
 manager.work-plan.form.button.update = Update
 manager.work-plan.form.button.delete = Delete
 manager.work-plan.form.button.publish = Publish
@@ -41,10 +41,7 @@ manager.work-plan.form.label.tasks.task.executionStart = Execution start
 manager.work-plan.form.label.tasks.task.executionEnd = Execution end
 manager.work-plan.form.label.tasks.task.workload = Workload
 
-manager.work-plan.form.label.ex= Workload
-manager.work-plan.form.label.tasks.task.workload = Workload
-manager.work-plan.form.label.tasks.task.workload = Workload
-
+manager.work-plan.form.error.task-contains-private-tasks = Work plan contains private tasks
 manager.work-plan.form.error.execution-start-past = Start date doesn't be before today
 manager.work-plan.form.error.execution-end-before-start = End date doesn't be before start date
 

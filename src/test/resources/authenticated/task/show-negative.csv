@@ -1,2 +1,2 @@
 url,query
-/authenticated/task/show,&id=33
+/authenticated/task/show,id=33

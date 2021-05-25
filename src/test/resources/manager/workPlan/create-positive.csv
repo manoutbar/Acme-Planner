@@ -1,0 +1,2 @@
+recordIndex,title,description,executionStart,executionEnd,isPublic,selectTask,titleTask,executionStartTask,executionEndTask,recordIndexTask
+9,pruebaplan de trabajo,descripción de plan de prueba,2022/10/01 08:00,2022/10/10 23:00,true,34,Our first task,2021/06/20 10:00,2021/06/30 23:59,0

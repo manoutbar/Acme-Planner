@@ -24,6 +24,18 @@ public class ManagerTaskCreateTest extends AcmePlannerTest {
 		super.fillInputBoxIn("workload", workload);
 		
 		super.clickOnSubmitButton("Create");
+		
+		super.clickOnMenu("Manager", "List owned tasks");
+		super.clickOnListingRecord(recordIndex);
+		
+		super.checkInputBoxHasValue("title", title);
+		super.checkInputBoxHasValue("isPublic", isPublic);		
+		super.checkInputBoxHasValue("executionStart", executionStart);
+		super.checkInputBoxHasValue("executionEnd", executionEnd);
+		super.checkInputBoxHasValue("workload", workload);
+		super.checkInputBoxHasValue("link", link);
+		super.checkInputBoxHasValue("description", description);
+		
 		super.signOut();
 	}
 	

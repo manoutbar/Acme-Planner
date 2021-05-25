@@ -177,6 +177,34 @@ public abstract class AcmeTest extends AbstractTest {
 
 		assert contents.equals(value) : String.format("Expected value '%s' in attribute %d of record %d, but found '%s'", expectedValue, attributeIndex, recordIndex, value);
 	}
+	
+	protected void checkTableColumnHasValue(final String tableId, final int tableRow, final int tableColumn, final String expectedValue) {
+		assert tableId != null;
+		assert tableRow >= 0;
+		assert tableColumn >= 0;
+		// expectedValue is nullable
+
+		List<WebElement> row;
+		WebElement attribute, toggle;
+		String contents, value;
+
+		row = this.getTableRecord(tableId, tableRow);
+		assert tableColumn < row.size() : String.format("Attribute %d in record %d is out of range", tableColumn, tableRow);
+		attribute = row.get(tableColumn);
+		if (attribute.isDisplayed())
+			contents = attribute.getText();
+		else {
+			toggle = row.get(0);
+			toggle.click();
+			contents = (String) super.executor.executeScript("return arguments[0].innerText;", attribute);
+			toggle.click();
+		}
+
+		contents = (contents == null ? "" : contents.trim());
+		value = (expectedValue != null ? expectedValue.trim() : "");
+
+		assert contents.equals(value) : String.format("Expected value '%s' in attribute %d of record %d, but found '%s'", contents, tableColumn, tableRow, value);
+	}
 
 	// Form-filling methods ---------------------------------------------------
 
@@ -342,5 +370,29 @@ public abstract class AcmeTest extends AbstractTest {
 
 		return result;
 	}
+	
+	protected List<WebElement> getTableRecord(final String tableId, final int trIndex) {
+		assert trIndex >= 0;
+
+		final List<WebElement> result;
+		By tableLocator, tableRowsLocator, tableColumnsLocator;
+		WebElement table, tableRow;
+		List<WebElement> tableRows;
+
+		tableLocator = By.id(tableId);
+		table = super.locateOne(tableLocator);
+		assert table != null : String.format("Table with id %d hasn't been found", tableId);
+		
+		tableRowsLocator = By.tagName("tr");
+		tableRows = table.findElements(tableRowsLocator);
+		assert trIndex < tableRows.size() : String.format("Table row index %d is out of range", trIndex);
+		tableRow = tableRows.get(trIndex);
+				
+		tableColumnsLocator = By.tagName("td");
+		result = tableRow.findElements(tableColumnsLocator);
+		
+		return result;
+	}
+
 
 }

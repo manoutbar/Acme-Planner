@@ -1,6 +1,7 @@
 package acme.features.manager.task;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.ConversionFailedException;
 import org.springframework.stereotype.Service;
 
 import acme.entities.tasks.Task;
@@ -24,12 +25,20 @@ public class ManagerTaskShowService implements AbstractShowService<Manager, Task
 		assert request != null;
 
 		boolean result;
-		int workPlanId;
+		final int workPlanId;
 		Task workPlan;
 		Manager owner;
 		Principal principal;
 
-		workPlanId = request.getModel().getInteger("id");
+		if (!request.getModel().hasAttribute("id")) {
+			return false;
+		}
+
+		try {
+			workPlanId = request.getModel().getInteger("id");
+		} catch (final ConversionFailedException e) {
+			return false;
+		}
 		workPlan = this.repository.findOneTaskById(workPlanId);
 		owner = workPlan.getOwner();
 		principal = request.getPrincipal();

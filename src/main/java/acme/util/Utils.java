@@ -26,7 +26,9 @@ public class Utils {
 
 	public String spamControl(final String text, final String error) {
 		final Configuration configuration = this.configurationRepository.findMany().stream().findFirst().orElse(null);
-		
+		if (configuration == null) {
+			return "";
+		}
 		final Integer totalCharacter = text.length() - this.countNumberOfOccurrences(Utils.IGNORED_CHARACTERS, text);
 		
 		final Integer spamCover = this.countNumberOfOccurrences(configuration.getSpamList(), text);

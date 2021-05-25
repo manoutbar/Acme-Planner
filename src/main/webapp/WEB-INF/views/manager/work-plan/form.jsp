@@ -17,7 +17,7 @@
 
 <acme:form>
 	<acme:form-textbox code="anonymous.work-plan.form.label.title" path="title"/>
-	<acme:form-textbox code="anonymous.work-plan.form.label.description" path="description"/>
+	<acme:form-textarea code="anonymous.work-plan.form.label.description" path="description"/>
 	<acme:form-moment code="manager.work-plan.form.label.executionStart" path="executionStart"/>
 	<acme:form-moment code="manager.work-plan.form.label.executionEnd" path="executionEnd"/>
 	<acme:form-checkbox code="manager.work-plan.form.label.isPublic" path="isPublic"/>

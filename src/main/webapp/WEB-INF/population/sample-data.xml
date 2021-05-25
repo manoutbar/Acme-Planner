@@ -307,7 +307,7 @@
 	</bean>
 	
 	<bean id="shout02" class="acme.entities.shouts.Shout">
-		<property name="moment" value="2019/05/09 15:55"/>
+		<property name="moment" value="2021/05/09 15:55"/>
 		<property name="author" value="Joe Doe"/>
 		<property name="text" value="I'm the master of my room!"/>
 		<property name="info" value="http://www.example.org"/>		
@@ -351,7 +351,7 @@
 	<bean id="shout08" class="acme.entities.shouts.Shout">
 		<property name="author" value="Marie"/>
 		<property name="text" value="This is an old shout"/>
-		<property name="moment" value="2021/04/16 12:30"/>
+		<property name="moment" value="2021/05/16 12:30"/>
 		<property name="info" value="http://www.sample-app.com"/>
 	</bean>
 

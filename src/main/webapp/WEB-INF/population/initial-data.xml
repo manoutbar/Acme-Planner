@@ -105,4 +105,11 @@
 		<property name="userAccount" ref="administratorUserAccount" />
 	</bean>
 	
+	<!-- Configuraation -->
+	
+	<bean id="configuration" class="acme.entities.configuration.Configuration">
+		<property name="spam" value="sex;sexo;hard core;extremo;viagra;cialis;has ganado;you’ve won;million dollar;millón de dólares;"/>
+		<property name="threshold" value="10.00"/>
+	</bean>
+	
 </beans>

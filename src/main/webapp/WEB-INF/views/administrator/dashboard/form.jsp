@@ -19,7 +19,7 @@
 	<acme:message code="administrator.dashboard.form.title.general-indicators"/>
 </h2>
 
-<table class="table table-sm">
+<table id="dashboard-table" class="table table-sm">
 	<caption>
 		<acme:message code="administrator.dashboard.form.title.general-indicators"/>
 	</caption>

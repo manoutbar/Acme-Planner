@@ -1,0 +1,9 @@
+recordIndex,description,executionEnd,executionStart,isPublic,link,title,workload
+0,The first task we are doing as DP2 team,2021/06/19 23:59,2021/05/20 10:00,true,,Our first task,0.00
+1,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mi tortor, volutpat dapibus dignissim sed, facilisis a arcu. Curabitur blandit massa lorem, a luctus urna lobortis at. Suspendisse potenti. Fusce sollicitudin convallis neque ac eleifend. Vestibulum vehicula mauris augue, quis egestas odio ornare a. Ut ac commodo elit. Mauris condimentum odio leo, vel luctus dui lobortis at.",2021/06/02 23:59,2021/05/30 18:30,true,,Long description task,0.00
+2,This is a long execution period task,2021/08/30 23:59,2021/01/01 18:30,true,,Enabled task,13.40
+3,This is a private task with isPublic = 'false',2021/08/30 23:59,2021/02/01 18:30,false,http://www.example.org,Private task,0.00
+4,This plan has not been added to any work plan,2021/08/30 23:59,2021/02/01 18:30,true,http://www.example.org,Task without work plans,0.00
+5,The task description with some text,2021/07/03 12:45,2021/04/14 11:30,true,http://www.example.org,Task number six,4.50
+6,The task description with some text,2021/05/01 12:45,2021/04/14 11:30,true,http://www.example.org,Public and finished task,44.50
+7,The task description with some text,2021/04/11 12:45,2021/04/10 11:30,true,http://www.example.org,Public and finished task 2,10.50

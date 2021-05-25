@@ -36,3 +36,5 @@ manager.task.form.button.return = Volver
 manager.task.form.error.execution-start-past = La fecha de inicio no puede ser anterior a la actual
 manager.task.form.error.execution-end-before-start = La fecha de fin no puede ser anterior a la de inicio
 manager.task.form.error.workload-positive = La carga de trabajo debe ser un número positivo
+manager.task.form.error.workload-invalid-decimal-part = La carga de trabajo debe contener decimales entre 0 y 59 (minutos)
+manager.task.form.error.workload-greater-than-execution-period = La carga de trabajo no puede ser mayor que el periodo de ejecución

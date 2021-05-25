@@ -2,6 +2,7 @@ package acme.features.manager.workPlan;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -73,12 +74,27 @@ public class ManagerWorkPlanUpdateService implements AbstractUpdateService<Manag
 			// we will only check dates if fields has been updated
 			if (startDateChanged && !errors.hasErrors("executionStart")) {
 				final Date minimumExecutionStart = new Date();
-				errors.state(request, entity.getExecutionStart().after(minimumExecutionStart), "executionStart", "manager.task.form.error.execution-start-past");
+				errors.state(request, entity.getExecutionStart().after(minimumExecutionStart), "executionStart", "manager.work-plan.form.error.execution-start-past");
 			}
 			
 			if ((startDateChanged  || endDateChanged ) && !errors.hasErrors("executionEnd")) {
-				errors.state(request, entity.getExecutionEnd().after(entity.getExecutionStart()), "executionEnd", "manager.task.form.error.execution-end-before-start");
+				errors.state(request, entity.getExecutionEnd().after(entity.getExecutionStart()), "executionEnd", "manager.work-plan.form.error.execution-end-before-start");
+				
+				final Long diffInMillis = Math.abs(entity.getExecutionEnd().getTime() - entity.getExecutionStart().getTime());
+				final Long executionPeriodInMinutes = TimeUnit.MINUTES.convert(diffInMillis, TimeUnit.MILLISECONDS);				
+				final Long workloadInMinutes = (long) (entity.getWorkload().intValue() * 60 + (entity.getWorkload() - entity.getWorkload().intValue()) * 100);
+				final boolean validWorkload = executionPeriodInMinutes >= workloadInMinutes; 
+				
+				errors.state(request, validWorkload, startDateChanged ? "executionStart" : "executionEnd", "manager.task.form.error.workload-greater-than-execution-period");
 			}
+		}
+		
+		if (!errors.hasErrors("isPublic")) {
+			final boolean hasPrivateTasks = entity.getWorkPlanTask().stream()
+				.anyMatch(wpt -> !wpt.getTask().getIsPublic());
+			
+			
+			errors.state(request, !entity.getIsPublic() || !hasPrivateTasks , "isPublic", "manager.work-plan.form.error.task-contains-private-tasks");
 		}
 	}
 

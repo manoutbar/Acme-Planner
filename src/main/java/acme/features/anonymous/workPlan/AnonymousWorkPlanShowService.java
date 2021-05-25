@@ -13,6 +13,7 @@
 package acme.features.anonymous.workPlan;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.ConversionFailedException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,8 +39,16 @@ public class AnonymousWorkPlanShowService implements AbstractShowService<Anonymo
 		boolean result;
 		int id;
 		WorkPlan workPlan;
+		
+		if (!request.getModel().hasAttribute("id")) {
+			return false;
+		}
 
-		id = request.getModel().getInteger("id");
+		try {
+			id = request.getModel().getInteger("id");
+		} catch (final ConversionFailedException e) {
+			return false;
+		}
 		workPlan = this.repository.findOneWorkPlanById(id);
 		
 		result = workPlan != null && workPlan.getIsPublic() && workPlan.isFinalMode();

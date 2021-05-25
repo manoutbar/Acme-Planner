@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.ConversionFailedException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.HandlerMapping;
 
@@ -42,15 +43,24 @@ public class ManagerWorkPlanTaskShowService implements AbstractShowService<Manag
 		assert request != null;
 
 		boolean result;
-		int workPlanId;
+		Integer workPlanId;
 		int workPlanTaskId;
 		WorkPlanTask workPlanTask;
 		Manager owner;
 		Principal principal;
 
+
 		workPlanId = this.getWorkPlanId(request);
-		workPlanTaskId = request.getModel().getInteger("id");
 		
+		if (workPlanId == null || !request.getModel().hasAttribute("id")) {
+			return false;
+		}
+		
+		try {
+			workPlanTaskId = request.getModel().getInteger("id");
+		} catch (final ConversionFailedException e) {
+			return false;
+		}
 		workPlanTask = this.repository.findOneWorkPlanTaskByWorkPlanAndId(workPlanId, workPlanTaskId);
 		
 		owner = workPlanTask.getWorkPlan().getOwner();

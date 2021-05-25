@@ -1,7 +1,5 @@
 package acme.features.administrator.configuration;
 
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,12 +53,10 @@ public class AdministratorConfigurationCreateService implements AbstractCreateSe
 		assert request != null;
 
 		Configuration result;
-		Date moment;
-
-		moment = new Date(System.currentTimeMillis() - 1);
+		
 
 		result = new Configuration();
-		//result.setsp
+		
 
 		return result;
 	}
@@ -82,10 +78,7 @@ public class AdministratorConfigurationCreateService implements AbstractCreateSe
 		assert request != null;
 		assert entity != null;
 
-		Date moment;
-
-		moment = new Date(System.currentTimeMillis() - 1);
-		//entity.setMoment(moment);
+		
 		this.repository.save(entity);
 	}
 }

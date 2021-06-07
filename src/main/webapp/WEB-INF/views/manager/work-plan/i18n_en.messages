@@ -45,5 +45,5 @@ manager.work-plan.form.error.task-contains-private-tasks = Work plan contains pr
 manager.work-plan.form.error.execution-start-past = Start date doesn't be before today
 manager.work-plan.form.error.execution-end-before-start = End date doesn't be before start date
 
-
-
+manager.work-plan.form.error.execution-start-after-than-required-tasks = Work plan contains tasks with earlier execution period start
+manager.work-plan.form.error.execution-end-before-than-required-tasks = Work plan contains tasks with later execution period end

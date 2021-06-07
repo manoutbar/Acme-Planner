@@ -139,7 +139,7 @@ public class ManagerWorkPlanTaskCreateService implements AbstractCreateService<M
 		
 		if (!executionEnd.after(taskExecutionEnd)) {
 			updateWorkPlan = true;
-			entity.getWorkPlan().setExecutionEnd(executionEnd);
+			entity.getWorkPlan().setExecutionEnd(taskExecutionEnd);
 		}
 		
 		if (updateWorkPlan) {

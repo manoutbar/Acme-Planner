@@ -43,8 +43,10 @@ public class Utils {
 	}
 	
 	private Integer countNumberOfOccurrences(final List<String> words, final String text) {
+		final String lowerCased = text.toLowerCase();
 		return words.stream()
-			.mapToInt(word -> word.length() * StringUtils.countMatches(text, word))
+			.map(String::toLowerCase)
+			.mapToInt(word -> word.length() * StringUtils.countMatches(lowerCased, word))
 			.sum();
 	}
 }

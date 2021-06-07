@@ -248,17 +248,6 @@ Anonymous
     <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>984</x>
-      <y>480</y>
-      <w>36</w>
-      <h>252</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;10.0;10.0;190.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLClass</id>
     <coordinates>
       <x>1560</x>
@@ -442,7 +431,7 @@ bg=blue</panel_attributes>
     </coordinates>
     <panel_attributes>The executionStart must be 
 in the future when the WorkPlan is
-created 
+created or updated 
 bg=blue</panel_attributes>
     <additional_attributes/>
   </element>
@@ -509,7 +498,7 @@ bg=blue</panel_attributes>
     </coordinates>
     <panel_attributes>The executionStart must be 
 in the future when the Task is
-created 
+created or updated
 bg=blue</panel_attributes>
     <additional_attributes/>
   </element>

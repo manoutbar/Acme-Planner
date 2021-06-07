@@ -48,8 +48,8 @@
 	<!-- Managers -->
 
 	<bean name="managerUserAccount" class="acme.framework.entities.UserAccount">
-		<property name="username" value="manager" />
-		<property name="password" value="manager" />
+		<property name="username" value="manager1" />
+		<property name="password" value="manager1" />
 		<property name="enabled" value="true" />
 		<property name="identity">
 			<bean class="acme.datatypes.UserIdentity">

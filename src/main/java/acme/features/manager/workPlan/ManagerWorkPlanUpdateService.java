@@ -103,7 +103,8 @@ public class ManagerWorkPlanUpdateService implements AbstractUpdateService<Manag
 				
 				final Long diffInMillis = Math.abs(entity.getExecutionEnd().getTime() - entity.getExecutionStart().getTime());
 				final Long executionPeriodInMinutes = TimeUnit.MINUTES.convert(diffInMillis, TimeUnit.MILLISECONDS);				
-				final Long workloadInMinutes = (long) (entity.getWorkload().intValue() * 60 + (entity.getWorkload() - entity.getWorkload().intValue()) * 100);
+				final double workloadDecimals = (double) Math.round((entity.getWorkload() - entity.getWorkload().intValue()) * 100) / 100;
+				final Long workloadInMinutes = (long) (entity.getWorkload().intValue() * 60 + workloadDecimals * 100);
 				final boolean validWorkload = executionPeriodInMinutes >= workloadInMinutes; 
 				
 				errors.state(request, validWorkload, startDateChanged ? "executionStart" : "executionEnd", "manager.task.form.error.workload-greater-than-execution-period");

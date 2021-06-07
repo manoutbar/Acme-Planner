@@ -70,11 +70,32 @@ public class ManagerWorkPlanUpdateService implements AbstractUpdateService<Manag
 		if (!errors.hasErrors("executionStart") || !errors.hasErrors("executionEnd")) {
 			final WorkPlan workPlan = this.repository.findOneWorkPlanById(request.getModel().getInteger("id"));
 			final boolean startDateChanged = !workPlan.getExecutionStart().equals(new Timestamp(entity.getExecutionStart().getTime()));
-			final boolean endDateChanged = !workPlan.getExecutionEnd().equals(new Timestamp(entity.getExecutionEnd().getTime())); 
+			final boolean endDateChanged = !workPlan.getExecutionEnd().equals(new Timestamp(entity.getExecutionEnd().getTime()));
+			
 			// we will only check dates if fields has been updated
 			if (startDateChanged && !errors.hasErrors("executionStart")) {
 				final Date minimumExecutionStart = new Date();
 				errors.state(request, entity.getExecutionStart().after(minimumExecutionStart), "executionStart", "manager.work-plan.form.error.execution-start-past");
+				
+				final Date minimumTasksExecutionStart = entity.getWorkPlanTask().stream()
+					.map(wpt -> wpt.getTask().getExecutionStart())
+					.min((d1, d2) -> d1.compareTo(d2))
+					.orElse(null);
+				
+				if (minimumTasksExecutionStart != null) {
+					errors.state(request, !entity.getExecutionStart().after(minimumExecutionStart), "executionStart", "manager.work-plan.form.error.execution-start-after-than-required-tasks");
+				}
+			}
+			
+			if (endDateChanged && !errors.hasErrors("executionEnd")) {
+				final Date maximumTasksExecutionEnd= entity.getWorkPlanTask().stream()
+					.map(wpt -> wpt.getTask().getExecutionEnd())
+					.max((d1, d2) -> d1.compareTo(d2))
+					.orElse(null);
+				
+				if (maximumTasksExecutionEnd != null) {
+					errors.state(request, !entity.getExecutionEnd().before(maximumTasksExecutionEnd), "executionEnd", "manager.work-plan.form.error.execution-end-before-than-required-tasks");
+				}
 			}
 			
 			if ((startDateChanged  || endDateChanged ) && !errors.hasErrors("executionEnd")) {

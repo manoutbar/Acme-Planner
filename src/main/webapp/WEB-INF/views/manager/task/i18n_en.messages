@@ -39,3 +39,4 @@ manager.task.form.error.execution-end-before-start = End date must be after star
 manager.task.form.error.workload-positive = Workload must be a positive number
 manager.task.form.error.workload-invalid-decimal-part = Workload must have the decimal part between 0 and 59 (minutes)
 manager.task.form.error.workload-greater-than-execution-period = Workload cannot be greater than execution period
+manager.task.form.error.workload-less-than-execution-period = Workload cannot be greater than execution period

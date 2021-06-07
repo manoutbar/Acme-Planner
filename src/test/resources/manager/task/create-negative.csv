@@ -7,3 +7,8 @@ recordIndex,description,executionEnd,executionStart,isPublic,link,title,workload
 0,,2021/07/10 23:59,2021/07/1 10:00,true,,task de test,10.00
 0,task,2021/07/10 23:59,2021/07/1 10:00,true,,,10.00
 0,task,2021/07/10 23:59,2021/07/1 10:00,true,http://prueba.com,,10.00
+1,Prueba periodo de ejecución,2021/08/10 00:01,2021/04/10 00:00,true,,Periodo ejecución,00.00
+2,Prueba periodo de ejecución,2021/08/00 00:00,2021/08/10 00:01,true,,Periodo ejecución 2,23.59
+2,Prueba periodo de ejecución,2021/08/10 00:00,2021/08/10 00:01,true,,Periodo ejecución 2,0.02
+3,Prueba carga,2021/08/11 02:00,2021/08/10 00:00,true,,Carga de trabajo,2.01
+4,Prueba carga,2021/08/11 00:00,2021/08/10 00:00,true,,Carga de trabajo,0.1

@@ -1,2 +1,9 @@
 recordIndex,description,executionEnd,executionStart,isPublic,link,title,workload
-0,task negativo millón de dólares,2021/06/10 23:59,2021/06/1 10:00,true,http://prueba.com,task de test,10.00
+0,task negativo millón de dólares,2021/07/10 23:59,2021/07/1 10:00,true,http://prueba.com,task de test,10.00
+0,,,,false,,,
+0,sex,2021/07/10 23:59,2021/07/1 10:00,false,,task de test,10.00
+0,task negativo,2021/07/10 23:59,2021/07/1 10:00,true,prueba.com,task de test,10.00
+0,task negativo,2021/07/10 23:59,2021/07/1 10:00,true,prueba.com,sex,10.00
+0,,2021/07/10 23:59,2021/07/1 10:00,true,,task de test,10.00
+0,task,2021/07/10 23:59,2021/07/1 10:00,true,,,10.00
+0,task,2021/07/10 23:59,2021/07/1 10:00,true,http://prueba.com,,10.00

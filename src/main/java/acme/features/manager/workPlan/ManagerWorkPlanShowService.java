@@ -1,6 +1,7 @@
 package acme.features.manager.workPlan;
 
 import java.time.ZoneId;
+import java.util.Comparator;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,8 +69,7 @@ public class ManagerWorkPlanShowService implements AbstractShowService<Manager, 
 				.orElse(null);
 			Date suggestExecutionEnd = entity.getWorkPlanTask().stream()
 				.map(wpt -> wpt.getTask().getExecutionEnd())
-				.sorted()
-				// .skip(result.getWorkPlanTask().isEmpty() ? 0 : result.getWorkPlanTask().size()-1)
+				.sorted(Comparator.reverseOrder())
 				.findFirst()
 				.orElse(null);
 			

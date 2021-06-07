@@ -65,7 +65,7 @@ public class ManagerTaskCreateService implements AbstractCreateService<Manager, 
 			errors.state(request, entity.getWorkload() >= 0.0, "workload", "manager.task.form.error.workload-positive");
 			
 			final double decimalPart = entity.getWorkload() - entity.getWorkload().intValue();
-			errors.state(request, decimalPart < 0.6, "workload", "manager.task.form.error.workload-invalid-decimal-part");
+			errors.state(request, decimalPart <= 0.59, "workload", "manager.task.form.error.workload-invalid-decimal-part");
 
 			if (!errors.hasErrors("executionStart") && !errors.hasErrors("executionEnd")) {
 				final Long diffInMillis = Math.abs(entity.getExecutionEnd().getTime() - entity.getExecutionStart().getTime());

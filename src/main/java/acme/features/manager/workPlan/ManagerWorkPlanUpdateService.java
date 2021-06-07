@@ -83,7 +83,7 @@ public class ManagerWorkPlanUpdateService implements AbstractUpdateService<Manag
 					.orElse(null);
 				
 				if (minimumTasksExecutionStart != null) {
-					errors.state(request, !entity.getExecutionStart().after(minimumExecutionStart), "executionStart", "manager.work-plan.form.error.execution-start-after-than-required-tasks");
+					errors.state(request, !entity.getExecutionStart().after(minimumTasksExecutionStart), "executionStart", "manager.work-plan.form.error.execution-start-after-than-required-tasks");
 				}
 			}
 			

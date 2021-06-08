@@ -20,7 +20,7 @@ public class AnonymousShoutCreateTest extends AcmePlannerTest {
 		
 		super.clickOnSubmitButton("Shout!");
 
-		super.clickOnMenu("Anonymous", "List shouts");
+		super.clickOnMenu("Anonymous", "List shouts not older than one month");
 		
 		super.checkColumnHasValue(recordIndex, 1, author);
 		super.checkColumnHasValue(recordIndex, 2, text);

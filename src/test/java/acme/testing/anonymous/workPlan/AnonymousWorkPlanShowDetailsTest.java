@@ -12,7 +12,7 @@ public class AnonymousWorkPlanShowDetailsTest extends AcmePlannerTest{
 	@CsvFileSource(resources = "/anonymous/workPlan/show-details.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
 	public void showDetails(final int recordIndex, final String executionStart, final String executionEnd, final String title, final String description, final String isPublic, final String workload) {
-		super.clickOnMenu("Anonymous", "List work plans");
+		super.clickOnMenu("Anonymous", "List non-finished public work plans");
 
 		super.checkColumnHasValue(recordIndex, 0, title);
 		super.checkColumnHasValue(recordIndex, 1, executionStart);

@@ -13,7 +13,7 @@ public class AnonymousTaskShowDetailsTest extends AcmePlannerTest {
 	@CsvFileSource(resources = "/anonymous/task/show-details.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
 	public void showDetails(final int recordIndex, final String title, final String isPublic, final String executionStart, final String executionEnd, final String workload, final String description) {
-		super.clickOnMenu("Anonymous", "List tasks");
+		super.clickOnMenu("Anonymous", "List non-finished public tasks");
 
 		super.checkColumnHasValue(recordIndex, 0, executionStart);
 		super.checkColumnHasValue(recordIndex, 1, executionEnd);
@@ -37,7 +37,7 @@ public class AnonymousTaskShowDetailsTest extends AcmePlannerTest {
 		super.navigate("/anonymous/task/show", "id=44");
 		super.checkErrorsExist();
 
-		super.signIn("manager", "manager");
+		super.signIn("manager1", "manager1");
 		super.navigate("/anonymous/task/show", "id=40");
 		super.checkErrorsExist();
 

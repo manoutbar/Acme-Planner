@@ -32,7 +32,7 @@ public class SpamTest extends AcmePlannerTest {
 		
 		super.checkErrorsExist();
 		
-		super.signIn("manager", "manager");
+		super.signIn("manager1", "manager1");
 		
 		super.clickOnMenu("Manager", "Create tasks");
 

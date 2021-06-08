@@ -74,6 +74,36 @@
 	<bean name="managerAuthenticated" class="acme.framework.entities.Authenticated">
 		<property name="userAccount" ref="managerUserAccount" />
 	</bean>
+	
+		<!-- Managers -->
+
+	<bean name="managerUserAccount2" class="acme.framework.entities.UserAccount">
+		<property name="username" value="manager" />
+		<property name="password" value="manager" />
+		<property name="enabled" value="true" />
+		<property name="identity">
+			<bean class="acme.datatypes.UserIdentity">
+				<property name="name" value="Kevin" />
+				<property name="surname" value="Smith" />
+				<property name="email" value="kevin.smith@acme.com" />
+				<property name="phone" value="+9 (876) 543-210" />
+			</bean>
+		</property>
+		<property name="roles">
+			<list>
+				<ref bean="managerManager2" />
+				<ref bean="managerAuthenticated2" />
+			</list>
+		</property>
+	</bean>
+
+	<bean name="managerManager2" class="acme.framework.entities.Manager">
+		<property name="userAccount" ref="managerUserAccount2" />
+	</bean>
+	
+	<bean name="managerAuthenticated2" class="acme.framework.entities.Authenticated">
+		<property name="userAccount" ref="managerUserAccount2" />
+	</bean>
 
 	<!-- Administrators -->
 	

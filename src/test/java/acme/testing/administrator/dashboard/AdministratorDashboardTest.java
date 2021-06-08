@@ -60,7 +60,7 @@ public class AdministratorDashboardTest extends AcmePlannerTest {
 		super.navigate("/administrator/dashboard/show", "");
 		super.checkErrorsExist();
 				
-		super.signIn("manager", "manager");
+		super.signIn("manager1", "manager1");
 		super.navigate("/administrator/dashboard/show", "");
 		super.checkErrorsExist();
 		

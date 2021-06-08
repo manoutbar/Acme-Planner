@@ -10,5 +10,10 @@ recordIndex,description,executionEnd,executionStart,isPublic,link,title,workload
 1,Prueba periodo de ejecución,2021/08/10 00:01,2021/04/10 00:00,true,,Periodo ejecución,00.00
 2,Prueba periodo de ejecución,2021/08/00 00:00,2021/08/10 00:01,true,,Periodo ejecución 2,23.59
 2,Prueba periodo de ejecución,2021/08/10 00:00,2021/08/10 00:01,true,,Periodo ejecución 2,0.02
-3,Prueba carga,2021/08/11 02:00,2021/08/10 00:00,true,,Carga de trabajo,2.01
-4,Prueba carga,2021/08/11 00:00,2021/08/10 00:00,true,,Carga de trabajo,0.1
+3,Prueba carga,2021/08/10 01:00,2021/08/10 00:00,true,,Carga de trabajo,1.01
+4,Prueba carga,2021/08/10 00:00,2021/08/10 00:00,true,,Carga de trabajo,0.1
+5,Prueba carga,2021/10/01 01:00,2021/10/01 00:00,true,,Carga de trabajo,-15
+6,Prueba carga,2021/10/01 01:00,2021/10/01 00:00,true,,Carga de trabajo,2.00
+7,Prueba carga,2021/10/01 01:00,2021/10/01 00:00,true,,Carga de trabajo,0.60
+8,Prueba carga,2021/10/01 01:00,2021/10/01 00:00,true,,Carga de trabajo,0.123435
+9,Prueba carga,2021/10/01 01:00,2021/10/01 00:00,true,,Carga de trabajo,-0.59

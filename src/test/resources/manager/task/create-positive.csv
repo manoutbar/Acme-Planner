@@ -1,6 +1,6 @@
 recordIndex,description,executionEnd,executionStart,isPublic,link,title,workload
-13,crear task de prueba en test,2022/01/01 00:01,2022/01/01 00:00,true,http://prueba.com,task de test 1,0.00
-14,crear task de prueba en test,2022/01/01 00:01,2022/01/01 00:00,true,http://prueba.com,task de test 2,0.01
+13,crear task de prueba en test,2022/01/01 00:01,2022/01/01 00:00,true,,task de test 1,0.00
+14,crear task de prueba en test,2022/01/01 00:01,2022/01/01 00:00,true,,task de test 2,0.01
 15,crear task de prueba en test,2022/01/01 00:59,2022/01/01 00:00,true,http://prueba.com,task de test 3,0.59
 16,crear task de prueba en test,2022/01/01 01:00,2022/01/01 00:00,true,http://prueba.com,task de test 4,1.00
 17,crear task de prueba en test,2022/01/01 01:00,2022/01/01 00:00,true,http://prueba.com,task de test 5,0.59

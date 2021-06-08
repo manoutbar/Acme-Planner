@@ -44,7 +44,7 @@ public class ManagerWorkPlanUpdateService implements AbstractUpdateService<Manag
 		workPlan = this.repository.findOneWorkPlanById(jobId);
 		owner = workPlan.getOwner();
 		principal = request.getPrincipal();
-		result = owner.getUserAccount().getId() == principal.getAccountId();
+		result = !workPlan.isFinalMode() && owner.getUserAccount().getId() == principal.getAccountId();
 
 		return result;
 	}
@@ -83,7 +83,7 @@ public class ManagerWorkPlanUpdateService implements AbstractUpdateService<Manag
 					.orElse(null);
 				
 				if (minimumTasksExecutionStart != null) {
-					errors.state(request, !entity.getExecutionStart().after(minimumExecutionStart), "executionStart", "manager.work-plan.form.error.execution-start-after-than-required-tasks");
+					errors.state(request, !entity.getExecutionStart().after(minimumTasksExecutionStart), "executionStart", "manager.work-plan.form.error.execution-start-after-than-required-tasks");
 				}
 			}
 			
@@ -103,7 +103,8 @@ public class ManagerWorkPlanUpdateService implements AbstractUpdateService<Manag
 				
 				final Long diffInMillis = Math.abs(entity.getExecutionEnd().getTime() - entity.getExecutionStart().getTime());
 				final Long executionPeriodInMinutes = TimeUnit.MINUTES.convert(diffInMillis, TimeUnit.MILLISECONDS);				
-				final Long workloadInMinutes = (long) (entity.getWorkload().intValue() * 60 + (entity.getWorkload() - entity.getWorkload().intValue()) * 100);
+				final double workloadDecimals = (double) Math.round((entity.getWorkload() - entity.getWorkload().intValue()) * 100) / 100;
+				final Long workloadInMinutes = (long) (entity.getWorkload().intValue() * 60 + workloadDecimals * 100);
 				final boolean validWorkload = executionPeriodInMinutes >= workloadInMinutes; 
 				
 				errors.state(request, validWorkload, startDateChanged ? "executionStart" : "executionEnd", "manager.task.form.error.workload-greater-than-execution-period");
@@ -124,7 +125,7 @@ public class ManagerWorkPlanUpdateService implements AbstractUpdateService<Manag
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-
+		
 		request.bind(entity, errors);
 	}
 
@@ -134,7 +135,7 @@ public class ManagerWorkPlanUpdateService implements AbstractUpdateService<Manag
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "isPublic", "executionStart", "executionEnd");
+		request.unbind(entity, model, "title", "description", "isPublic", "executionStart", "executionEnd", "finalMode");
 	}
 
 	@Override
